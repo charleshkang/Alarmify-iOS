@@ -1,22 +1,54 @@
 //
 //  AppDelegate.m
-//  Alarmify
+//  alarmify
 //
-//  Created by Charles Kang on 2/11/16.
+//  Created by Charles Kang on 1/26/16.
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import <Spotify/Spotify.h>
+#import "ALUser.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) SPTSession *session;
+@property (nonatomic, strong) SPTAudioStreamingController *player;
 
 @end
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
+        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
+            NSLog(@"API callback was successful! ");
+            
+            if (!error) {
+                [[NSUserDefaults standardUserDefaults] setObject:session.accessToken forKey:CLIENT_ID];
+                [[NSUserDefaults standardUserDefaults] setObject:session.canonicalUsername forKey:SPOTIFY_USERNAME_KEY];
+                
+                if ([ALUser currentUser].onLoginCallback) {
+                    [ALUser currentUser].onLoginCallback();
+                }
+            }
+            
+        }];
+        
+        return YES;
+    }
+    
+    return NO;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+
+    [[SPTAuth defaultInstance] setClientID:CLIENT_ID];
+    [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://callback"]];
+    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope,SPTAuthPlaylistModifyPublicScope]];
+    
     return YES;
 }
 
@@ -51,7 +83,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.charleskang.Alarmify" in the application's documents directory.
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.charleskang.alarmify" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -60,7 +92,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Alarmify" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"alarmify" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -74,7 +106,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Alarmify.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"alarmify.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

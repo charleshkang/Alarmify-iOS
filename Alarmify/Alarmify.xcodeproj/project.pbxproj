@@ -8,28 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
-		BFF1BA041C6D4B9E00ECBF69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF1BA031C6D4B9E00ECBF69 /* main.m */; };
-		BFF1BA071C6D4B9E00ECBF69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF1BA061C6D4B9E00ECBF69 /* AppDelegate.m */; };
-		BFF1BA0A1C6D4B9E00ECBF69 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF1BA091C6D4B9E00ECBF69 /* ViewController.m */; };
-		BFF1BA0D1C6D4B9E00ECBF69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA0B1C6D4B9E00ECBF69 /* Main.storyboard */; };
-		BFF1BA101C6D4B9E00ECBF69 /* Alarmify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFF1BA0E1C6D4B9E00ECBF69 /* Alarmify.xcdatamodeld */; };
+		BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF78E9811C6D4EF60044440B /* Main.storyboard */; };
+		BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F698E1C6D502F0013CE2B /* AppDelegate.m */; };
+		BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69911C6D50380013CE2B /* ALSignInViewController.m */; };
+		BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */; };
+		BF7F69981C6D50380013CE2B /* ALUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69951C6D50380013CE2B /* ALUser.m */; };
+		BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */; };
+		BF7F69A41C6D50400013CE2B /* ALAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F699C1C6D50400013CE2B /* ALAlarm.m */; };
+		BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */; };
+		BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */; };
+		BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */; };
+		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
+		BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AA1C6D50560013CE2B /* Info.plist */; };
+		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2BF105BFBBFD2127963F5FD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF78E9811C6D4EF60044440B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BF7F698D1C6D502F0013CE2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BF7F698E1C6D502F0013CE2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BF7F69901C6D50380013CE2B /* ALSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSignInViewController.h; sourceTree = "<group>"; };
+		BF7F69911C6D50380013CE2B /* ALSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSignInViewController.m; sourceTree = "<group>"; };
+		BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyManager.h; sourceTree = "<group>"; };
+		BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyManager.m; sourceTree = "<group>"; };
+		BF7F69941C6D50380013CE2B /* ALUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALUser.h; sourceTree = "<group>"; };
+		BF7F69951C6D50380013CE2B /* ALUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALUser.m; sourceTree = "<group>"; };
+		BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAddAlarmTableViewController.h; sourceTree = "<group>"; };
+		BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAddAlarmTableViewController.m; sourceTree = "<group>"; };
+		BF7F699B1C6D50400013CE2B /* ALAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlarm.h; sourceTree = "<group>"; };
+		BF7F699C1C6D50400013CE2B /* ALAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlarm.m; sourceTree = "<group>"; };
+		BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlarmManager.h; sourceTree = "<group>"; };
+		BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlarmManager.m; sourceTree = "<group>"; };
+		BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlarmsTableViewController.h; sourceTree = "<group>"; };
+		BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlarmsTableViewController.m; sourceTree = "<group>"; };
+		BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAlarmsViewController.h; sourceTree = "<group>"; };
+		BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAlarmsViewController.m; sourceTree = "<group>"; };
+		BF7F69A81C6D50490013CE2B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF7F69AA1C6D50560013CE2B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFF1BA031C6D4B9E00ECBF69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BFF1BA051C6D4B9E00ECBF69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BFF1BA061C6D4B9E00ECBF69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BFF1BA081C6D4B9E00ECBF69 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BFF1BA091C6D4B9E00ECBF69 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BFF1BA0C1C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BFF1BA0F1C6D4B9E00ECBF69 /* Alarmify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alarmify.xcdatamodel; sourceTree = "<group>"; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BFF1BA161C6D4B9E00ECBF69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C268A941AF3EFA30A0A683EA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E72D251B87A3D6868C48C4EE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,15 +89,28 @@
 		BFF1BA011C6D4B9E00ECBF69 /* Alarmify */ = {
 			isa = PBXGroup;
 			children = (
-				BFF1BA051C6D4B9E00ECBF69 /* AppDelegate.h */,
-				BFF1BA061C6D4B9E00ECBF69 /* AppDelegate.m */,
-				BFF1BA081C6D4B9E00ECBF69 /* ViewController.h */,
-				BFF1BA091C6D4B9E00ECBF69 /* ViewController.m */,
-				BFF1BA0B1C6D4B9E00ECBF69 /* Main.storyboard */,
+				BF7F69AD1C6D50650013CE2B /* Osaka.ttf */,
+				BF7F698D1C6D502F0013CE2B /* AppDelegate.h */,
+				BF7F698E1C6D502F0013CE2B /* AppDelegate.m */,
+				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
+				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
+				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
+				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
+				BF7F69941C6D50380013CE2B /* ALUser.h */,
+				BF7F69951C6D50380013CE2B /* ALUser.m */,
+				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
+				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
+				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,
+				BF7F699C1C6D50400013CE2B /* ALAlarm.m */,
+				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
+				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
+				BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */,
+				BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */,
+				BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */,
+				BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */,
+				BF78E9811C6D4EF60044440B /* Main.storyboard */,
 				BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */,
 				BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */,
-				BFF1BA161C6D4B9E00ECBF69 /* Info.plist */,
-				BFF1BA0E1C6D4B9E00ECBF69 /* Alarmify.xcdatamodeld */,
 				BFF1BA021C6D4B9E00ECBF69 /* Supporting Files */,
 			);
 			path = Alarmify;
@@ -84,7 +119,8 @@
 		BFF1BA021C6D4B9E00ECBF69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFF1BA031C6D4B9E00ECBF69 /* main.m */,
+				BF7F69AA1C6D50560013CE2B /* Info.plist */,
+				BF7F69A81C6D50490013CE2B /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,9 +201,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */,
+				BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */,
+				BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */,
 				BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */,
 				BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */,
-				BFF1BA0D1C6D4B9E00ECBF69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,24 +249,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF1BA0A1C6D4B9E00ECBF69 /* ViewController.m in Sources */,
-				BFF1BA071C6D4B9E00ECBF69 /* AppDelegate.m in Sources */,
-				BFF1BA101C6D4B9E00ECBF69 /* Alarmify.xcdatamodeld in Sources */,
-				BFF1BA041C6D4B9E00ECBF69 /* main.m in Sources */,
+				BF7F69A91C6D50490013CE2B /* main.m in Sources */,
+				BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */,
+				BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */,
+				BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */,
+				BF7F69A41C6D50400013CE2B /* ALAlarm.m in Sources */,
+				BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */,
+				BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */,
+				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
+				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
+				BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BFF1BA0B1C6D4B9E00ECBF69 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFF1BA0C1C6D4B9E00ECBF69 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -325,6 +361,7 @@
 			baseConfigurationReference = C268A941AF3EFA30A0A683EA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
@@ -337,6 +374,7 @@
 			baseConfigurationReference = E72D251B87A3D6868C48C4EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
@@ -366,19 +404,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BFF1BA0E1C6D4B9E00ECBF69 /* Alarmify.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BFF1BA0F1C6D4B9E00ECBF69 /* Alarmify.xcdatamodel */,
-			);
-			currentVersion = BFF1BA0F1C6D4B9E00ECBF69 /* Alarmify.xcdatamodel */;
-			path = Alarmify.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BFF1B9F71C6D4B9D00ECBF69 /* Project object */;
 }

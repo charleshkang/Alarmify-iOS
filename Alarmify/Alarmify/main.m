@@ -1,8 +1,8 @@
-//
+ //
 //  main.m
-//  Alarmify
+//  alarmify
 //
-//  Created by Charles Kang on 2/11/16.
+//  Created by Charles Kang on 1/26/16.
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
