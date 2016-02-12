@@ -19,4 +19,7 @@
 + (void)addTrackToPlaylist:(NSString *)trackURI
                 completion:(void(^)(BOOL success))completion;
 
++ (void)getUserPlaylists:(NSArray *)userPlaylists
+              completion:(void(^)())completion;
+
 @end

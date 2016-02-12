@@ -9,6 +9,9 @@
 #import "ALSpotifyManager.h"
 #import "ALUser.h"
 
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
+
+
 static NSString *playlistName = @"Alarmify";
 
 @implementation ALSpotifyManager
