@@ -72,8 +72,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-HU-fcM">
-                                        <rect key="frame" x="245" y="285" width="111" height="30"/>
-                                        <state key="normal" title="Get playlist data">
+                                        <rect key="frame" x="185" y="285" width="231" height="30"/>
+                                        <state key="normal" title="Get playlist data (don't press this)">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>

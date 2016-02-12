@@ -13,6 +13,8 @@
 		BF6F04FD1C6E7BB60096C156 /* ALTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */; };
 		BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F04FE1C6E80290096C156 /* Spotify.framework */; };
 		BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05001C6E80DB0096C156 /* AVFoundation.framework */; };
+		BF6F05051C6E84460096C156 /* ALSpotifyLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F05041C6E84460096C156 /* ALSpotifyLogin.m */; };
+		BF6F05071C6E84F20096C156 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05061C6E84F20096C156 /* SafariServices.framework */; };
 		BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF78E9811C6D4EF60044440B /* Main.storyboard */; };
 		BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F698E1C6D502F0013CE2B /* AppDelegate.m */; };
 		BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69911C6D50380013CE2B /* ALSignInViewController.m */; };
@@ -40,6 +42,9 @@
 		BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTrackManager.m; sourceTree = "<group>"; };
 		BF6F04FE1C6E80290096C156 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		BF6F05001C6E80DB0096C156 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BF6F05031C6E84460096C156 /* ALSpotifyLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyLogin.h; sourceTree = "<group>"; };
+		BF6F05041C6E84460096C156 /* ALSpotifyLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyLogin.m; sourceTree = "<group>"; };
+		BF6F05061C6E84F20096C156 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		BF78E9811C6D4EF60044440B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BF7F698D1C6D502F0013CE2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF7F698E1C6D502F0013CE2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6F05071C6E84F20096C156 /* SafariServices.framework in Frameworks */,
 				BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */,
 				699322370BE65801258C2880 /* libPods.a in Frameworks */,
 				BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */,
@@ -107,6 +113,9 @@
 				BF6F04F91C6E7B570096C156 /* ALTrack.m */,
 				BF6F04FB1C6E7BB60096C156 /* ALTrackManager.h */,
 				BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */,
+				BF6F05031C6E84460096C156 /* ALSpotifyLogin.h */,
+				BF6F05041C6E84460096C156 /* ALSpotifyLogin.m */,
+				BFB286B31C6DB6800031DDE4 /* View */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -161,7 +170,6 @@
 				BF7F698D1C6D502F0013CE2B /* AppDelegate.h */,
 				BF7F698E1C6D502F0013CE2B /* AppDelegate.m */,
 				BFB286B61C6DB7030031DDE4 /* Controller */,
-				BFB286B31C6DB6800031DDE4 /* View */,
 				BFB286B51C6DB6E50031DDE4 /* Model */,
 				BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */,
 				BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */,
@@ -184,6 +192,7 @@
 		DD7E8A00EE9D4C973A19785E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF6F05061C6E84F20096C156 /* SafariServices.framework */,
 				BF6F05001C6E80DB0096C156 /* AVFoundation.framework */,
 				BF6F04FE1C6E80290096C156 /* Spotify.framework */,
 				2BF105BFBBFD2127963F5FD6 /* libPods.a */,
@@ -317,6 +326,7 @@
 				BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */,
 				BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */,
 				BFB286BF1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m in Sources */,
+				BF6F05051C6E84460096C156 /* ALSpotifyLogin.m in Sources */,
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
 				BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */,

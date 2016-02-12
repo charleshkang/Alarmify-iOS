@@ -11,13 +11,11 @@
 
 @implementation ALTrackManager
 
-+(void)searchSpotifyForTrack:(NSString *)track WithCompletion:(void (^)(NSArray *trackList))completion
++ (void)searchSpotifyForTrack:(NSString *)track WithCompletion:(void (^)(NSArray *trackList))completion
 {
     NSString *formattedTrack = [track stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     [SPTSearch performSearchWithQuery:formattedTrack queryType:SPTQueryTypeTrack offset:0 accessToken:nil callback:^(NSError *error, SPTListPage *results) {
-        
-        //NSLog(@"performSearchWithQuery happened!!");
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             
@@ -34,7 +32,7 @@
     }];
 }
 
-+(void)getSingleTrackDataFromURI:(NSURL *)trackURI WithCompletion:(void (^)(NSDictionary *trackInfo))completion
++ (void)getSingleTrackDataFromURI:(NSURL *)trackURI WithCompletion:(void (^)(NSDictionary *trackInfo))completion
 {
     NSURLRequest *request = [SPTTrack createRequestForTrack:trackURI withAccessToken:nil market:nil error:nil];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -54,7 +52,7 @@
     [trackData resume];
 }
 
-+(void)generateTracksFromSearch:(NSString *)searchKeyword WithCompletion:(void (^)(NSArray *tracks))completion
++ (void)generateTracksFromSearch:(NSString *)searchKeyword WithCompletion:(void (^)(NSArray *tracks))completion
 {
     [ALTrackManager searchSpotifyForTrack:searchKeyword WithCompletion:^(NSArray *trackList) {
         __block NSMutableArray *songDataArray = [[NSMutableArray alloc]init];
