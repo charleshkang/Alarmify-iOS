@@ -68,6 +68,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFB286B31C6DB6800031DDE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
+				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
+				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
+				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BFB286B51C6DB6E50031DDE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF7F69941C6D50380013CE2B /* ALUser.h */,
+				BF7F69951C6D50380013CE2B /* ALUser.m */,
+				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,
+				BF7F699C1C6D50400013CE2B /* ALAlarm.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BFB286B61C6DB7030031DDE4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
+				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
+				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
+				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
+				BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */,
+				BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */,
+				BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */,
+				BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BFB286B71C6DB7100031DDE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF7F69AD1C6D50650013CE2B /* Osaka.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		BFF1B9F61C6D4B9D00ECBF69 = {
 			isa = PBXGroup;
 			children = (
@@ -89,28 +134,15 @@
 		BFF1BA011C6D4B9E00ECBF69 /* Alarmify */ = {
 			isa = PBXGroup;
 			children = (
-				BF7F69AD1C6D50650013CE2B /* Osaka.ttf */,
+				BF78E9811C6D4EF60044440B /* Main.storyboard */,
 				BF7F698D1C6D502F0013CE2B /* AppDelegate.h */,
 				BF7F698E1C6D502F0013CE2B /* AppDelegate.m */,
-				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
-				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
-				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
-				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
-				BF7F69941C6D50380013CE2B /* ALUser.h */,
-				BF7F69951C6D50380013CE2B /* ALUser.m */,
-				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
-				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
-				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,
-				BF7F699C1C6D50400013CE2B /* ALAlarm.m */,
-				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
-				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
-				BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */,
-				BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */,
-				BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */,
-				BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */,
-				BF78E9811C6D4EF60044440B /* Main.storyboard */,
+				BFB286B61C6DB7030031DDE4 /* Controller */,
+				BFB286B31C6DB6800031DDE4 /* View */,
+				BFB286B51C6DB6E50031DDE4 /* Model */,
 				BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */,
 				BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */,
+				BFB286B71C6DB7100031DDE4 /* Resources */,
 				BFF1BA021C6D4B9E00ECBF69 /* Supporting Files */,
 			);
 			path = Alarmify;
