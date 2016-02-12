@@ -71,12 +71,23 @@
                                             <segue destination="5q5-ms-sEQ" kind="show" id="npu-M9-e9F"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-HU-fcM">
+                                        <rect key="frame" x="245" y="285" width="111" height="30"/>
+                                        <state key="normal" title="Get playlist data">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getPlaylistsButtonTapped:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="J6z-yb-wJN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12549019607843137" green="0.66274509803921566" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="N7s-1n-g6i" secondAttribute="trailing" constant="48" id="EHk-cF-jOm"/>
+                                    <constraint firstItem="hfy-HU-fcM" firstAttribute="centerY" secondItem="867-Wh-Que" secondAttribute="centerY" id="J0T-u9-rn6"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="leading" secondItem="867-Wh-Que" secondAttribute="leading" constant="49" id="f0S-v3-IAA"/>
                                     <constraint firstAttribute="bottom" secondItem="EoI-C4-M9i" secondAttribute="bottom" constant="38" id="nV0-6h-gwp"/>
+                                    <constraint firstItem="hfy-HU-fcM" firstAttribute="centerX" secondItem="867-Wh-Que" secondAttribute="centerX" id="ncP-TU-noq"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="centerY" secondItem="867-Wh-Que" secondAttribute="centerY" constant="-129.5" id="pPJ-Jr-VJV"/>
                                     <constraint firstItem="EoI-C4-M9i" firstAttribute="centerX" secondItem="867-Wh-Que" secondAttribute="centerX" id="vsR-eK-dQj"/>
                                 </constraints>

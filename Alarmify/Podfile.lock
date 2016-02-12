@@ -20,14 +20,11 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Spotify-iOS-SDK-possanfork (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - Spotify-iOS-SDK-possanfork (~> 0.8)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Spotify-iOS-SDK-possanfork: 3625b81a2166864eec58d9f95aa5c27a80e3fae7
 
 COCOAPODS: 0.38.2

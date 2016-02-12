@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <Spotify/Spotify.h>
+#import <AVFoundation/AVFoundation.h>
 
-#define CLIENT_ID  @"1b76daf6d74844989d3d9d7a9ae2a43c"
-#define CLIENT_SECRET @"0d4a159209a64db9bf4cf51b157c42f0"
-#define SPOTIFY_ACCESS_TOKEN_KEY @"spotifyAccessToken"
+#define SPOTIFY_ACCESS_TOKEN_KEY @"alarmifyAccessToken"
 #define SPOTIFY_USERNAME_KEY @"spotifyUsername"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic) NSString *spotifyClientID;
 
 @property (strong, nonatomic) UIWindow *window;
 

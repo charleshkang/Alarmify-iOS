@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
+		BF6F04F71C6E77510096C156 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6F04F61C6E77510096C156 /* Keys.plist */; };
+		BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04F91C6E7B570096C156 /* ALTrack.m */; };
+		BF6F04FD1C6E7BB60096C156 /* ALTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */; };
+		BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F04FE1C6E80290096C156 /* Spotify.framework */; };
+		BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05001C6E80DB0096C156 /* AVFoundation.framework */; };
 		BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF78E9811C6D4EF60044440B /* Main.storyboard */; };
 		BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F698E1C6D502F0013CE2B /* AppDelegate.m */; };
 		BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69911C6D50380013CE2B /* ALSignInViewController.m */; };
@@ -28,6 +33,13 @@
 
 /* Begin PBXFileReference section */
 		2BF105BFBBFD2127963F5FD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF6F04F61C6E77510096C156 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		BF6F04F81C6E7B570096C156 /* ALTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTrack.h; sourceTree = "<group>"; };
+		BF6F04F91C6E7B570096C156 /* ALTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTrack.m; sourceTree = "<group>"; };
+		BF6F04FB1C6E7BB60096C156 /* ALTrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTrackManager.h; sourceTree = "<group>"; };
+		BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTrackManager.m; sourceTree = "<group>"; };
+		BF6F04FE1C6E80290096C156 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		BF6F05001C6E80DB0096C156 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BF78E9811C6D4EF60044440B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BF7F698D1C6D502F0013CE2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF7F698E1C6D502F0013CE2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,7 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */,
 				699322370BE65801258C2880 /* libPods.a in Frameworks */,
+				BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +103,10 @@
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
 				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,
 				BF7F699C1C6D50400013CE2B /* ALAlarm.m */,
+				BF6F04F81C6E7B570096C156 /* ALTrack.h */,
+				BF6F04F91C6E7B570096C156 /* ALTrack.m */,
+				BF6F04FB1C6E7BB60096C156 /* ALTrackManager.h */,
+				BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -157,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7F69AA1C6D50560013CE2B /* Info.plist */,
+				BF6F04F61C6E77510096C156 /* Keys.plist */,
 				BF7F69A81C6D50490013CE2B /* main.m */,
 			);
 			name = "Supporting Files";
@@ -165,6 +184,8 @@
 		DD7E8A00EE9D4C973A19785E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF6F05001C6E80DB0096C156 /* AVFoundation.framework */,
+				BF6F04FE1C6E80290096C156 /* Spotify.framework */,
 				2BF105BFBBFD2127963F5FD6 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -238,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6F04F71C6E77510096C156 /* Keys.plist in Resources */,
 				BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */,
 				BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */,
 				BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */,
@@ -288,6 +310,7 @@
 			files = (
 				BF7F69A91C6D50490013CE2B /* main.m in Sources */,
 				BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */,
+				BF6F04FD1C6E7BB60096C156 /* ALTrackManager.m in Sources */,
 				BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */,
 				BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */,
 				BF7F69A41C6D50400013CE2B /* ALAlarm.m in Sources */,
@@ -296,6 +319,7 @@
 				BFB286BF1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m in Sources */,
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
+				BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */,
 				BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +424,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
@@ -413,6 +441,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;

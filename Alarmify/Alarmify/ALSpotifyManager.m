@@ -23,7 +23,6 @@ static NSString *playlistName = @"Alarmify";
         return;
     }
     
-    //    NSString *username = [User currentUser].username;
     NSString *accessToken = [ALUser currentUser].accessToken;
     
     [self findOrCreatePlaylist:@"Alarmify" completion:^(SPTPlaylistSnapshot *playlist) {
@@ -39,6 +38,19 @@ static NSString *playlistName = @"Alarmify";
         }
     }];
 }
+
++ (void)getUserPlaylists:(NSArray *)userPlaylists
+              completion:(void(^)())completion {
+    if (!userPlaylists) {
+        return;
+    }
+    NSString *accessToken = [ALUser currentUser].accessToken;
+    
+    [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
+        
+    }];
+}
+
 
 + (void)findOrCreatePlaylist:(NSString *)playlist completion:(void(^)(SPTPlaylistSnapshot *playlist))completion {
     [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
