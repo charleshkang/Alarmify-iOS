@@ -21,7 +21,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
-- (IBAction)premiumUserLoginTapped:(id)sender {
+- (IBAction)userLoggedInWithSpotify:(id)sender {
         
         __block NSString *uri = self.songURI;
         void (^addTrack)() = ^void() {
@@ -43,10 +43,5 @@
             addTrack();
         }
     }
-
-- (IBAction)freeUserLoginTapped:(id)sender {
-    NSLog(@"free user signed in");
-    
-}
 
 @end

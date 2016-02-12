@@ -23,8 +23,6 @@
             <string>Osaka</string>
             <string>Osaka</string>
             <string>Osaka</string>
-            <string>Osaka</string>
-            <string>Osaka</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -65,40 +63,22 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaf-y8-NbN">
-                                        <rect key="frame" x="20" y="441" width="560" height="37"/>
-                                        <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="20"/>
-                                        <state key="normal" title="I'm a Spotify Premium user">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-C4-M9i">
+                                        <rect key="frame" x="178" y="518" width="244" height="44"/>
+                                        <state key="normal" image="log_in-mobile-1"/>
                                         <connections>
-                                            <action selector="premiumUserLoginTapped:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="ypM-LU-jvb"/>
-                                            <segue destination="5q5-ms-sEQ" kind="show" id="f9y-no-aVQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCE-Ju-o7r">
-                                        <rect key="frame" x="20" y="488" width="560" height="37"/>
-                                        <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="20"/>
-                                        <state key="normal" title="I'm a Spotify Free user">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="freeUserLoginTapped:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="cLJ-Az-CTy"/>
-                                            <segue destination="5q5-ms-sEQ" kind="show" id="YgF-F5-uuh"/>
+                                            <action selector="userLoggedInWithSpotify:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="5Iy-aA-dd5"/>
+                                            <segue destination="5q5-ms-sEQ" kind="show" id="npu-M9-e9F"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12549019607843137" green="0.66274509803921566" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Oaf-y8-NbN" firstAttribute="leading" secondItem="867-Wh-Que" secondAttribute="leading" constant="20" id="3Fx-2X-Owh"/>
-                                    <constraint firstAttribute="bottom" secondItem="OCE-Ju-o7r" secondAttribute="bottom" constant="75" id="9Aa-8Z-cWg"/>
                                     <constraint firstAttribute="trailing" secondItem="N7s-1n-g6i" secondAttribute="trailing" constant="48" id="EHk-cF-jOm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oaf-y8-NbN" secondAttribute="trailing" constant="20" id="IGo-hR-poe"/>
-                                    <constraint firstItem="OCE-Ju-o7r" firstAttribute="top" secondItem="Oaf-y8-NbN" secondAttribute="bottom" constant="10" id="Rax-4h-1Hv"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="leading" secondItem="867-Wh-Que" secondAttribute="leading" constant="49" id="f0S-v3-IAA"/>
-                                    <constraint firstItem="OCE-Ju-o7r" firstAttribute="leading" secondItem="867-Wh-Que" secondAttribute="leading" constant="20" id="oXb-My-vUc"/>
+                                    <constraint firstAttribute="bottom" secondItem="EoI-C4-M9i" secondAttribute="bottom" constant="38" id="nV0-6h-gwp"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="centerY" secondItem="867-Wh-Que" secondAttribute="centerY" constant="-129.5" id="pPJ-Jr-VJV"/>
-                                    <constraint firstAttribute="trailing" secondItem="OCE-Ju-o7r" secondAttribute="trailing" constant="20" id="s32-2E-OpI"/>
+                                    <constraint firstItem="EoI-C4-M9i" firstAttribute="centerX" secondItem="867-Wh-Que" secondAttribute="centerX" id="vsR-eK-dQj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -287,10 +267,10 @@
             </objects>
             <point key="canvasLocation" x="1804" y="-43"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sound Picker Table View Controller-->
         <scene sceneID="fgB-OB-S0y">
             <objects>
-                <tableViewController id="yAZ-Iz-E7U" sceneMemberID="viewController">
+                <tableViewController id="yAZ-Iz-E7U" customClass="ALSoundPickerTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R0d-YP-1gp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -547,7 +527,7 @@
             <point key="canvasLocation" x="863" y="-43"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="f9y-no-aVQ"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="log_in-mobile-1" width="244" height="44"/>
+    </resources>
 </document>
