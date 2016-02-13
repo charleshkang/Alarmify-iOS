@@ -68,7 +68,7 @@
                                         <state key="normal" image="log_in-mobile-1"/>
                                         <connections>
                                             <action selector="userLoggedInWithSpotify:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="5Iy-aA-dd5"/>
-                                            <segue destination="5q5-ms-sEQ" kind="show" id="npu-M9-e9F"/>
+                                            <segue destination="5q5-ms-sEQ" kind="show" id="N0n-6Z-X7s"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-HU-fcM">
@@ -490,7 +490,7 @@
         <!--Alarms-->
         <scene sceneID="QfW-ij-cXB">
             <objects>
-                <viewController definesPresentationContext="YES" id="5q5-ms-sEQ" customClass="ALAlarmsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alarmsTableViewIdentifier" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5q5-ms-sEQ" customClass="ALAlarmsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLl-RJ-dEB"/>
                         <viewControllerLayoutGuide type="bottom" id="lsg-qQ-JEU"/>
