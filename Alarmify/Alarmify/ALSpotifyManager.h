@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 #import <Spotify/Spotify.h>
 
 @interface ALSpotifyManager : NSObject <SPTAudioStreamingPlaybackDelegate>
@@ -19,15 +18,13 @@
 
 + (ALSpotifyManager *)defaultController;
 
-@property NSMutableArray<NSString *> *userPlaylists;
-
-
-+ (void)getUserPlaylists:(NSArray *)userPlaylists
-              completion:(void(^)())completion;
-
 // Not important for now
 @property NSMutableDictionary *userInfo;
+@property NSMutableArray<NSString *> *userPlaylists;
+
 + (void)addTrackToPlaylist:(NSString *)trackURI
                 completion:(void(^)(BOOL success))completion;
++ (void)getUserPlaylists:(NSArray *)userPlaylists
+              completion:(void(^)())completion;
 
 @end

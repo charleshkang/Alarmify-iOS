@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
 		BF0C80201C6EE12100BA8BB8 /* ALSoundPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */; };
-		BF6EEF911C6EC4CF00460452 /* ACSpotifyAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6EEF901C6EC4CF00460452 /* ACSpotifyAuth.m */; };
 		BF6EEF971C6ED38D00460452 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6EEF961C6ED38D00460452 /* CoreAudio.framework */; };
 		BF6F04F71C6E77510096C156 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6F04F61C6E77510096C156 /* Keys.plist */; };
 		BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04F91C6E7B570096C156 /* ALTrack.m */; };
@@ -40,8 +39,6 @@
 		BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "alarmify-prefix.pch"; path = "../alarmify-prefix.pch"; sourceTree = "<group>"; };
 		BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundPickerViewController.h; sourceTree = "<group>"; };
 		BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSoundPickerViewController.m; sourceTree = "<group>"; };
-		BF6EEF8F1C6EC4CF00460452 /* ACSpotifyAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSpotifyAuth.h; sourceTree = "<group>"; };
-		BF6EEF901C6EC4CF00460452 /* ACSpotifyAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSpotifyAuth.m; sourceTree = "<group>"; };
 		BF6EEF921C6ED30B00460452 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF6EEF941C6ED34E00460452 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		BF6EEF961C6ED38D00460452 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -134,10 +131,10 @@
 			children = (
 				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
-				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
-				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
 				BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */,
 				BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */,
+				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
+				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
 				BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */,
 				BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */,
 				BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */,
@@ -178,8 +175,6 @@
 				BF78E9811C6D4EF60044440B /* Main.storyboard */,
 				BF7F698D1C6D502F0013CE2B /* AppDelegate.h */,
 				BF7F698E1C6D502F0013CE2B /* AppDelegate.m */,
-				BF6EEF8F1C6EC4CF00460452 /* ACSpotifyAuth.h */,
-				BF6EEF901C6EC4CF00460452 /* ACSpotifyAuth.m */,
 				BFB286B61C6DB7030031DDE4 /* Controller */,
 				BFB286B51C6DB6E50031DDE4 /* Model */,
 				BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */,
@@ -333,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7F69A91C6D50490013CE2B /* main.m in Sources */,
-				BF6EEF911C6EC4CF00460452 /* ACSpotifyAuth.m in Sources */,
 				BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */,
 				BF6F04FD1C6E7BB60096C156 /* ALTrackManager.m in Sources */,
 				BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */,

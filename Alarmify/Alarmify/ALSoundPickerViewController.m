@@ -25,7 +25,7 @@
     NSLog(@"persisted Session: %@", session);
     if (session) {
         NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-        //        [self preparePlayerView:n];
+                [self preparePlayerView:notification];
     } else {
         [[SPTAuth defaultInstance] setClientID:@"a780ee73f16647c1850bfdfc5f627eb4"];
         [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"ply://auth"]];
@@ -166,6 +166,9 @@
     
 }
 
+
+
+
 - (void) itemChangeCallback {
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
@@ -173,10 +176,13 @@
      */
     [SPTTrack trackWithURI:controller.player.currentTrackURI session:controller.session callback:^(NSError *error, id object) {
         
+        NSString *titleString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataTrackName] uppercaseString];
+        NSString *artistString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataArtistName] uppercaseString];
+        self.artistLabel.text = artistString;
+        self.songLabel.text = titleString;
+        self.albumLabel.text = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataAlbumName] uppercaseString];
     }
-     
-     ];
-}
+     ];}
 
 - (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata {
     [self itemChangeCallback];
@@ -191,11 +197,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlistIdentifier"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlist"];
     
     if (cell == nil) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"playlistIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"playlist"];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -209,7 +215,7 @@
         case 0:
             title.text = @"SAVED TRACKS";
         default:
-            playlist = (SPTPartialPlaylist *) self.playlists[indexPath.row];
+            playlist = (SPTPartialPlaylist *) self.playlists[indexPath.row - 2];
             title.text = [playlist.name uppercaseString];
     }
     
@@ -228,7 +234,7 @@
             break;
             
         default:
-            ui = @{ @"selected": @(indexPath.row-2)};
+            ui = @{ @"selected": @(indexPath.row - 2)};
             NC_postNotification(@"selected_playlist", ui);
             break;
     }
