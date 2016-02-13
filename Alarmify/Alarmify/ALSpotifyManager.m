@@ -16,6 +16,15 @@ static NSString *playlistName = @"Alarmify";
 
 @implementation ALSpotifyManager
 
+static ALSpotifyManager *defaultSpotifyController = nil;
+
++ (ALSpotifyManager *)defaultController {
+    if (defaultSpotifyController == nil) {
+        defaultSpotifyController = [[super allocWithZone:NULL] init];
+    }
+    return defaultSpotifyController;
+}
+
 + (void)addTrackToPlaylist:(NSString *)trackURI
                 completion:(void(^)(BOOL success))completion {
     

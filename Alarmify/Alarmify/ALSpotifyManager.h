@@ -10,16 +10,24 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Spotify/Spotify.h>
 
-@interface ALSpotifyManager : NSObject
+@interface ALSpotifyManager : NSObject <SPTAudioStreamingPlaybackDelegate>
+
+@property(strong, nonatomic) SPTAudioStreamingController *player;
+@property(strong, nonatomic) SPTSession *session;
+@property(strong, nonatomic) SPTPlaylistList *playlists;
+@property(strong, nonatomic) NSMutableArray *myMusic;
+
++ (ALSpotifyManager *)defaultController;
 
 @property NSMutableArray<NSString *> *userPlaylists;
 
-@property NSMutableDictionary *userInfo;
-
-+ (void)addTrackToPlaylist:(NSString *)trackURI
-                completion:(void(^)(BOOL success))completion;
 
 + (void)getUserPlaylists:(NSArray *)userPlaylists
               completion:(void(^)())completion;
+
+// Not important for now
+@property NSMutableDictionary *userInfo;
++ (void)addTrackToPlaylist:(NSString *)trackURI
+                completion:(void(^)(BOOL success))completion;
 
 @end

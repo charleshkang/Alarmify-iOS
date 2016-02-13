@@ -40,7 +40,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSe-kM-LnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="-735"/>
+            <point key="canvasLocation" x="343" y="-814"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Ui9-ee-9qA">
@@ -71,23 +71,12 @@
                                             <segue destination="5q5-ms-sEQ" kind="show" id="N0n-6Z-X7s"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-HU-fcM">
-                                        <rect key="frame" x="185" y="285" width="231" height="30"/>
-                                        <state key="normal" title="Get playlist data (don't press this)">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="getPlaylistsButtonTapped:" destination="Iv3-Zr-OWW" eventType="touchUpInside" id="J6z-yb-wJN"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12549019607843137" green="0.66274509803921566" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="N7s-1n-g6i" secondAttribute="trailing" constant="48" id="EHk-cF-jOm"/>
-                                    <constraint firstItem="hfy-HU-fcM" firstAttribute="centerY" secondItem="867-Wh-Que" secondAttribute="centerY" id="J0T-u9-rn6"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="leading" secondItem="867-Wh-Que" secondAttribute="leading" constant="49" id="f0S-v3-IAA"/>
                                     <constraint firstAttribute="bottom" secondItem="EoI-C4-M9i" secondAttribute="bottom" constant="38" id="nV0-6h-gwp"/>
-                                    <constraint firstItem="hfy-HU-fcM" firstAttribute="centerX" secondItem="867-Wh-Que" secondAttribute="centerX" id="ncP-TU-noq"/>
                                     <constraint firstItem="N7s-1n-g6i" firstAttribute="centerY" secondItem="867-Wh-Que" secondAttribute="centerY" constant="-129.5" id="pPJ-Jr-VJV"/>
                                     <constraint firstItem="EoI-C4-M9i" firstAttribute="centerX" secondItem="867-Wh-Que" secondAttribute="centerX" id="vsR-eK-dQj"/>
                                 </constraints>
@@ -149,14 +138,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aLC-KO-hFF">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aLC-KO-hFF" userLabel="Sound Label">
                                                     <rect key="frame" x="15" y="12" width="48" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Beings" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Msx-90-6ae">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Beings" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Msx-90-6ae" userLabel="Alarm Sound Label">
                                                     <rect key="frame" x="534" y="12" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="16"/>
@@ -166,7 +155,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yAZ-Iz-E7U" kind="show" id="kOK-my-2BH"/>
+                                            <segue destination="hyu-vy-msz" kind="show" identifier="selectPlaylistIdentifier" id="atW-tp-iQP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="aln-vp-yGW" detailTextLabel="Mhd-m8-ybz" style="IBUITableViewCellStyleValue1" id="VNb-Gk-JrV">
@@ -176,7 +165,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aln-vp-yGW">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aln-vp-yGW" userLabel="Repeat Label">
                                                     <rect key="frame" x="15" y="12" width="54" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="16"/>
@@ -203,14 +192,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MKQ-nY-g7s">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MKQ-nY-g7s" userLabel="Alarm Label">
                                                     <rect key="frame" x="15" y="12" width="41" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Alarm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKM-Ak-GC5">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Alarm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKM-Ak-GC5" userLabel="Alarm Name Label">
                                                     <rect key="frame" x="540" y="12" width="45" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Osaka" family="Osaka" pointSize="16"/>
@@ -277,34 +266,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPI-3t-S6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804" y="-43"/>
-        </scene>
-        <!--Sound Picker Table View Controller-->
-        <scene sceneID="fgB-OB-S0y">
-            <objects>
-                <tableViewController id="yAZ-Iz-E7U" customClass="ALSoundPickerTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R0d-YP-1gp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="q8C-RQ-okO">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q8C-RQ-okO" id="ETH-P7-jye">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="yAZ-Iz-E7U" id="1ks-18-Fuv"/>
-                            <outlet property="delegate" destination="yAZ-Iz-E7U" id="uqh-R1-LyR"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sxe-pa-34s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1257" y="679"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="YwW-4R-NNZ">
@@ -490,7 +451,7 @@
         <!--Alarms-->
         <scene sceneID="QfW-ij-cXB">
             <objects>
-                <viewController storyboardIdentifier="alarmsTableViewIdentifier" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5q5-ms-sEQ" customClass="ALAlarmsViewController" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5q5-ms-sEQ" customClass="ALAlarmsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLl-RJ-dEB"/>
                         <viewControllerLayoutGuide type="bottom" id="lsg-qQ-JEU"/>
@@ -524,7 +485,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Alarms" id="tu6-Lt-eAs">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="KfT-W4-26p"/>
+                        <barButtonItem key="leftBarButtonItem" title="API GO" id="KfT-W4-26p">
+                            <connections>
+                                <action selector="getPlaylistsButtonTapped:" destination="5q5-ms-sEQ" id="zct-vY-OKh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="OL7-1s-qz8">
                             <connections>
                                 <segue destination="Kxo-g0-baW" kind="show" id="ZXd-rE-SNs"/>
@@ -536,6 +501,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDm-E3-STw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="863" y="-43"/>
+        </scene>
+        <!--Sound Picker View Controller-->
+        <scene sceneID="Hfa-5e-nCw">
+            <objects>
+                <viewController id="hyu-vy-msz" customClass="ALSoundPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S8V-6Y-trH"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZEV-pQ-XgW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WUl-uV-JUF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TYa-jO-RE6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playlistIdentifier" id="hj6-cR-jh5">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hj6-cR-jh5" id="mn3-GE-u8m">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-Fy-fXW">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Q6z-Fy-fXW" firstAttribute="top" secondItem="mn3-GE-u8m" secondAttribute="top" constant="11" id="L1B-x2-klI"/>
+                                                <constraint firstAttribute="bottom" secondItem="Q6z-Fy-fXW" secondAttribute="bottom" constant="12" id="PB4-8U-I7b"/>
+                                                <constraint firstAttribute="trailing" secondItem="Q6z-Fy-fXW" secondAttribute="trailing" constant="8" id="QhA-yw-F2f"/>
+                                                <constraint firstItem="Q6z-Fy-fXW" firstAttribute="leading" secondItem="mn3-GE-u8m" secondAttribute="leading" constant="8" id="oJs-4w-bSO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TYa-jO-RE6" secondAttribute="trailing" id="0lx-pT-aSE"/>
+                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="TYa-jO-RE6" secondAttribute="bottom" id="Bw7-xL-Nno"/>
+                            <constraint firstItem="TYa-jO-RE6" firstAttribute="top" secondItem="S8V-6Y-trH" secondAttribute="bottom" id="etr-Re-PTg"/>
+                            <constraint firstItem="TYa-jO-RE6" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" id="hoa-ee-XWq"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ywY-ev-vz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="679"/>
         </scene>
     </scenes>
     <resources>

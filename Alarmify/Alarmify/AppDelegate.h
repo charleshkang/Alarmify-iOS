@@ -16,6 +16,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic, strong) SPTSession *session;
+@property (nonatomic, strong) SPTAudioStreamingController *player;
+
 @property (nonatomic) NSString *spotifyClientID;
 
 @property (strong, nonatomic) UIWindow *window;

@@ -1,0 +1,69 @@
+//
+//  alarmify-prefix.pch
+//  Alarmify
+//
+//  Created by Charles Kang on 2/12/16.
+//  Copyright © 2016 Charles Kang. All rights reserved.
+//
+
+#ifndef alarmify_prefix_pch
+#define alarmify_prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//
+// Prefix header for all source files of the 'Player' target in the 'Player' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+
+//Colours
+#define rgba(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/255.0]
+#define rgb(r,g,b) rgba(r,g,b,255);
+#define hex(val) [UIColor colorWithRed:((float)((val&0xFF0000)>>16))/255.0 green:((float)((val&0xFF00)>>8))/255.0 blue:((float)(val&0xFF))/255.0 alpha:1]
+
+
+//device information
+#define uid [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+#define isIPad   (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define isIPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+//Threading
+#define runOnMainThread if (![NSThread isMainThread]) { dispatch_sync(dispatch_get_main_queue(), ^{ [self performSelector:_cmd]; }); return; };
+
+//String formatting
+#define format(base,...) [NSString stringWithFormat:base,##__VA_ARGS__]
+
+//User defaults manipulation
+#define UD_setObj(key,obj) [[NSUserDefaults standardUserDefaults] setObject:obj forKey:key]
+#define UD_getObj(key)     [[NSUserDefaults standardUserDefaults] objectForKey:key]
+#define UD_setBool(key,d)  [[NSUserDefaults standardUserDefaults] setBool:d forKey:key]
+#define UD_getBool(key)    [[NSUserDefaults standardUserDefaults] boolForKey:key]
+#define UD_setInt(key,d)   [[NSUserDefaults standardUserDefaults] setInteger:d forKey:key]
+#define UD_getInt(key)     [[NSUserDefaults standardUserDefaults] integerForKey:key]
+
+//Notification Center management
+
+#define NC_addObserver(n,sel) [[NSNotificationCenter defaultCenter] addObserver:self selector:sel name:n object:nil]
+#define NC_postNotification(n,info) [[NSNotificationCenter defaultCenter] postNotificationName:n object:self userInfo:info]
+
+//CGShapes
+#define point(x,y) CGPointMake(x,y)
+#define rect(x,y,w,h) CGRectMake(x,y,w,h)
+
+//angle conversion
+#define r2d(a) (a*180.0)/M_PI
+#define d2r(a) (a*M_PI)/180.0
+
+#endif /* alarmify_prefix_pch */

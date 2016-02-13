@@ -12,34 +12,9 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) SPTSession *session;
-@property (nonatomic, strong) SPTAudioStreamingController *player;
-
 @end
 
 @implementation AppDelegate
-
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-//{
-//    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
-//        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
-//
-//            if (!error) {
-//                [[NSUserDefaults standardUserDefaults] setObject:session.accessToken forKey:SPOTIFY_ACCESS_TOKEN_KEY];
-//                [[NSUserDefaults standardUserDefaults] setObject:session.canonicalUsername forKey:SPOTIFY_USERNAME_KEY];
-//
-//                if ([ALUser currentUser].onLoginCallback) {
-//                    [ALUser currentUser].onLoginCallback();
-//                }
-//            }
-//
-//        }];
-//
-//        return YES;
-//    }
-//
-//    return NO;
-//}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -82,7 +57,7 @@
     [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
         NSLog(@"%@", object);
     }];
-    
+
     return YES;
 }
 
