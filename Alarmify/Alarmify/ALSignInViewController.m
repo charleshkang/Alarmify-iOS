@@ -35,19 +35,19 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    
-//    if (auth.session == nil) {
-//        [self openLogInPage];
-//    }
-//    else if ([auth.session isValid]) {
-//        //        [self.navigationController performSegueWithIdentifier:@"alarmsTableViewIdentifier" sender:self];
-//        //        [self presentViewController:self.alarmsTableVC animated:NO completion:nil];
-//    }
-//    else if (![auth.session isValid] && auth.hasTokenRefreshService) {
-//        [self renewTokenAndSegue];
-//        
-//    }
+    //    SPTAuth *auth = [SPTAuth defaultInstance];
+    //
+    //    if (auth.session == nil) {
+    //        [self openLogInPage];
+    //    }
+    //    else if ([auth.session isValid]) {
+    //        //        [self.navigationController performSegueWithIdentifier:@"alarmsTableViewIdentifier" sender:self];
+    //        //        [self presentViewController:self.alarmsTableVC animated:NO completion:nil];
+    //    }
+    //    else if (![auth.session isValid] && auth.hasTokenRefreshService) {
+    //        [self renewTokenAndSegue];
+    //
+    //    }
     
 }
 
@@ -56,36 +56,41 @@
     
 }
 
-//- (IBAction)getPlaylistsButtonTapped:(id)sender {
-//
-//    NSString *username = [ALUser currentUser].username;
-//    NSString *accessToken = [ALUser currentUser].accessToken;
-//
-//    NSURLRequest *playlistRequest = [SPTPlaylistList createRequestForGettingPlaylistsForUser:username withAccessToken:accessToken error:nil];
-//    [[SPTRequest sharedHandler] performRequest:playlistRequest callback:^(NSError *error, NSURLResponse *response, NSData *data) {
-//        if (error != nil) {
-//            NSLog(@"error?");
-//        }
-//        SPTPlaylistList *playlists = [SPTPlaylistList playlistListFromData:data withResponse:response error:nil];
-//        NSLog(@"got charles' playlists, %@", playlists);
-//
-//    }];
+- (IBAction)getPlaylistsButtonTapped:(id)sender {
+    
+    NSString *username = [ALUser currentUser].username;
+    NSString *accessToken = [ALUser currentUser].accessToken;
+    
+    NSURLRequest *playlistRequest = [SPTPlaylistList createRequestForGettingPlaylistsForUser:username withAccessToken:accessToken error:nil];
+    [[SPTRequest sharedHandler] performRequest:playlistRequest callback:^(NSError *error, NSURLResponse *response, NSData *data) {
+        NSURL *baseURL = [NSURL URLWithString:@"https://open.spotify.com/user/charleshyowonkang/playlist/3g6isCB8lzaHvpx5rTE5KC"];
 
-//    NSURLRequest *playlistrequest = [SPTPlaylistList createRequestForGettingPlaylistsForUser:@"charleshyowonkang" withAccessToken:_accessToken error:nil]; [[SPTRequest sharedHandler] performRequest:playlistrequest callback:^(NSError *error, NSURLResponse *response, NSData *data) {
-//        if (error != nil) { NSLog(@"error");
-//        }
-//        SPTPlaylistList *playlists = [SPTPlaylistList playlistListFromData:data withResponse:response error:nil];
-//        NSLog(@"Got possan's playlists, first page: %@", playlists);
-//        NSURLRequest *playlistrequest2 = [playlists createRequestForNextPageWithAccessToken:_accessToken error:nil];
-//
-//        [[SPTRequest sharedHandler] performRequest:playlistrequest2 callback:^(NSError *error2, NSURLResponse *response2, NSData *data2) {
-//            if (error2 != nil) {
-//                NSLog(@"error2");
-//            }
-//            SPTPlaylistList *playlists2 = [SPTPlaylistList playlistListFromData:data2 withResponse:response2 error:nil];
-//            NSLog(@"Got possan's playlists, second page: %@", playlists2);
-//        }];}];
-//}
+        [SPTPlaylistSnapshot playlistWithURI:baseURL accessToken:accessToken callback:^(NSError *error, id object) {
+            
+        }];
+        if (error != nil) {
+            NSLog(@"playlist: %@, %@", playlistRequest, data);
+        }
+        SPTPlaylistList *playlists = [SPTPlaylistList playlistListFromData:data withResponse:response error:nil];
+        NSLog(@"got charles' playlists, %@", playlists);
+        
+    }];
+    
+    //    NSURLRequest *playlistrequest = [SPTPlaylistList createRequestForGettingPlaylistsForUser:@"charleshyowonkang" withAccessToken:_accessToken error:nil]; [[SPTRequest sharedHandler] performRequest:playlistrequest callback:^(NSError *error, NSURLResponse *response, NSData *data) {
+    //        if (error != nil) { NSLog(@"error");
+    //        }
+    //        SPTPlaylistList *playlists = [SPTPlaylistList playlistListFromData:data withResponse:response error:nil];
+    //        NSLog(@"Got possan's playlists, first page: %@", playlists);
+    //        NSURLRequest *playlistrequest2 = [playlists createRequestForNextPageWithAccessToken:_accessToken error:nil];
+    //
+    //        [[SPTRequest sharedHandler] performRequest:playlistrequest2 callback:^(NSError *error2, NSURLResponse *response2, NSData *data2) {
+    //            if (error2 != nil) {
+    //                NSLog(@"error2");
+    //            }
+    //            SPTPlaylistList *playlists2 = [SPTPlaylistList playlistListFromData:data2 withResponse:response2 error:nil];
+    //            NSLog(@"Got possan's playlists, second page: %@", playlists2);
+    //        }];}];
+}
 
 
 -(void) openLogInPage {

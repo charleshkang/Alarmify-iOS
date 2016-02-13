@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Spotify/Spotify.h>
 
+#import "AppDelegate.h"
 #import "ALSpotifyManager.h"
 #import "ALUser.h"
+
 
 @interface ALSoundPickerTableViewController : UITableViewController
 
