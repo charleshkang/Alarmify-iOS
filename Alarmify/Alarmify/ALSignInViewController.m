@@ -109,7 +109,7 @@
 
 -(void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
     SPTAuth *auth = [SPTAuth defaultInstance];
-    NSLog(@"auth: %@", auth);
+    NSLog(@"auth token: %@", auth);
     
     [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
         

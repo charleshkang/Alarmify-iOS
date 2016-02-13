@@ -14,8 +14,8 @@
 
 @implementation ALSpotifyLogin
 
-+ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController
-{
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController {
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *redirectString = @"alarmify://authorize";
     NSURL *redirectURL = [NSURL URLWithString:redirectString];
