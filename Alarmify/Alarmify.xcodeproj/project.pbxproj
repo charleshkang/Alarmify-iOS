@@ -100,10 +100,6 @@
 		BFB286B31C6DB6800031DDE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
-				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
-				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
-				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -111,6 +107,10 @@
 		BFB286B51C6DB6E50031DDE4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
+				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
+				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
+				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
 				BF7F69941C6D50380013CE2B /* ALUser.h */,
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
 				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,

@@ -41,6 +41,7 @@ static ALSpotifyManager *defaultSpotifyController = nil;
     
     [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
         
+        
     }];
 }
 

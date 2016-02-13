@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.playlistTableView.delegate = self;
+    self.playlistTableView.dataSource = self;
     
     
     SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
@@ -32,7 +34,6 @@
         //[[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://csgn.us/ply/swap/"]];
         //[[SPTAuth defaultInstance] setTokenRefreshURL:[NSURL URLWithString:@"https://csgn.us/ply/refresh/"]];
         [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserLibraryReadScope]];
-        //        self.loginLoader.alpha = 0;
     }
 }
 

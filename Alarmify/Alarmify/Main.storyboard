@@ -155,7 +155,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="hyu-vy-msz" kind="modal" identifier="select_playlist" id="baR-Oc-PVc"/>
+                                            <segue destination="hyu-vy-msz" kind="show" id="GXo-g9-lfa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="aln-vp-yGW" detailTextLabel="Mhd-m8-ybz" style="IBUITableViewCellStyleValue1" id="VNb-Gk-JrV">
@@ -509,12 +509,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-a9-um7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-a9-um7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="playlist" id="iAg-B4-A34">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="57"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iAg-B4-A34" id="7mn-a5-wZn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -536,15 +536,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40a-wx-ht2">
+                                <rect key="frame" x="63" y="444" width="474" height="127"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="40a-wx-ht2" secondAttribute="trailing" constant="63" id="2t0-gs-MtS"/>
                             <constraint firstAttribute="trailing" secondItem="0DI-a9-um7" secondAttribute="trailing" id="99f-c8-bHk"/>
+                            <constraint firstItem="40a-wx-ht2" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="8" id="CWf-Sw-X4m"/>
                             <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="164" id="JDS-Oi-lYG"/>
                             <constraint firstItem="0DI-a9-um7" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" id="iXT-jw-gQj"/>
                             <constraint firstItem="0DI-a9-um7" firstAttribute="top" secondItem="S8V-6Y-trH" secondAttribute="bottom" constant="-20" id="uRt-Xl-psh"/>
+                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="40a-wx-ht2" secondAttribute="bottom" constant="29" id="wPO-cs-k9G"/>
+                            <constraint firstItem="40a-wx-ht2" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="63" id="xvW-yK-Q5l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playlistTableView" destination="0DI-a9-um7" id="TQI-uU-Vtx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywY-ev-vz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

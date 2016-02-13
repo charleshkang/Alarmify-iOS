@@ -156,7 +156,6 @@
         NSLog(@"saved Session: %@", controller2.session);
         
         controller2.player.playbackDelegate = self;
-        controller2.player.shuffle = true;
         
         [SPTPlaylistList playlistsForUserWithSession:controller2.session callback:^(NSError *error, id object) {
             controller2.playlists = object;

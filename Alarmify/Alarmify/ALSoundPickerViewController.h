@@ -21,6 +21,7 @@ SPTAudioStreamingPlaybackDelegate,
 UITableViewDataSource,
 UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *playlistTableView;
 @property MPMusicPlayerController *musicPlayer;
 @property NSMutableArray *songs;
 @property (strong, nonatomic) NSArray *playlists;
