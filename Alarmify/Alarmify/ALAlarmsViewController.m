@@ -7,6 +7,8 @@
 //
 
 #import "ALAlarmsViewController.h"
+#import "ALUser.h"
+#import <Spotify/Spotify.h>
 
 @interface ALAlarmsViewController ()
 
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {

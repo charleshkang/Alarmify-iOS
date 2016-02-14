@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Spotify/Spotify.h>
 
 @interface ALSignInViewController : UIViewController
+<NSURLConnectionDelegate,
+SPTAuthViewDelegate>
 
 @property (nonatomic, weak) NSString *songURI;
 

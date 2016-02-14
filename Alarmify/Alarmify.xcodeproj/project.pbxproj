@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
+		BF0C80201C6EE12100BA8BB8 /* ALSoundPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */; };
+		BF6EEF971C6ED38D00460452 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6EEF961C6ED38D00460452 /* CoreAudio.framework */; };
 		BF6F04F71C6E77510096C156 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6F04F61C6E77510096C156 /* Keys.plist */; };
 		BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04F91C6E7B570096C156 /* ALTrack.m */; };
 		BF6F04FD1C6E7BB60096C156 /* ALTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6F04FC1C6E7BB60096C156 /* ALTrackManager.m */; };
@@ -28,13 +30,18 @@
 		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
 		BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AA1C6D50560013CE2B /* Info.plist */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
-		BFB286BF1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB286BE1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2BF105BFBBFD2127963F5FD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "alarmify-prefix.pch"; path = "../alarmify-prefix.pch"; sourceTree = "<group>"; };
+		BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundPickerViewController.h; sourceTree = "<group>"; };
+		BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSoundPickerViewController.m; sourceTree = "<group>"; };
+		BF6EEF921C6ED30B00460452 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BF6EEF941C6ED34E00460452 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		BF6EEF961C6ED38D00460452 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		BF6F04F61C6E77510096C156 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		BF6F04F81C6E7B570096C156 /* ALTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTrack.h; sourceTree = "<group>"; };
 		BF6F04F91C6E7B570096C156 /* ALTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTrack.m; sourceTree = "<group>"; };
@@ -67,8 +74,6 @@
 		BF7F69A81C6D50490013CE2B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF7F69AA1C6D50560013CE2B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
-		BFB286BD1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundPickerTableViewController.h; sourceTree = "<group>"; };
-		BFB286BE1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSoundPickerTableViewController.m; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,10 +86,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6EEF971C6ED38D00460452 /* CoreAudio.framework in Frameworks */,
 				BF6F05071C6E84F20096C156 /* SafariServices.framework in Frameworks */,
 				BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */,
-				699322370BE65801258C2880 /* libPods.a in Frameworks */,
 				BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */,
+				699322370BE65801258C2880 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +100,6 @@
 		BFB286B31C6DB6800031DDE4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
-				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
-				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
-				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -105,6 +107,10 @@
 		BFB286B51C6DB6E50031DDE4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
+				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
+				BF7F699D1C6D50400013CE2B /* ALAlarmManager.h */,
+				BF7F699E1C6D50400013CE2B /* ALAlarmManager.m */,
 				BF7F69941C6D50380013CE2B /* ALUser.h */,
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
 				BF7F699B1C6D50400013CE2B /* ALAlarm.h */,
@@ -125,14 +131,14 @@
 			children = (
 				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
-				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
-				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
 				BF7F699F1C6D50400013CE2B /* ALAlarmsTableViewController.h */,
 				BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */,
+				BF7F69991C6D50400013CE2B /* ALAddAlarmTableViewController.h */,
+				BF7F699A1C6D50400013CE2B /* ALAddAlarmTableViewController.m */,
 				BF7F69A11C6D50400013CE2B /* ALAlarmsViewController.h */,
 				BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */,
-				BFB286BD1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.h */,
-				BFB286BE1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m */,
+				BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */,
+				BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 				BF7F69AA1C6D50560013CE2B /* Info.plist */,
 				BF6F04F61C6E77510096C156 /* Keys.plist */,
 				BF7F69A81C6D50490013CE2B /* main.m */,
+				BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,6 +199,9 @@
 		DD7E8A00EE9D4C973A19785E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF6EEF961C6ED38D00460452 /* CoreAudio.framework */,
+				BF6EEF941C6ED34E00460452 /* AudioUnit.framework */,
+				BF6EEF921C6ED30B00460452 /* AudioToolbox.framework */,
 				BF6F05061C6E84F20096C156 /* SafariServices.framework */,
 				BF6F05001C6E80DB0096C156 /* AVFoundation.framework */,
 				BF6F04FE1C6E80290096C156 /* Spotify.framework */,
@@ -325,8 +335,8 @@
 				BF7F69A41C6D50400013CE2B /* ALAlarm.m in Sources */,
 				BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */,
 				BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */,
-				BFB286BF1C6DBBEA0031DDE4 /* ALSoundPickerTableViewController.m in Sources */,
 				BF6F05051C6E84460096C156 /* ALSpotifyLogin.m in Sources */,
+				BF0C80201C6EE12100BA8BB8 /* ALSoundPickerViewController.m in Sources */,
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
 				BF6F04FA1C6E7B570096C156 /* ALTrack.m in Sources */,
@@ -438,8 +448,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = "alarmify-prefix.pch";
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -455,8 +467,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREFIX_HEADER = "alarmify-prefix.pch";
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -16,27 +16,20 @@ static NSString *playlistName = @"Alarmify";
 
 @implementation ALSpotifyManager
 
-+ (void)addTrackToPlaylist:(NSString *)trackURI
-                completion:(void(^)(BOOL success))completion {
-    
-    if (!trackURI) {
-        return;
+static ALSpotifyManager *defaultSpotifyController = nil;
+
++ (ALSpotifyManager *)defaultController {
+    if (defaultSpotifyController == nil) {
+        defaultSpotifyController = [[super allocWithZone:NULL] init];
     }
-    
-    NSString *accessToken = [ALUser currentUser].accessToken;
-    
-    [self findOrCreatePlaylist:@"Alarmify" completion:^(SPTPlaylistSnapshot *playlist) {
-        if (playlist) {
-            NSURL *trackURL = [NSURL URLWithString:trackURI];
-            [SPTTrack tracksWithURIs:@[trackURL] accessToken:accessToken market:nil callback:^(NSError *error, id object) {
-                NSArray *tracks = (NSArray *)object;
-                SPTTrack *track = [tracks firstObject];
-                [playlist addTracksToPlaylist:@[track] withAccessToken:accessToken callback:^(NSError *error) {
-                    completion(error == nil);
-                }];
-            }];
-        }
-    }];
+    return defaultSpotifyController;
+}
+
+- (id)init {
+    if ( (self = [super init]) ) {
+        self.myMusic = [[NSMutableArray alloc] initWithCapacity:32];
+    }
+    return self;
 }
 
 + (void)getUserPlaylists:(NSArray *)userPlaylists
@@ -48,19 +41,7 @@ static NSString *playlistName = @"Alarmify";
     
     [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
         
-    }];
-}
-
-
-+ (void)findOrCreatePlaylist:(NSString *)playlist completion:(void(^)(SPTPlaylistSnapshot *playlist))completion {
-    [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
-        if (!playlist) {
-            [self createPlaylist:^(SPTPlaylistSnapshot *playlist) {
-                completion(playlist);
-            }];
-        } else {
-            completion(playlist);
-        }
+        
     }];
 }
 
@@ -94,19 +75,5 @@ static NSString *playlistName = @"Alarmify";
         
     }];
 }
-
-+ (void)createPlaylist:(void(^)(SPTPlaylistSnapshot *playlist))completion {
-    
-    NSString *username = [ALUser currentUser].username;
-    NSString *accessToken = [ALUser currentUser].accessToken;
-    
-    [SPTPlaylistList createPlaylistWithName:@"Uncharted" forUser:username publicFlag:YES accessToken:accessToken callback:^(NSError *error, SPTPlaylistSnapshot *playlist) {
-        if (!error) {
-            completion(playlist);
-        }
-    }];
-}
-
-
 
 @end

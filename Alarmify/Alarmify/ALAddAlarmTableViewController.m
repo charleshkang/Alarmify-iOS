@@ -7,8 +7,10 @@
 //
 
 #import "ALAddAlarmTableViewController.h"
+#import "ALSoundPickerViewController.h"
 #import "ALAlarm.h"
 #import "ALAlarmManager.h"
+#import "ALSpotifyManager.h"
 
 @interface ALAddAlarmTableViewController ()
 
@@ -27,13 +29,6 @@
     NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
     ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
 
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 // this is a commment
 // another comment
@@ -78,38 +73,14 @@
     
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    
-    if(self.alarmNameLabel) {
-        NSString *nameLabel = self.alarmElements[indexPath.row];
-        
-    }
-
-}
-
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//    
-//    if(self.showAllPokemon) {
-//        NSString * pokemonName = self.allPokemonAlphabetized[indexPath.row];
-//        PokemonDetailViewController *vc = segue.destinationViewController;
-//        
-//        vc.pokemonName = pokemonName;
+//    if([segue.identifier isEqualToString:@"select_playlist"]) {
+//        ALSoundPickerViewController *songSelection = (ALSoundPickerViewController *)segue.destinationViewController;
+//        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
+//        ALSpotifyManager *controller = [ALSpotifyManager defaultController];
+//        songSelection.playlists = controller.playlists.items;
+//        songSelection.selected = @0;
 //    }
-//    
-//    else {
-//        
-//        
-//        NSArray * keys = [self.allPokemon allKeys];
-//        NSString *key = keys[indexPath.section];
-//        NSArray * pokemonArray = [self.allPokemon objectForKey:key];
-//        NSString * pokemonName = pokemonArray[indexPath.row];
-//        PokemonDetailViewController *vc = segue.destinationViewController;
-//        
-//        vc.pokemonName = pokemonName;
-//    }
-//    
 //}
 
 @end
