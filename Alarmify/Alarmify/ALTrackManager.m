@@ -42,18 +42,12 @@
             
             NSDictionary *trackDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             completion(trackDict);
-            
-            
-            
         }];
-        
-        
     }];
     [trackData resume];
 }
 
 + (void)generateTracksFromSearch:(NSString *)searchKeyword WithCompletion:(void (^)(NSArray *tracks))completion {
-    
     
     [ALTrackManager searchSpotifyForTrack:searchKeyword WithCompletion:^(NSArray *trackList) {
         __block NSMutableArray *songDataArray = [[NSMutableArray alloc]init];
@@ -87,6 +81,5 @@
         }
     }];
 }
-
 
 @end

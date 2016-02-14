@@ -16,7 +16,7 @@
 @property (nonatomic) NSString *accessToken;
 @property (strong,nonatomic) NSString *spotifyID;
 
-@property (nonatomic) BOOL spotifyPremium;
+@property (nonatomic) BOOL isPremiumUser;
 
 @property (nonatomic, strong) void(^onLoginCallback)();
 

@@ -32,18 +32,6 @@ static ALSpotifyManager *defaultSpotifyController = nil;
     return self;
 }
 
-+ (void)getUserPlaylists:(NSArray *)userPlaylists
-              completion:(void(^)())completion {
-    if (!userPlaylists) {
-        return;
-    }
-    NSString *accessToken = [ALUser currentUser].accessToken;
-    
-    [self findPlaylist:^(SPTPlaylistSnapshot *playlist) {
-        
-        
-    }];
-}
 
 + (void)findPlaylist:(void(^)(SPTPlaylistSnapshot *playlist))completion {
     

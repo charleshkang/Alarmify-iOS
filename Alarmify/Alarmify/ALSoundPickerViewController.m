@@ -16,6 +16,11 @@
 
 @implementation ALSoundPickerViewController
 
+@synthesize artistLabel;
+@synthesize songTitle;
+@synthesize albumTitle;
+@synthesize playlistLabel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.playlistTableView.delegate = self;
@@ -63,7 +68,7 @@
                     NSLog(@"*** Starting playback got error: %@", error);
                     return;
                 }
-                [self itemChangeCallback];
+                [self updateTrackLabels];
                 
             }];
             
@@ -104,7 +109,7 @@
                     NSLog(@"*** Starting playback got error: %@", error);
                     return;
                 }
-                [self itemChangeCallback];
+                [self updateTrackLabels];
                 
             }];
             
@@ -141,7 +146,7 @@
                 NSLog(@"*** Starting playback got error2: %@", error);
                 return;
             }
-            [self itemChangeCallback];
+            [self updateTrackLabels];
         }];
         
     } else {
@@ -151,28 +156,67 @@
                 NSLog(@"*** Starting playback got error: %@", error);
                 return;
             }
-            [self itemChangeCallback];
+            [self updateTrackLabels];
         }];
     }
 }
 
-- (void)itemChangeCallback {
+- (void)updateTrackLabels {
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
      */
     [SPTTrack trackWithURI:controller.player.currentTrackURI session:controller.session callback:^(NSError *error, id object) {
         
-        NSString *titleString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataTrackName] uppercaseString];
-        NSString *artistString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataArtistName] uppercaseString];
-        self.artistLabel.text = artistString;
-        self.songLabel.text = titleString;
-        self.albumLabel.text = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataAlbumName] uppercaseString];
-    }
-     ];}
+        [UIView animateWithDuration:0.2 animations:^{
+            self.artistLabel.alpha = 0.3;
+            self.albumTitle.alpha = 0.3;
+            self.songTitle.alpha = 0.3;
+        } completion:^(BOOL finished) {
+            NSString *titleString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataTrackName] uppercaseString];
+            NSString *artistString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataArtistName] uppercaseString];
+            self.artistLabel.text = artistString;
+            self.songTitle.text = titleString;
+            self.albumTitle.text = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataAlbumName] uppercaseString];
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                self.artistLabel.alpha = 1;
+                self.albumTitle.alpha  = 1;
+                self.songTitle.alpha   = 1;
+            }];
+        }];
+    }];
+}
+
+//- (void)itemChangeCallback {
+//    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
+//    /* Next item callback
+//     * Update the song label, background and start playing.
+//     */
+//    [SPTTrack trackWithURI:controller.player.currentTrackURI session:controller.session callback:^(NSError *error, id object) {
+//
+//        [UIView animateWithDuration:0.2 animations:^{
+//            self.artistLabel.alpha = 0.3;
+//            self.albumTitle.alpha = 0.3;
+//            self.songTitle.alpha = 0.3;
+//        } completion:^(BOOL finished) {
+//            NSString *titleString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataTrackName] uppercaseString];
+//            NSString *artistString = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataArtistName] uppercaseString];
+//            self.artistLabel.text = artistString;
+//            self.songTitle.text = titleString;
+//            self.albumTitle.text = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataAlbumName] uppercaseString];
+//
+//            [UIView animateWithDuration:0.2 animations:^{
+//                self.artistLabel.alpha = 1;
+//                self.albumTitle.alpha  = 1;
+//                self.songTitle.alpha   = 1;
+//            }];
+//        }];
+//    }];
+//}
 
 - (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata {
-    [self itemChangeCallback];
+    [self updateTrackLabels];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
