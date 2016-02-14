@@ -39,7 +39,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSe-kM-LnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="-814"/>
+            <point key="canvasLocation" x="164" y="-702"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Ui9-ee-9qA">
@@ -257,6 +257,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPI-3t-S6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1475" y="-43"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="YwW-4R-NNZ">
@@ -392,7 +393,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul2-Ab-EWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937" y="679"/>
+            <point key="canvasLocation" x="1701" y="693"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="VLp-fF-skA">
@@ -437,7 +438,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7q4-W4-mJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2602" y="679"/>
+            <point key="canvasLocation" x="2366" y="693"/>
         </scene>
         <!--Alarms-->
         <scene sceneID="QfW-ij-cXB">
@@ -486,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDm-E3-STw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863" y="-43"/>
+            <point key="canvasLocation" x="823" y="-43"/>
         </scene>
         <!--Sound Picker View Controller-->
         <scene sceneID="Hfa-5e-nCw">
@@ -550,7 +551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywY-ev-vz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="679"/>
+            <point key="canvasLocation" x="1049" y="693"/>
         </scene>
     </scenes>
     <resources>

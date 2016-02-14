@@ -22,19 +22,6 @@
     self.playlistTableView.delegate = self;
     self.playlistTableView.dataSource = self;
     
-    
-    SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
-    NSLog(@"persisted Session: %@", session);
-    if (session) {
-        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-                [self preparePlayerView:notification];
-    } else {
-        [[SPTAuth defaultInstance] setClientID:@"a780ee73f16647c1850bfdfc5f627eb4"];
-        [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"ply://auth"]];
-        //[[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://csgn.us/ply/swap/"]];
-        //[[SPTAuth defaultInstance] setTokenRefreshURL:[NSURL URLWithString:@"https://csgn.us/ply/refresh/"]];
-        [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserLibraryReadScope]];
-    }
 }
 
 - (BOOL) nextSongsFrom:(SPTListPage *)list {
@@ -84,8 +71,8 @@
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     
     if([notification.userInfo[@"session"] isEqual:@"ERROR"]) {
-        //[[SPTAuth defaultInstance] setTokenSwapURL:nil];
-        //[[SPTAuth defaultInstance] setTokenRefreshURL:nil];
+        [[SPTAuth defaultInstance] setTokenSwapURL:nil];
+        [[SPTAuth defaultInstance] setTokenRefreshURL:nil];
         return;
     }
     

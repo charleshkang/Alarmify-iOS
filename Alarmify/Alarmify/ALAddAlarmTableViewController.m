@@ -24,14 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
-    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
-    ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
+    // Not sure if you'll need this Eric/Dan
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
+//    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
+//    ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
 
 }
-// this is a commment
-// another comment
 
 - (IBAction)snoozeButtonTapped:(id)sender {
     NSLog(@"snooze toggled!");
@@ -64,7 +63,6 @@
     
     
     NSLog(@"new alarm saved!");
-    
     NSLog(@"%@", now);
     NSLog(@"%@", userEnteredDate);
 }

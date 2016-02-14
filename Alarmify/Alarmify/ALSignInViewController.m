@@ -35,25 +35,13 @@
     NC_addObserver(@"AUTH_ERROR", @selector(preparePlayerView:));
     NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
     
-    SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
-    NSLog(@"persisted Session: %@", session);
-    if (session) {
-        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-//        [self preparePlayerView:n];
-    }else {
-        [[SPTAuth defaultInstance] setClientID:@"1b76daf6d74844989d3d9d7a9ae2a43c"];
-        [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://authorize"]];
-        [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserLibraryReadScope]];
-    }
-
 }
 
 - (IBAction)userLoggedInWithSpotify:(id)sender {
+    [self createSpotifySession];
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
     [[UIApplication sharedApplication] performSelector:@selector(openURL:)
                                             withObject:loginURL afterDelay:0.1];
-
-//    [self openLogInPage];
     
 }
 
@@ -88,6 +76,7 @@
         }];
         
     } else {
+        
         NSInteger playlist = [ui[@"selected"] integerValue];
         [controller.player playURIs:@[((SPTPartialPlaylist *)(controller.playlists.items[playlist])).playableUri] fromIndex:0 callback:^(NSError *error) {
             if (error != nil) {
@@ -101,12 +90,14 @@
 
 - (void) preparePlayerView:(NSNotification*) notification {
     
+    NSURL *swapURL = [NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"];
+    NSURL *refreshURL = [NSURL URLWithString:@"https://alarmify.herokuapp.com/refresh"];
     
     ALSpotifyManager *controller2 = [ALSpotifyManager defaultController];
     
     if([notification.userInfo[@"session"] isEqual:@"ERROR"]) {
-        //[[SPTAuth defaultInstance] setTokenSwapURL:nil];
-        //[[SPTAuth defaultInstance] setTokenRefreshURL:nil];
+        [[SPTAuth defaultInstance] setTokenSwapURL:swapURL];
+        [[SPTAuth defaultInstance] setTokenRefreshURL:refreshURL];
         return;
     }
     
@@ -137,7 +128,6 @@
                     NSLog(@"*** Starting playback got error: %@", error);
                     return;
                 }
-                
                 [self itemChangeCallback];
                 
             }];
@@ -154,8 +144,6 @@
         
         UD_setObj(@"PLSessionPersistKey", [NSKeyedArchiver archivedDataWithRootObject:controller2.session]);
         NSLog(@"saved Session: %@", controller2.session);
-        
-        controller2.player.playbackDelegate = self;
         
         [SPTPlaylistList playlistsForUserWithSession:controller2.session callback:^(NSError *error, id object) {
             controller2.playlists = object;
@@ -192,19 +180,18 @@
     /* Next item callback
      * Update the song label, background and start playing.
      */
-
+    
 }
 
 
 -(void) openLogInPage {
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
-    //    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    //    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     self.definesPresentationContext = YES;
-    
     
     [self presentViewController:self.authViewController animated:NO completion:nil];
     
@@ -228,6 +215,21 @@
             
         }];
     }];
+}
+
+- (void) createSpotifySession {
+    SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
+    NSLog(@"persisted Session: %@", session);
+    if (session) {
+        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
+        [self preparePlayerView:notification];
+    } else {
+        [[SPTAuth defaultInstance] setClientID:@"1b76daf6d74844989d3d9d7a9ae2a43c"];
+        [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://authorize"]];
+        [[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"]];
+        [[SPTAuth defaultInstance] setTokenRefreshURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/refresh"]];
+        [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserLibraryReadScope]];
+    }
 }
 
 -(void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
