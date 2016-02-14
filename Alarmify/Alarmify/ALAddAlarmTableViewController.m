@@ -15,6 +15,7 @@
 @interface ALAddAlarmTableViewController ()
 
 @property (nonatomic) NSMutableArray *alarmElements;
+@property (weak, nonatomic) IBOutlet UIDatePicker *alarmPicker;
 
 @end
 
@@ -29,12 +30,43 @@
     ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
 
 }
+// this is a commment
+// another comment
 
 - (IBAction)snoozeButtonTapped:(id)sender {
     NSLog(@"snooze toggled!");
 }
 - (IBAction)saveNewAlarmButtonTapped:(id)sender {
+    NSDate *userEnteredDate = self.alarmPicker.date;
+    NSDate *now = [NSDate date];
+    
+    if (now >= userEnteredDate) {
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|255 fromDate:userEnteredDate];  // 255= the important component masks or'd together
+        [components setSecond:0];
+        components.day += 1;
+        userEnteredDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+    }
+    
+    //    NSCalendar *cal = [NSCalendar currentCalendar];
+    //    NSDateComponents *comp = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit
+    //                                    fromDate:now];
+    //    [comp setHour:alarmHour];
+    //    [comp setMinute:alarmMinute];
+    //    NSDate *alarm = [cal dateFromComponents:comp];
+    //
+    //    // If alarm <= now ...
+    //    if ([alarm compare:now] != NSOrderedDescending) {
+    //        // ... add one day:
+    //        NSDateComponents *oneDay = [[NSDateComponents alloc] init];
+    //        [oneDay setDay:1];
+    //        alarm = [cal dateByAddingComponents:oneDay toDate:alarm options:0];
+    //    }
+    
+    
     NSLog(@"new alarm saved!");
+    
+    NSLog(@"%@", now);
+    NSLog(@"%@", userEnteredDate);
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
