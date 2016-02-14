@@ -13,6 +13,4 @@
 <NSURLConnectionDelegate,
 SPTAuthViewDelegate>
 
-@property (nonatomic, weak) NSString *songURI;
-
 @end

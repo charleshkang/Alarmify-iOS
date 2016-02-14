@@ -22,14 +22,16 @@ UITableViewDataSource,
 UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *playlistTableView;
-@property MPMusicPlayerController *musicPlayer;
-@property NSMutableArray *songs;
-@property (strong, nonatomic) NSArray *playlists;
-@property (strong, nonatomic) NSNumber *selected;
 @property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
 @property (weak, nonatomic) IBOutlet UILabel *albumLabel;
+
+@property (nonatomic, weak) NSString *songURI;
+@property MPMusicPlayerController *musicPlayer;
+@property NSMutableArray *songs;
+@property (strong, nonatomic) NSArray *playlists;
+@property (strong, nonatomic) NSNumber *selected;
 
 
 @end

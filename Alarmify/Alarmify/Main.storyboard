@@ -147,7 +147,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="hyu-vy-msz" kind="show" id="GXo-g9-lfa"/>
+                                            <segue destination="hyu-vy-msz" kind="show" identifier="playlists" id="GXo-g9-lfa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="aln-vp-yGW" detailTextLabel="Mhd-m8-ybz" style="IBUITableViewCellStyleValue1" id="VNb-Gk-JrV">
@@ -501,8 +501,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-a9-um7">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-a9-um7">
+                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="playlist" id="iAg-B4-A34">
@@ -511,42 +511,62 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iAg-B4-A34" id="7mn-a5-wZn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsI-gb-ceM">
-                                                    <rect key="frame" x="8" y="9" width="59" height="39"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="DsI-gb-ceM" secondAttribute="bottom" constant="9" id="2cZ-hh-HhZ"/>
-                                                <constraint firstItem="DsI-gb-ceM" firstAttribute="leading" secondItem="7mn-a5-wZn" secondAttribute="leading" constant="8" id="Eyg-Dl-8W4"/>
-                                                <constraint firstItem="DsI-gb-ceM" firstAttribute="top" secondItem="7mn-a5-wZn" secondAttribute="top" constant="9" id="QkE-k9-bBJ"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40a-wx-ht2">
-                                <rect key="frame" x="63" y="444" width="474" height="127"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gys-T1-Rvp">
+                                <rect key="frame" x="20" y="380" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yD-5k-X3v">
+                                <rect key="frame" x="20" y="415" width="560" height="81"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAe-z6-8gS">
+                                <rect key="frame" x="20" y="504" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dku-Z7-7TU">
+                                <rect key="frame" x="20" y="530" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="40a-wx-ht2" secondAttribute="trailing" constant="63" id="2t0-gs-MtS"/>
+                            <constraint firstAttribute="trailing" secondItem="lAe-z6-8gS" secondAttribute="trailing" constant="20" id="0WJ-md-Qod"/>
+                            <constraint firstItem="Gys-T1-Rvp" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="20" id="3S1-WZ-E9Q"/>
                             <constraint firstAttribute="trailing" secondItem="0DI-a9-um7" secondAttribute="trailing" id="99f-c8-bHk"/>
-                            <constraint firstItem="40a-wx-ht2" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="8" id="CWf-Sw-X4m"/>
-                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="164" id="JDS-Oi-lYG"/>
+                            <constraint firstItem="3yD-5k-X3v" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="20" id="GaP-44-nqI"/>
+                            <constraint firstItem="lAe-z6-8gS" firstAttribute="top" secondItem="3yD-5k-X3v" secondAttribute="bottom" constant="8" id="HDZ-VB-NY8"/>
+                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="192" id="JDS-Oi-lYG"/>
+                            <constraint firstAttribute="trailing" secondItem="Dku-Z7-7TU" secondAttribute="trailing" constant="20" id="JDs-2E-GNl"/>
+                            <constraint firstAttribute="trailing" secondItem="3yD-5k-X3v" secondAttribute="trailing" constant="20" id="KIv-vh-Z8t"/>
+                            <constraint firstItem="lAe-z6-8gS" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="20" id="RUq-zn-DVX"/>
+                            <constraint firstItem="3yD-5k-X3v" firstAttribute="top" secondItem="Gys-T1-Rvp" secondAttribute="bottom" constant="14" id="T96-FY-9hp"/>
+                            <constraint firstAttribute="trailing" secondItem="Gys-T1-Rvp" secondAttribute="trailing" constant="20" id="X3z-9M-S6l"/>
+                            <constraint firstItem="Dku-Z7-7TU" firstAttribute="top" secondItem="lAe-z6-8gS" secondAttribute="bottom" constant="5" id="Yug-Jd-uRf"/>
+                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="Dku-Z7-7TU" secondAttribute="bottom" constant="5" id="Zgv-2S-Ucc"/>
                             <constraint firstItem="0DI-a9-um7" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" id="iXT-jw-gQj"/>
-                            <constraint firstItem="0DI-a9-um7" firstAttribute="top" secondItem="S8V-6Y-trH" secondAttribute="bottom" constant="-20" id="uRt-Xl-psh"/>
-                            <constraint firstItem="ZEV-pQ-XgW" firstAttribute="top" secondItem="40a-wx-ht2" secondAttribute="bottom" constant="29" id="wPO-cs-k9G"/>
-                            <constraint firstItem="40a-wx-ht2" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="63" id="xvW-yK-Q5l"/>
+                            <constraint firstItem="Gys-T1-Rvp" firstAttribute="top" secondItem="0DI-a9-um7" secondAttribute="bottom" constant="16" id="l9k-An-mXA"/>
+                            <constraint firstItem="Dku-Z7-7TU" firstAttribute="leading" secondItem="WUl-uV-JUF" secondAttribute="leading" constant="20" id="nS6-mx-xsA"/>
+                            <constraint firstItem="0DI-a9-um7" firstAttribute="top" secondItem="S8V-6Y-trH" secondAttribute="bottom" id="uRt-Xl-psh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="albumLabel" destination="Dku-Z7-7TU" id="MYZ-fA-BtT"/>
+                        <outlet property="artistLabel" destination="3yD-5k-X3v" id="mH2-La-Uep"/>
+                        <outlet property="playlistLabel" destination="Gys-T1-Rvp" id="aEU-7b-D1k"/>
                         <outlet property="playlistTableView" destination="0DI-a9-um7" id="TQI-uU-Vtx"/>
+                        <outlet property="songLabel" destination="lAe-z6-8gS" id="wuQ-Ld-4TL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywY-ev-vz6" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,7 +17,7 @@
 
 @interface ALSignInViewController ()
 
-@property (nonatomic) BOOL spotifyPremium;
+@property (nonatomic) BOOL userIsPremiumUser;
 @property (nonatomic) NSString *accessToken;
 
 @property (nonatomic) SPTAuthViewController *authViewController;
@@ -31,10 +31,6 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    NC_addObserver(@"AUTH_OK", @selector(preparePlayerView:));
-    NC_addObserver(@"AUTH_ERROR", @selector(preparePlayerView:));
-    NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
-    
 }
 
 - (IBAction)userLoggedInWithSpotify:(id)sender {
@@ -42,149 +38,9 @@
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
     [[UIApplication sharedApplication] performSelector:@selector(openURL:)
                                             withObject:loginURL afterDelay:0.1];
-    
 }
 
-- (BOOL) nextSongsFrom:(SPTListPage *)list {
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
-        SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
-        for (SPTSavedTrack *i in newlist.items) {
-            [controller.myMusic addObject:i.uri];
-        }
-        if (newlist.hasNextPage) {
-            [self nextSongsFrom:newlist];
-        }
-    }];
-    return false;
-}
-
-- (void) changePlaylist:(NSNotification *) notification {
-    
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    NSDictionary *ui = notification.userInfo;
-    controller.player.shuffle = true;
-    
-    if ([ui[@"selected"] integerValue] == -1) {
-        
-        [controller.player playURIs:controller.myMusic fromIndex:0 callback:^(NSError *error) {
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error2: %@", error);
-                return;
-            }
-            [self itemChangeCallback];
-        }];
-        
-    } else {
-        
-        NSInteger playlist = [ui[@"selected"] integerValue];
-        [controller.player playURIs:@[((SPTPartialPlaylist *)(controller.playlists.items[playlist])).playableUri] fromIndex:0 callback:^(NSError *error) {
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            [self itemChangeCallback];
-        }];
-    }
-}
-
-- (void) preparePlayerView:(NSNotification*) notification {
-    
-    NSURL *swapURL = [NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"];
-    NSURL *refreshURL = [NSURL URLWithString:@"https://alarmify.herokuapp.com/refresh"];
-    
-    ALSpotifyManager *controller2 = [ALSpotifyManager defaultController];
-    
-    if([notification.userInfo[@"session"] isEqual:@"ERROR"]) {
-        [[SPTAuth defaultInstance] setTokenSwapURL:swapURL];
-        [[SPTAuth defaultInstance] setTokenRefreshURL:refreshURL];
-        return;
-    }
-    
-    if([notification.userInfo[@"session"] isEqual:@"RESTORE"]) {
-        
-        SPTSession *restored = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
-        NSLog(@"restored Session: %@", restored);
-        controller2.session = restored;
-        
-        [SPTPlaylistList playlistsForUserWithSession:controller2.session callback:^(NSError *error, id object) {
-            controller2.playlists = object;
-        }];
-        
-        [SPTRequest savedTracksForUserInSession:controller2.session callback:^(NSError *error, id object) {
-            SPTListPage *mlist = (SPTListPage *)object;
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            
-            NSLog(@"my music: %@",mlist);
-            for (SPTSavedTrack *i in mlist.items) {
-                [controller2.myMusic addObject:i.uri];
-            }
-            if (mlist.hasNextPage) [self nextSongsFrom:mlist];
-            [controller2.player playURIs:controller2.myMusic fromIndex:0 callback:^(NSError *error) {
-                if (error != nil) {
-                    NSLog(@"*** Starting playback got error: %@", error);
-                    return;
-                }
-                [self itemChangeCallback];
-                
-            }];
-            
-        }];
-        return;
-    }
-    
-    [controller2.player loginWithSession:controller2.session callback:^(NSError *error) {
-        if (error != nil) {
-            NSLog(@"*** Logging in got error: %@", error);
-            return;
-        }
-        
-        UD_setObj(@"PLSessionPersistKey", [NSKeyedArchiver archivedDataWithRootObject:controller2.session]);
-        NSLog(@"saved Session: %@", controller2.session);
-        
-        [SPTPlaylistList playlistsForUserWithSession:controller2.session callback:^(NSError *error, id object) {
-            controller2.playlists = object;
-        }];
-        
-        [SPTRequest savedTracksForUserInSession:controller2.session callback:^(NSError *error, id object) {
-            SPTListPage *mlist = (SPTListPage *)object;
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            
-            NSLog(@"my music: %@",mlist);
-            for (SPTSavedTrack *i in mlist.items) {
-                [controller2.myMusic addObject:i.uri];
-            }
-            if (mlist.hasNextPage) [self nextSongsFrom:mlist];
-            [controller2.player playURIs:controller2.myMusic fromIndex:0 callback:^(NSError *error) {
-                if (error != nil) {
-                    NSLog(@"*** Starting playback got error: %@", error);
-                    return;
-                }
-                [self itemChangeCallback];
-                
-            }];
-            
-        }];
-        
-    }];
-}
-
-- (void) itemChangeCallback {
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    /* Next item callback
-     * Update the song label, background and start playing.
-     */
-    
-}
-
-
--(void) openLogInPage {
+- (void) openLogInPage {
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
     self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -197,12 +53,12 @@
     
 }
 
--(void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error {
+- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error {
     NSLog(@"Authentication failed : %@",error);
     
 }
 
--(void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
+- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
     SPTAuth *auth = [SPTAuth defaultInstance];
     NSLog(@"auth token: %@", auth);
     
@@ -221,9 +77,9 @@
     SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
     NSLog(@"persisted Session: %@", session);
     if (session) {
-        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-        [self preparePlayerView:notification];
-    } else {
+//        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
+//        [self preparePlayerView:notification];
+//    } else {
         [[SPTAuth defaultInstance] setClientID:@"1b76daf6d74844989d3d9d7a9ae2a43c"];
         [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://authorize"]];
         [[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"]];
@@ -232,11 +88,11 @@
     }
 }
 
--(void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
+- (void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
     [self openLogInPage];
 }
 
--(void)renewTokenAndSegue {
+- (void)renewTokenAndSegue {
     SPTAuth *auth = [SPTAuth defaultInstance];
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
         auth.session = session;

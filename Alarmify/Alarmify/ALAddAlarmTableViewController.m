@@ -71,14 +71,16 @@
     
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if([segue.identifier isEqualToString:@"select_playlist"]) {
-//        ALSoundPickerViewController *songSelection = (ALSoundPickerViewController *)segue.destinationViewController;
-//        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
-//        ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-//        songSelection.playlists = controller.playlists.items;
-//        songSelection.selected = @0;
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"playlists"]) {
+        ALSoundPickerViewController *songSelection = (ALSoundPickerViewController *)segue.destinationViewController;
+        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
+        ALSpotifyManager *controller = [ALSpotifyManager defaultController];
+        songSelection.playlists = controller.playlists.items;
+        songSelection.selected = @0;
+        
+        NSLog(@"View did segue");
+    }
+}
 
 @end

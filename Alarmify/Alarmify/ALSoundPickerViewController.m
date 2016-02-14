@@ -10,7 +10,6 @@
 #import "ALAddAlarmTableViewController.h"
 #import "ALSpotifyManager.h"
 
-
 @interface ALSoundPickerViewController ()
 
 @end
@@ -22,51 +21,12 @@
     self.playlistTableView.delegate = self;
     self.playlistTableView.dataSource = self;
     
+    NC_addObserver(@"AUTH_OK", @selector(preparePlayerView:));
+    NC_addObserver(@"AUTH_ERROR", @selector(preparePlayerView:));
+    NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
 }
 
-- (BOOL) nextSongsFrom:(SPTListPage *)list {
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
-        SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
-        for (SPTSavedTrack *i in newlist.items) {
-            [controller.myMusic addObject:i.uri];
-        }
-        if (newlist.hasNextPage) {
-            [self nextSongsFrom:newlist];
-        }
-    }];
-    return false;
-}
-
-- (void) changePlaylist:(NSNotification *) notification {
-    
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    NSDictionary *ui = notification.userInfo;
-    controller.player.shuffle = true;
-    
-    if ([ui[@"selected"] integerValue] == -1) {
-        
-        [controller.player playURIs:controller.myMusic fromIndex:0 callback:^(NSError *error) {
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error2: %@", error);
-                return;
-            }
-            [self itemChangeCallback];
-        }];
-        
-    } else {
-        NSInteger playlist = [ui[@"selected"] integerValue];
-        [controller.player playURIs:@[((SPTPartialPlaylist *)(controller.playlists.items[playlist])).playableUri] fromIndex:0 callback:^(NSError *error) {
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            [self itemChangeCallback];
-        }];
-    }
-}
-
-- (void) preparePlayerView:(NSNotification*) notification {
+- (void)preparePlayerView:(NSNotification*) notification {
     
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     
@@ -154,10 +114,49 @@
     
 }
 
+- (BOOL)nextSongsFrom:(SPTListPage *)list {
+    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
+    [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
+        SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
+        for (SPTSavedTrack *i in newlist.items) {
+            [controller.myMusic addObject:i.uri];
+        }
+        if (newlist.hasNextPage) {
+            [self nextSongsFrom:newlist];
+        }
+    }];
+    return false;
+}
 
+- (void)changePlaylist:(NSNotification *) notification {
+    
+    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
+    NSDictionary *ui = notification.userInfo;
+    controller.player.shuffle = true;
+    
+    if ([ui[@"selected"] integerValue] == -1) {
+        
+        [controller.player playURIs:controller.myMusic fromIndex:0 callback:^(NSError *error) {
+            if (error != nil) {
+                NSLog(@"*** Starting playback got error2: %@", error);
+                return;
+            }
+            [self itemChangeCallback];
+        }];
+        
+    } else {
+        NSInteger playlist = [ui[@"selected"] integerValue];
+        [controller.player playURIs:@[((SPTPartialPlaylist *)(controller.playlists.items[playlist])).playableUri] fromIndex:0 callback:^(NSError *error) {
+            if (error != nil) {
+                NSLog(@"*** Starting playback got error: %@", error);
+                return;
+            }
+            [self itemChangeCallback];
+        }];
+    }
+}
 
-
-- (void) itemChangeCallback {
+- (void)itemChangeCallback {
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
