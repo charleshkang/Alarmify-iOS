@@ -27,6 +27,7 @@
 		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
 		BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AA1C6D50560013CE2B /* Info.plist */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
+		BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,8 @@
 		BF7F69A81C6D50490013CE2B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF7F69AA1C6D50560013CE2B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
+		BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyPlayerViewController.h; sourceTree = "<group>"; };
+		BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyPlayerViewController.m; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
 				BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */,
 				BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */,
+				BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */,
+				BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */,
 			);
 			name = "Spotify Controller";
 			sourceTree = "<group>";
@@ -253,6 +258,12 @@
 				TargetAttributes = {
 					BFF1B9FE1C6D4B9E00ECBF69 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 26RHXP32FH;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -329,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7F69A91C6D50490013CE2B /* main.m in Sources */,
+				BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */,
 				BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */,
 				BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */,
 				BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */,
@@ -441,6 +453,8 @@
 			baseConfigurationReference = C268A941AF3EFA30A0A683EA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,8 +464,9 @@
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.Alarmify;
+				PRODUCT_NAME = Alarmify;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -460,6 +475,8 @@
 			baseConfigurationReference = E72D251B87A3D6868C48C4EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,8 +486,9 @@
 				INFOPLIST_FILE = Alarmify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.charleskang.Alarmify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.Alarmify;
+				PRODUCT_NAME = Alarmify;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

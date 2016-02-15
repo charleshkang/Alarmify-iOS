@@ -32,16 +32,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    //    [self authenticateAndLoginWithSpotify];
-    //    [self openLogInPage];
-    
 }
 
 - (IBAction)userLoggedInWithSpotify:(id)sender {
-    //    [self createSpotifySession];
-    //    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-    //    [[UIApplication sharedApplication] performSelector:@selector(openURL:)
-    //                                            withObject:loginURL afterDelay:0.1];
+//        [self createSpotifySession];
+        NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+        [[UIApplication sharedApplication] performSelector:@selector(openURL:)
+                                                withObject:loginURL afterDelay:0.1];
 }
 
 - (void) openLogInPage {
@@ -113,6 +110,7 @@
     }
 }
 
+// Opens a spotify auth VC to login
 - (void) authenticateAndLoginWithSpotify {
     SPTAuth *auth = [SPTAuth defaultInstance];
     
