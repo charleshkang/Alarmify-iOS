@@ -11,6 +11,7 @@
 #import "ALAlarm.h"
 #import "ALAlarmManager.h"
 #import "ALSpotifyManager.h"
+#import "ALPlaylistSelectionViewController.h"
 
 @interface ALAddAlarmTableViewController ()
 
@@ -25,11 +26,11 @@
     [super viewDidLoad];
     
     // Not sure if you'll need this Eric/Dan
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
-//    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
-//    ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
-
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    NSData *alarmListData = [defaults objectForKey:@"AlarmListData"];
+    //    NSMutableArray *alarmList = [NSKeyedUnarchiver unarchiveObjectWithData:alarmListData];
+    //    ALAlarmManager *oldAlarmObject = [alarmList objectAtIndex:self.indexOfAlarmToEdit];
+    
 }
 
 - (IBAction)snoozeButtonTapped:(id)sender {
@@ -73,8 +74,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"playlists"]) {
-        ALSoundPickerViewController *songSelection = (ALSoundPickerViewController *)segue.destinationViewController;
-//        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
+        ALPlaylistSelectionViewController *songSelection = (ALPlaylistSelectionViewController *)segue.destinationViewController;
+        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
         ALSpotifyManager *controller = [ALSpotifyManager defaultController];
         songSelection.playlists = controller.playlists.items;
         songSelection.selected = @0;

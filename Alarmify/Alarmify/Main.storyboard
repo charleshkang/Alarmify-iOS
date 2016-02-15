@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fx-7l-WIw">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fx-7l-WIw">
                                 <rect key="frame" x="89" y="140" width="422" height="163"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="163" id="euV-A9-nh1"/>
@@ -63,7 +63,7 @@
                                     <action selector="playMusicButtonTapped:" destination="M5b-Ps-kml" eventType="touchUpInside" id="Wav-cA-miN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-t1-Vkc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-t1-Vkc">
                                 <rect key="frame" x="89" y="366" width="422" height="163"/>
                                 <state key="normal" title="Pause"/>
                                 <connections>
@@ -541,10 +541,10 @@
             </objects>
             <point key="canvasLocation" x="825" y="-71"/>
         </scene>
-        <!--Sound Picker View Controller-->
+        <!--Playlist Selection View Controller-->
         <scene sceneID="Hfa-5e-nCw">
             <objects>
-                <viewController id="hyu-vy-msz" customClass="ALSoundPickerViewController" sceneMemberID="viewController">
+                <viewController id="hyu-vy-msz" customClass="ALPlaylistSelectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S8V-6Y-trH"/>
                         <viewControllerLayoutGuide type="bottom" id="ZEV-pQ-XgW"/>
