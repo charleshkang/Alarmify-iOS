@@ -22,6 +22,8 @@
 
 @property (nonatomic) SPTAuthViewController *authViewController;
 @property (nonatomic) ALAlarmsTableViewController *alarmsTableVC;
+@property (nonatomic) SPTSession *session;
+
 
 @end
 
@@ -30,14 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //    [self authenticateAndLoginWithSpotify];
+    //    [self openLogInPage];
     
 }
 
 - (IBAction)userLoggedInWithSpotify:(id)sender {
-    [self createSpotifySession];
-    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-    [[UIApplication sharedApplication] performSelector:@selector(openURL:)
-                                            withObject:loginURL afterDelay:0.1];
+    //    [self createSpotifySession];
+    //    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+    //    [[UIApplication sharedApplication] performSelector:@selector(openURL:)
+    //                                            withObject:loginURL afterDelay:0.1];
 }
 
 - (void) openLogInPage {
@@ -77,9 +81,11 @@
     SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
     NSLog(@"persisted Session: %@", session);
     if (session) {
+        
         NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-//        [self preparePlayerView:notification];
+        //        [self preparePlayerView:notification];
     } else {
+        
         [[SPTAuth defaultInstance] setClientID:@"1b76daf6d74844989d3d9d7a9ae2a43c"];
         [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://authorize"]];
         [[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"]];
@@ -106,5 +112,30 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
+- (void) authenticateAndLoginWithSpotify {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (auth.session == nil) {
+        [self openLogInPage];
+    }  else (![auth.session isValid] && auth.hasTokenRefreshService); {
+        [self renewTokenAndSegue];
+    }
+    [self createSpotifySession];
+}
+
+- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url {
+    
+    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
+        
+        if (error) {
+            NSLog(@"spotify auth error %@", error);
+            return;
+        }
+        
+        self.session = session;
+    };
+}
+
 
 @end

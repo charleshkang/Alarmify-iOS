@@ -7,8 +7,12 @@ build/
 DerivedData
 
 ## Various settings
+<<<<<<< HEAD
 *.ds_store
 !.ds_store
+=======
+*.DS_Store
+>>>>>>> b8dcc42c83a4ce0f7f22061ac1c43983bce187c5
 *.pbxuser
 !default.pbxuser
 *.mode1v3

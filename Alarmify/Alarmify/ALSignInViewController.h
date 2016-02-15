@@ -13,4 +13,9 @@
 <NSURLConnectionDelegate,
 SPTAuthViewDelegate>
 
+
+- (BOOL)canHandleURL:(NSURL*)url;
+
+- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url;
+
 @end
