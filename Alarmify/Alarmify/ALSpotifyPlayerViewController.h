@@ -11,5 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ALSpotifyPlayerViewController : UIViewController
+<NSURLConnectionDelegate,
+SPTAudioStreamingPlaybackDelegate>
 
 @end
