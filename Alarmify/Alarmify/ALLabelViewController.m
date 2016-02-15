@@ -10,7 +10,8 @@
 
 @interface ALLabelViewController ()
 
-<UITextFieldDelegate>
+<UITextFieldDelegate,
+LabelDelegate>
 
 @end
 
@@ -28,27 +29,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) labelFinished {
+-(void)didSetLabel:(NSString *)label {
     
+    [self.delegate didSetLabel:label];
 }
+
 
 #pragma mark - Text field delegate
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self didSetLabel:textField.text];
     
     [self textFieldDidEndEditing:textField];
     
     return YES;
 }
 
-/*
+
 #pragma mark - Navigation
+
+
+
+/*
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

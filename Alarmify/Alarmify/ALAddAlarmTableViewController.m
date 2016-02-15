@@ -13,12 +13,20 @@
 #import "ALSpotifyManager.h"
 #import "ALLabelViewController.h"
 
-@interface ALAddAlarmTableViewController ()
+@protocol LabelDelegate <NSObject>
+
+- (void) didSetLabel:(NSString *)label;
+
+@end
+
+@interface ALAddAlarmTableViewController () <LabelDelegate>
 
 @property (nonatomic) NSMutableArray *alarmElements;
 @property (weak, nonatomic) IBOutlet UIDatePicker *alarmPicker;
 
 @end
+
+
 
 @implementation ALAddAlarmTableViewController
 
@@ -75,6 +83,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//change this name later, we will pass back more data with these methods
+
+#pragma mark -- LabelDelegate methods
+
+-(void)didSetLabel:(NSString *)label {
+    NSLog(@"the delegate works");
+}
+
+#pragma mark -- Table View methods
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
@@ -88,6 +106,11 @@
         songSelection.selected = @0;
         
         NSLog(@"View did segue");
+    }
+    
+    if ([segue.identifier isEqualToString:@"labelSegue"]) {
+        ALLabelViewController *labelViewController = segue.destinationViewController;
+        labelViewController.delegate = self;
     }
 }
 
