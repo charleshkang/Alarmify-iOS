@@ -11,6 +11,7 @@
 #import "ALAlarm.h"
 #import "ALAlarmManager.h"
 #import "ALSpotifyManager.h"
+#import "ALLabelViewController.h"
 
 @interface ALAddAlarmTableViewController ()
 
@@ -36,6 +37,11 @@
     NSLog(@"snooze toggled!");
 }
 - (IBAction)saveNewAlarmButtonTapped:(id)sender {
+    
+    //instantiate a new alarm object
+    
+    ALAlarm *newAlarm = [[ALAlarm alloc] init];
+    
     NSDate *userEnteredDate = self.alarmPicker.date;
     NSDate *now = [NSDate date];
     
@@ -65,6 +71,8 @@
     NSLog(@"new alarm saved!");
     NSLog(@"%@", now);
     NSLog(@"%@", userEnteredDate);
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

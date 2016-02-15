@@ -10,4 +10,6 @@
 
 @interface ALAlarmsTableViewController : UITableViewController
 
+@property NSMutableArray *alarms;
+
 @end
