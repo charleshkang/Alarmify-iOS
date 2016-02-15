@@ -2,8 +2,7 @@
 
 <p>Alarmify is an iOS application for those who have trouble getting up to their normal, boring alarm clocks using your Spotify playlists. Waking up should be fun.</p>
 
-Alarmify works for both Spotify free and premium users!
-
+Alarmify is currently for Premium users, as we need to access playlists and play full-length songs. 
 
 <h1>Core Features</h1>
 
