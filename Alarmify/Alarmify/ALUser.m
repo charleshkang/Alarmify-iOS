@@ -30,20 +30,9 @@
 }
 
 - (BOOL)isLoggedInToSpotify {
-    // you're logged in to spotify if there's an access token in NSUserDefaults
+    // User is logged into Spotify if access token is found in NSUserDefaults
     return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_ACCESS_TOKEN_KEY] != nil;
     
-}
-
-- (void)loginToSpotify {
-    
-    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-    
-    //     Opening a URL in Safari close to application launch may trigger
-    //     an iOS bug, so we wait a bit before doing so.
-    
-    [[UIApplication sharedApplication] performSelector:@selector(openURL:)
-                                            withObject:loginURL afterDelay:.1];
 }
 
 @end

@@ -18,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
+    // Ask SPTAuth if the URL given is a Spotify authentication callback
     if ([[SPTAuth defaultInstance] canHandleURL:url]) {
         [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
             
@@ -32,32 +33,14 @@
             [ALSpotifyManager defaultController].player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
             
             NC_postNotification(@"AUTH_OK", @{@"session":session});
+            NSLog(@"Auth granted, session started");
         }];
         return YES;
     }
     
     return NO;
-
-
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-//        if (error != nil)
-//        {
-//            NSLog(@"*** Auth error: %@", error);
-//            return;
-//        }
-//        auth.session = session;
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
-//        
-//    };
-//    
-//    if ([auth canHandleURL:url])
-//    {
-//        [auth handleAuthCallbackWithTriggeredAuthURL:url callback:authCallback];
-//        return YES;
-//    }
-//    return NO;
 }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
@@ -78,31 +61,9 @@
     [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
         NSLog(@"%@", object);
     }];
-
+    
     return YES;
 }
-
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-//{
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-//        if (error != nil)
-//        {
-//            //NSLog(@"*** Auth error: %@", error);
-//            return;
-//        }
-//        auth.session = session;
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
-//
-//    };
-//
-//    if ([auth canHandleURL:url])
-//    {
-//        [auth handleAuthCallbackWithTriggeredAuthURL:url callback:authCallback];
-//        return YES;
-//    }
-//    return NO;
-//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -150,9 +111,9 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-
+    
     // Create the coordinator and store
-
+    
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"alarmify.sqlite"];
     NSError *error = nil;
@@ -169,7 +130,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-
+    
     return _persistentStoreCoordinator;
 }
 
@@ -179,7 +140,7 @@
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
-
+    
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         return nil;

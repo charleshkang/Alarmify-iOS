@@ -9,9 +9,6 @@
 #import "ALSpotifyManager.h"
 #import "ALUser.h"
 
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
-
-
 static NSString *playlistName = @"Alarmify";
 
 @implementation ALSpotifyManager
@@ -27,7 +24,7 @@ static ALSpotifyManager *defaultSpotifyController = nil;
 
 - (id)init {
     if ( (self = [super init]) ) {
-        self.myMusic = [[NSMutableArray alloc] initWithCapacity:32];
+        self.myMusic = [[NSMutableArray alloc] initWithCapacity:50];
     }
     return self;
 }
@@ -62,6 +59,23 @@ static ALSpotifyManager *defaultSpotifyController = nil;
         }
         
     }];
+}
+
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *redirectString = @"alarmify://authorize";
+    NSURL *redirectURL = [NSURL URLWithString:redirectString];
+    NSString *spotifyClientId = appDelegate.spotifyClientID;
+    
+    [[SPTAuth defaultInstance] setClientID:spotifyClientId];
+    [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
+    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope]];
+    
+    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+    
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:loginURL];
+    [presentingViewController presentViewController:safariVC animated:YES completion:nil];
 }
 
 @end

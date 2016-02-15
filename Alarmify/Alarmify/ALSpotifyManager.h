@@ -6,8 +6,11 @@
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
+#import <SafariServices/SafariServices.h>
 #import <Foundation/Foundation.h>
 #import <Spotify/Spotify.h>
+#import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface ALSpotifyManager : NSObject <SPTAudioStreamingPlaybackDelegate>
 
@@ -18,8 +21,6 @@
 
 + (ALSpotifyManager *)defaultController;
 
-// Not important for now
-@property NSMutableDictionary *userInfo;
-@property NSMutableArray<NSString *> *userPlaylists;
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController;
 
 @end

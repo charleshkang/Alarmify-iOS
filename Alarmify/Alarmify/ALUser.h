@@ -13,15 +13,13 @@
 @property NSMutableArray<NSString *> *playlists;
 
 @property (nonatomic) NSString *username;
-@property (nonatomic) NSString *accessToken;
-@property (strong,nonatomic) NSString *spotifyID;
 
-@property (nonatomic) BOOL isPremiumUser;
-
-@property (nonatomic, strong) void(^onLoginCallback)();
-
+// Spotify API Related
 + (ALUser *)currentUser;
 - (BOOL)isLoggedInToSpotify;
-- (void)loginToSpotify;
+@property (nonatomic) BOOL isPremiumUser;
+@property (nonatomic, strong) void(^onLoginCallback)();
+@property (nonatomic) NSString *accessToken;
+@property (strong,nonatomic) NSString *spotifyID;
 
 @end
