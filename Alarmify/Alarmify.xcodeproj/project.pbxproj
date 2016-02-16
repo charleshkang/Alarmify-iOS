@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		22CC2CD51C7252CD0029528D /* ALLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC2CD41C7252CD0029528D /* ALLabelViewController.m */; };
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
-		BF0C80201C6EE12100BA8BB8 /* ALSoundPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */; };
 		BF6EEF971C6ED38D00460452 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6EEF961C6ED38D00460452 /* CoreAudio.framework */; };
 		BF6F04F71C6E77510096C156 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6F04F61C6E77510096C156 /* Keys.plist */; };
 		BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F04FE1C6E80290096C156 /* Spotify.framework */; };
@@ -29,6 +28,7 @@
 		BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AA1C6D50560013CE2B /* Info.plist */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
 		BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */; };
+		BFB3D48E1C72502000E5C405 /* ALPlaylistSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,8 +38,6 @@
 		22CC2CD41C7252CD0029528D /* ALLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLabelViewController.m; sourceTree = "<group>"; };
 		2BF105BFBBFD2127963F5FD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "alarmify-prefix.pch"; path = "../alarmify-prefix.pch"; sourceTree = "<group>"; };
-		BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundPickerViewController.h; sourceTree = "<group>"; };
-		BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSoundPickerViewController.m; sourceTree = "<group>"; };
 		BF6EEF921C6ED30B00460452 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF6EEF941C6ED34E00460452 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		BF6EEF961C6ED38D00460452 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -71,6 +69,8 @@
 		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
 		BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyPlayerViewController.h; sourceTree = "<group>"; };
 		BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyPlayerViewController.m; sourceTree = "<group>"; };
+		BFB3D48C1C72502000E5C405 /* ALPlaylistSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPlaylistSelectionViewController.h; sourceTree = "<group>"; };
+		BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPlaylistSelectionViewController.m; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -145,10 +145,10 @@
 			children = (
 				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
-				BF0C801E1C6EE12100BA8BB8 /* ALSoundPickerViewController.h */,
-				BF0C801F1C6EE12100BA8BB8 /* ALSoundPickerViewController.m */,
 				BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */,
 				BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */,
+				BFB3D48C1C72502000E5C405 /* ALPlaylistSelectionViewController.h */,
+				BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */,
 			);
 			name = "Spotify Controller";
 			sourceTree = "<group>";
@@ -352,11 +352,11 @@
 				BF7F69A41C6D50400013CE2B /* ALAlarm.m in Sources */,
 				BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */,
 				BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */,
-				BF0C80201C6EE12100BA8BB8 /* ALSoundPickerViewController.m in Sources */,
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
 				22CC2CD51C7252CD0029528D /* ALLabelViewController.m in Sources */,
 				BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */,
+				BFB3D48E1C72502000E5C405 /* ALPlaylistSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
