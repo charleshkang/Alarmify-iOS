@@ -529,10 +529,10 @@
             </objects>
             <point key="canvasLocation" x="825" y="-71"/>
         </scene>
-        <!--Sound Picker View Controller-->
+        <!--Playlist Selection View Controller-->
         <scene sceneID="Hfa-5e-nCw">
             <objects>
-                <viewController id="hyu-vy-msz" customClass="ALSoundPickerViewController" sceneMemberID="viewController">
+                <viewController id="hyu-vy-msz" customClass="ALPlaylistSelectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S8V-6Y-trH"/>
                         <viewControllerLayoutGuide type="bottom" id="ZEV-pQ-XgW"/>

@@ -1,53 +1,35 @@
 //
-//  ALSpotifyPlayerViewController.m
+//  ALPlaylistSelectionViewController.m
 //  Alarmify
 //
 //  Created by Charles Kang on 2/15/16.
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
-#import "ALSpotifyPlayerViewController.h"
 #import "ALPlaylistSelectionViewController.h"
+#import "ALAddAlarmTableViewController.h"
 #import "ALSpotifyManager.h"
 
-@interface ALSpotifyPlayerViewController ()
+@interface ALPlaylistSelectionViewController ()
+
 
 @end
 
-@implementation ALSpotifyPlayerViewController
+@implementation ALPlaylistSelectionViewController
+
+@synthesize artistLabel;
+@synthesize songTitle;
+@synthesize albumTitle;
+@synthesize playlistLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.playbackIndicator = [[UIView alloc] initWithFrame:rect(0,0,0,0)];
-    self.playbackIndicator.backgroundColor = hex(0x1c9ba0);
-    [self.view addSubview:self.playbackIndicator];
-    [self.view sendSubviewToBack:self.playbackIndicator];
-    
-    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame: rect(-1000, -1000, 0, 0)];
-    [volumeView setUserInteractionEnabled:NO];
-    volumeView.showsRouteButton = NO;
-    [self.view addSubview: volumeView];
-    self.musicPlayer = [MPMusicPlayerController systemMusicPlayer];
+    self.playlistTableView.delegate = self;
+    self.playlistTableView.dataSource = self;
     
     NC_addObserver(@"AUTH_OK", @selector(preparePlayerView:));
     NC_addObserver(@"AUTH_ERROR", @selector(preparePlayerView:));
     NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
-}
-
-- (IBAction)playMusicButtonTapped:(id)sender {
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    
-    if (controller.player.isPlaying){
-        [controller.player setIsPlaying:!controller.player.isPlaying callback:nil];
-        
-    }
-}
-
-- (IBAction)pauseMusicButtonTapped:(id)sender {
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    [controller.player skipNext:^(NSError *error) {
-        [self itemChangeCallback];
-    }];
 }
 
 - (void)preparePlayerView:(NSNotification*) notification {
@@ -213,7 +195,7 @@
      * Update the song label, background and start playing.
      */
     [SPTTrack trackWithURI:controller.player.currentTrackURI session:controller.session callback:^(NSError *error, id object) {
-
+        
         [UIView animateWithDuration:0.2 animations:^{
             self.artistLabel.alpha = 0.3;
             self.albumTitle.alpha = 0.3;
@@ -224,7 +206,7 @@
             self.artistLabel.text = artistString;
             self.songTitle.text = titleString;
             self.albumTitle.text = [controller.player.currentTrackMetadata[SPTAudioStreamingMetadataAlbumName] uppercaseString];
-
+            
             [UIView animateWithDuration:0.2 animations:^{
                 self.artistLabel.alpha = 1;
                 self.albumTitle.alpha  = 1;
@@ -236,6 +218,59 @@
 
 - (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata {
     [self updateTrackLabels];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.playlists.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlist"];
+    
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"playlist"];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }
+    
+    UILabel *title = (UILabel *)[cell viewWithTag:1];
+    SPTPartialPlaylist *playlist;
+    
+    switch (indexPath.row) {
+            
+        case 0:
+            title.text = @"SAVED TRACKS";
+        default:
+            playlist = (SPTPartialPlaylist *) self.playlists[indexPath.row - 2];
+            title.text = [playlist.name uppercaseString];
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *ui;
+    switch (indexPath.row) {
+        case 0:
+            break;
+            
+        case 1:
+            ui = @{ @"selected": @(-1)};
+            NC_postNotification(@"selected_playlist", ui);
+            break;
+            
+        default:
+            ui = @{ @"selected": @(indexPath.row - 2)};
+            NC_postNotification(@"selected_playlist", ui);
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
