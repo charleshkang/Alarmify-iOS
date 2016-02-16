@@ -11,14 +11,26 @@
 #import "ALAlarm.h"
 #import "ALAlarmManager.h"
 #import "ALSpotifyManager.h"
+
 #import "ALPlaylistSelectionViewController.h"
 
-@interface ALAddAlarmTableViewController ()
+#import "ALLabelViewController.h"
+
+
+@protocol LabelDelegate <NSObject>
+
+- (void) didSetLabel:(NSString *)label;
+
+@end
+
+@interface ALAddAlarmTableViewController () <LabelDelegate>
 
 @property (nonatomic) NSMutableArray *alarmElements;
 @property (weak, nonatomic) IBOutlet UIDatePicker *alarmPicker;
 
 @end
+
+
 
 @implementation ALAddAlarmTableViewController
 
@@ -37,6 +49,11 @@
     NSLog(@"snooze toggled!");
 }
 - (IBAction)saveNewAlarmButtonTapped:(id)sender {
+    
+    //instantiate a new alarm object
+    
+    ALAlarm *newAlarm = [[ALAlarm alloc] init];
+    
     NSDate *userEnteredDate = self.alarmPicker.date;
     NSDate *now = [NSDate date];
     
@@ -66,7 +83,19 @@
     NSLog(@"new alarm saved!");
     NSLog(@"%@", now);
     NSLog(@"%@", userEnteredDate);
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+//change this name later, we will pass back more data with these methods
+
+#pragma mark -- LabelDelegate methods
+
+-(void)didSetLabel:(NSString *)label {
+    NSLog(@"the delegate works");
+}
+
+#pragma mark -- Table View methods
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -81,6 +110,11 @@
         songSelection.selected = @0;
         
         NSLog(@"View did segue");
+    }
+    
+    if ([segue.identifier isEqualToString:@"labelSegue"]) {
+        ALLabelViewController *labelViewController = segue.destinationViewController;
+        labelViewController.delegate = self;
     }
 }
 

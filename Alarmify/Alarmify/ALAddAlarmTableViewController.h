@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ALAlarm.h"
 
 @interface ALAddAlarmTableViewController : UITableViewController
 
