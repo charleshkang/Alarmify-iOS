@@ -6,7 +6,6 @@
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
-
 #import <SafariServices/SafariServices.h>
 
 #import "ALSignInViewController.h"
@@ -14,16 +13,17 @@
 #import "ALSpotifyManager.h"
 #import "ALSpotifyLogin.h"
 #import "ALAlarmsTableViewController.h"
+#import "ALAlarmsViewController.h"
 
 @interface ALSignInViewController ()
 
-@property (nonatomic) BOOL userIsPremiumUser;
+@property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic) NSString *accessToken;
 
 @property (nonatomic) SPTAuthViewController *authViewController;
 @property (nonatomic) ALAlarmsTableViewController *alarmsTableVC;
+@property (nonatomic) ALAlarmsViewController *alarmVC;
 @property (nonatomic) SPTSession *session;
-
 
 @end
 
@@ -37,17 +37,42 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - Spotify Login & Auth Implementation
 
 - (IBAction)userLoggedInWithSpotify:(id)sender
 {
-//        [self createSpotifySession];
-        NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-        [[UIApplication sharedApplication] performSelector:@selector(openURL:)
-                                                withObject:loginURL afterDelay:0.1];
+    [self checkIfSessionIsValid];
+    [self openLogInPage];
+    [self segueIfUserIsLoggedIn];
 }
 
-- (void) openLogInPage
+- (void)checkIfSessionIsValid {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (auth.session == nil) {
+        [self openLogInPage];
+    } else ([auth.session isValid] && [auth hasTokenRefreshService]); {
+        [self renewToken];
+    }
+}
+
+- (void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            auth.sessionUserDefaultsKey = object.displayName;
+        }];
+    }];
+}
+
+- (void)openLogInPage
 {
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
@@ -58,55 +83,21 @@
     self.definesPresentationContext = YES;
     
     [self presentViewController:self.authViewController animated:NO completion:nil];
-    
 }
 
-- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-{
-    NSLog(@"Authentication failed : %@",error);
-    
-}
-
-- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+// WHY AREN'T YOU WORKING
+- (void)segueIfUserIsLoggedIn
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
-    NSLog(@"auth token: %@", auth);
-    
-    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            ALUser *currentUser = [ALUser currentUser];
-            
-            auth.sessionUserDefaultsKey = object.canonicalUserName;
-            
-        }];
-    }];
-}
 
-- (void) createSpotifySession
-{
-    SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
-    NSLog(@"persisted Session: %@", session);
-    if (session) {
-        
-        NSNotification *notification = [[NSNotification alloc] initWithName:@"AUTH_D" object:nil userInfo:@{@"session":@"RESTORE"}];
-        //        [self preparePlayerView:notification];
-    } else {
-        
-        [[SPTAuth defaultInstance] setClientID:@"1b76daf6d74844989d3d9d7a9ae2a43c"];
-        [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://authorize"]];
-        [[SPTAuth defaultInstance] setTokenSwapURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/swap"]];
-        [[SPTAuth defaultInstance] setTokenRefreshURL:[NSURL URLWithString:@"https://alarmify.herokuapp.com/refresh"]];
-        [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserLibraryReadScope]];
+    if ([auth.session isValid] && [auth hasTokenRefreshService]) {
+        [self performSegueWithIdentifier:@"loginSegueIdentifier" sender:nil];
+        ALAlarmsViewController *alarmsVC = [[ALAlarmsViewController alloc] init];
+        [self showViewController:alarmsVC sender:nil];
     }
 }
 
-- (void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-{
-    [self openLogInPage];
-}
-
-- (void)renewTokenAndSegue
+- (void)renewToken
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
@@ -123,28 +114,14 @@
     }
 }
 
-// Opens a spotify auth VC to login
-- (void) authenticateAndLoginWithSpotify {
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    
-    if (auth.session == nil) {
-        [self openLogInPage];
-    }  else (![auth.session isValid] && auth.hasTokenRefreshService); {
-        [self renewTokenAndSegue];
-    }
-    [self createSpotifySession];
+- (void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    [self openLogInPage];
 }
 
-- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url
+- (void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
 {
-    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-        
-        if (error) {
-            NSLog(@"spotify auth error %@", error);
-            return;
-        }
-        self.session = session;
-    };
+    NSLog(@"Authentication Failed : %@",error);
 }
 
 @end

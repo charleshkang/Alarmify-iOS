@@ -11,8 +11,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ALSpotifyPlayerViewController : UIViewController
-<NSURLConnectionDelegate,
-SPTAudioStreamingPlaybackDelegate>
+<
+NSURLConnectionDelegate,
+SPTAudioStreamingPlaybackDelegate
+>
 
 @property (nonatomic) MPMusicPlayerController *musicPlayer;
 @property (nonatomic) NSArray *songs;

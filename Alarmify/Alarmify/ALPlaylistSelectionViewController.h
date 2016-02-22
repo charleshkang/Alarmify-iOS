@@ -15,17 +15,18 @@
 #import "ALUser.h"
 
 @interface ALPlaylistSelectionViewController : UIViewController
-<NSURLConnectionDelegate,
+<
+NSURLConnectionDelegate,
 SPTAudioStreamingPlaybackDelegate,
 UITableViewDataSource,
-UITableViewDelegate>
+UITableViewDelegate
+>
 
 @property (weak, nonatomic) IBOutlet UITableView *playlistTableView;
 @property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *albumTitle;
 @property (weak, nonatomic) IBOutlet UILabel *songTitle;
-
 
 @property (nonatomic, weak) NSString *songURI;
 @property MPMusicPlayerController *musicPlayer;

@@ -10,8 +10,10 @@
 #import <Spotify/Spotify.h>
 
 @interface ALSignInViewController : UIViewController
-<NSURLConnectionDelegate,
-SPTAuthViewDelegate>
+<
+NSURLConnectionDelegate,
+SPTAuthViewDelegate
+>
 
 - (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url;
 
