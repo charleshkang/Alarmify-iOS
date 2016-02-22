@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>sessionUserDefaultsKey</key>
+	<string>sessionUserDefaultsKey</string>
 	<key>spotifyClientID</key>
 	<string>1b76daf6d74844989d3d9d7a9ae2a43c</string>
 	<key>SpotifyClientSecret</key>

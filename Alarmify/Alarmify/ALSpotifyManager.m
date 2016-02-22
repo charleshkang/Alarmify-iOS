@@ -31,37 +31,6 @@ static ALSpotifyManager *defaultSpotifyController = nil;
     return self;
 }
 
-+ (void)findPlaylist:(void(^)(SPTPlaylistSnapshot *playlist))completion
-{
-    NSString *username = [ALUser currentUser].username;
-    NSString *accessToken = [ALUser currentUser].accessToken;
-    
-    [SPTPlaylistList playlistsForUser:username withAccessToken:accessToken callback:^(NSError *error, id object) {
-        BOOL found = NO;
-        NSURL *uri = nil;
-        
-        if (!error) {
-            SPTPlaylistList *list = (SPTPlaylistList *)object;
-            for (SPTPartialPlaylist *item in list.items) {
-                // THIS COULD BE A BUG
-                if ([item.name isEqualToString:playlistName]) {
-                    uri = item.uri;
-                    found = YES;
-                }
-            }
-        }
-        
-        if (found) {
-            [SPTPlaylistSnapshot playlistWithURI:uri accessToken:accessToken callback:^(NSError *error, id object) {
-                completion((SPTPlaylistSnapshot *)object);
-            }];
-        } else {
-            completion(nil);
-        }
-        
-    }];
-}
-
 + (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController
 {    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

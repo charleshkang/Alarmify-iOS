@@ -18,23 +18,26 @@
 <
 NSURLConnectionDelegate,
 SPTAudioStreamingPlaybackDelegate,
+SPTAudioStreamingDelegate,
 UITableViewDataSource,
 UITableViewDelegate
 >
 
-@property (weak, nonatomic) IBOutlet UITableView *playlistTableView;
-@property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
-@property (weak, nonatomic) IBOutlet UILabel *artistLabel;
-@property (weak, nonatomic) IBOutlet UILabel *albumTitle;
-@property (weak, nonatomic) IBOutlet UILabel *songTitle;
+@property (nonatomic) SPTSession *session;
+@property (nonatomic)SPTAudioStreamingController *audioPlayer;
+
+@property (nonatomic) SPTPlaylistSnapshot *currentPlaylist;
+@property (nonatomic)NSMutableArray *trackURIs;
+
+
+@property(nonatomic) NSMutableArray *playlists;
+@property NSMutableArray *songs;
 
 @property (nonatomic, weak) NSString *songURI;
-@property MPMusicPlayerController *musicPlayer;
-@property NSMutableArray *songs;
-@property (strong, nonatomic) NSArray *playlists;
 @property (strong, nonatomic) NSNumber *selected;
 
-+ (void)addTrackToPlaylist:(NSString *)trackURI
-                completion:(void(^)(BOOL success))completion;
+- (void)reloadTableViewWithPlaylists;
+- (void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object;
+-(void)setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)partialPlaylist;
 
 @end

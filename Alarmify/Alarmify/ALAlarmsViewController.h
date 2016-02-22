@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ALAlarmsViewController : UIViewController <UITableViewDelegate>
+@interface ALAlarmsViewController : UIViewController
+<
+UITableViewDelegate
+>
 
 @end

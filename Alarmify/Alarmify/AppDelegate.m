@@ -16,7 +16,31 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
+    
+    // Spotify Keys
+    NSString *spotifyClientID = [plistDictionary objectForKey:@"spotifyClientID"];
+    self.spotifyClientID = spotifyClientID;
+    NSString *sessionUserDefaultsKey = [plistDictionary objectForKey:@"sessionUserDefaultsKey"];
+    self.sessionUserDefaultsKey = sessionUserDefaultsKey;
+    
+    // Spotify Authorization Initializers
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    auth.clientID = spotifyClientID;
+    auth.redirectURL = [NSURL URLWithString:@"alarmify://authorize"];
+    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserLibraryReadScope, SPTAuthUserReadPrivateScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope];
+    NSLog(@"Access Token: %@", auth.session.accessToken);
+    [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
+        NSLog(@"Object: %@", object);
+    }];
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
     
     // Ask SPTAuth if the URL given is a Spotify authentication callback
     if ([[SPTAuth defaultInstance] canHandleURL:url]) {
@@ -39,30 +63,6 @@
     }
     
     return NO;
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
-    
-    // Spotify Keys
-    NSString *spotifyClientID = [plistDictionary objectForKey:@"spotifyClientID"];
-    self.spotifyClientID = spotifyClientID;
-    
-    [[SPTAuth defaultInstance] setRedirectURL:[NSURL URLWithString:@"alarmify://callback"]];
-    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope,SPTAuthPlaylistModifyPublicScope]];
-    
-    // Spotify Authorization Initializers
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    auth.clientID = spotifyClientID;
-    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
-    auth.redirectURL = [NSURL URLWithString:@"alarmify://authorize"];
-    NSLog(@"%@", auth.session.accessToken);
-    [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
-        NSLog(@"%@", object);
-    }];
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -89,6 +89,7 @@
     [self saveContext];
 }
 
+/*
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -162,5 +163,6 @@
         }
     }
 }
+ */
 
 @end

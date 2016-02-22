@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Spotify/Spotify.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 #define SPOTIFY_ACCESS_TOKEN_KEY @"alarmifyAccessToken"
 #define SPOTIFY_USERNAME_KEY @"spotifyUsername"
@@ -19,17 +18,14 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, strong) SPTSession *session;
-@property (nonatomic, strong) SPTAudioStreamingController *player;
-
 @property (nonatomic) NSString *spotifyClientID;
+@property (nonatomic) NSString *sessionUserDefaultsKey;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
 
 @end
 

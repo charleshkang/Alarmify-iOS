@@ -12,31 +12,32 @@
 
 @implementation ALUser
 
-+ (ALUser *)currentUser
+static ALUser *user = nil;
+
+
++ (ALUser *)user
 {
-    static ALUser *user = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        user = [[self alloc] init];
-    });
+    if (!user) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            user = [self new];
+        });
+    }
     return user;
 }
 
-- (NSString *)accessToken
+- (void)handle:(SPTSession *)session
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_ACCESS_TOKEN_KEY];
-}
-
-- (NSString *)username
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_USERNAME_KEY];
-}
-
-- (BOOL)isLoggedInToSpotify
-{
-    // User is logged into Spotify if access token is found in NSUserDefaults
-    return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_ACCESS_TOKEN_KEY] != nil;
-    
+    if (session) {
+        self.spotifySession = session;
+    }
+    [SPTRequest userInformationForUserInSession:session callback:^(NSError *error, id object) {
+        if (!error) {
+            self.spotifyUser = (SPTUser *)object;
+        } else {
+            NSLog(@"Error: %@", error);
+        }
+    }];
 }
 
 @end

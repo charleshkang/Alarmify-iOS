@@ -12,7 +12,11 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface ALSpotifyManager : NSObject <SPTAudioStreamingPlaybackDelegate>
+@interface ALSpotifyManager : NSObject
+<
+SPTAudioStreamingPlaybackDelegate,
+SPTAudioStreamingDelegate
+>
 
 @property(strong, nonatomic) SPTAudioStreamingController *player;
 @property(strong, nonatomic) SPTSession *session;

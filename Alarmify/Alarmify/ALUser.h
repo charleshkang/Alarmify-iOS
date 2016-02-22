@@ -7,19 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Spotify/Spotify.h>
 
 @interface ALUser : NSObject
 
-@property NSMutableArray<NSString *> *playlists;
++ (ALUser *)user;
 
-@property (nonatomic) NSString *username;
+- (void)handle:(SPTSession *)session;
 
-// Spotify API Related
-+ (ALUser *)currentUser;
-- (BOOL)isLoggedInToSpotify;
-@property (nonatomic) BOOL isPremiumUser;
-@property (nonatomic, strong) void(^onLoginCallback)();
-@property (nonatomic) NSString *accessToken;
-@property (strong,nonatomic) NSString *spotifyID;
+@property (nonatomic) SPTUser *spotifyUser;
+@property (nonatomic) SPTSession *spotifySession;
 
 @end
