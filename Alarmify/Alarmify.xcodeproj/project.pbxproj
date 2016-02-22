@@ -25,7 +25,6 @@
 		BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A01C6D50400013CE2B /* ALAlarmsTableViewController.m */; };
 		BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */; };
 		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
-		BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AA1C6D50560013CE2B /* Info.plist */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
 		BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */; };
 		BFB3D48E1C72502000E5C405 /* ALPlaylistSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */; };
@@ -296,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6F04F71C6E77510096C156 /* Keys.plist in Resources */,
-				BF7F69AB1C6D50560013CE2B /* Info.plist in Resources */,
 				BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */,
 				BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */,
 				BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */,

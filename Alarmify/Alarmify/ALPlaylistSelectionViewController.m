@@ -22,7 +22,10 @@
 @synthesize albumTitle;
 @synthesize playlistLabel;
 
-- (void)viewDidLoad {
+#pragma mark - Lifecycle Methods
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.playlistTableView.delegate = self;
     self.playlistTableView.dataSource = self;
@@ -32,7 +35,10 @@
     NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
 }
 
-- (void)preparePlayerView:(NSNotification*) notification {
+#pragma mark - Spotify Playlist Implementation
+
+- (void)preparePlayerView:(NSNotification*) notification
+{
     
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     
@@ -120,7 +126,8 @@
     
 }
 
-- (BOOL)nextSongsFrom:(SPTListPage *)list {
+- (BOOL)nextSongsFrom:(SPTListPage *)list
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
         SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
@@ -134,7 +141,8 @@
     return false;
 }
 
-- (void)changePlaylist:(NSNotification *) notification {
+- (void)changePlaylist:(NSNotification *)notification
+{
     
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     NSDictionary *ui = notification.userInfo;
@@ -162,7 +170,8 @@
     }
 }
 
-- (void)updateTrackLabels {
+- (void)updateTrackLabels
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
@@ -189,7 +198,8 @@
     }];
 }
 
-- (void)itemChangeCallback {
+- (void)itemChangeCallback
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
@@ -216,19 +226,23 @@
     }];
 }
 
-- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata {
+- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata
+{
     [self updateTrackLabels];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.playlists.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlist"];
     
     if (cell == nil) {
@@ -254,7 +268,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSDictionary *ui;
     switch (indexPath.row) {
         case 0:

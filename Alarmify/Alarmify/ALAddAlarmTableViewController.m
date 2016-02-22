@@ -34,7 +34,8 @@
 
 @implementation ALAddAlarmTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Not sure if you'll need this Eric/Dan
@@ -45,10 +46,13 @@
     
 }
 
-- (IBAction)snoozeButtonTapped:(id)sender {
+- (IBAction)snoozeButtonTapped:(id)sender
+{
     NSLog(@"snooze toggled!");
 }
-- (IBAction)saveNewAlarmButtonTapped:(id)sender {
+
+- (IBAction)saveNewAlarmButtonTapped:(id)sender
+{
     
     //instantiate a new alarm object
     
@@ -91,17 +95,20 @@
 
 #pragma mark -- LabelDelegate methods
 
--(void)didSetLabel:(NSString *)label {
+- (void)didSetLabel:(NSString *)label
+{
     NSLog(@"the delegate works");
 }
 
 #pragma mark -- Table View methods
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if([segue.identifier isEqualToString:@"playlists"]) {
         ALPlaylistSelectionViewController *songSelection = (ALPlaylistSelectionViewController *)segue.destinationViewController;
         songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;

@@ -16,7 +16,10 @@
 
 @implementation ALSpotifyPlayerViewController
 
-- (void)viewDidLoad {
+#pragma mark - Lifecycle Methods
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.playbackIndicator = [[UIView alloc] initWithFrame:rect(0,0,0,0)];
     self.playbackIndicator.backgroundColor = hex(0x1c9ba0);
@@ -34,7 +37,10 @@
     NC_addObserver(@"selectPlaylistIdentifier", @selector(changePlaylist:));
 }
 
-- (IBAction)playMusicButtonTapped:(id)sender {
+#pragma mark - Spotify Music Implementation
+
+- (IBAction)playMusicButtonTapped:(id)sender
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     
     if (controller.player.isPlaying){
@@ -43,15 +49,16 @@
     }
 }
 
-- (IBAction)pauseMusicButtonTapped:(id)sender {
+- (IBAction)pauseMusicButtonTapped:(id)sender
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     [controller.player skipNext:^(NSError *error) {
         [self itemChangeCallback];
     }];
 }
 
-- (void)preparePlayerView:(NSNotification*) notification {
-    
+- (void)preparePlayerView:(NSNotification*)notification
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     
     if([notification.userInfo[@"session"] isEqual:@"ERROR"]) {
@@ -138,7 +145,8 @@
     
 }
 
-- (BOOL)nextSongsFrom:(SPTListPage *)list {
+- (BOOL)nextSongsFrom:(SPTListPage *)list
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
         SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
@@ -152,8 +160,8 @@
     return false;
 }
 
-- (void)changePlaylist:(NSNotification *) notification {
-    
+- (void)changePlaylist:(NSNotification *)notification
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     NSDictionary *ui = notification.userInfo;
     controller.player.shuffle = true;
@@ -180,7 +188,8 @@
     }
 }
 
-- (void)updateTrackLabels {
+- (void)updateTrackLabels
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
@@ -207,7 +216,8 @@
     }];
 }
 
-- (void)itemChangeCallback {
+- (void)itemChangeCallback
+{
     ALSpotifyManager *controller = [ALSpotifyManager defaultController];
     /* Next item callback
      * Update the song label, background and start playing.
@@ -234,7 +244,8 @@
     }];
 }
 
-- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata {
+- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata
+{
     [self updateTrackLabels];
 }
 

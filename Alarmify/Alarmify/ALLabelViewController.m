@@ -17,34 +17,28 @@ LabelDelegate>
 
 @implementation ALLabelViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.alarmTextField.delegate = self;
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)didSetLabel:(NSString *)label {
-    
+-(void)didSetLabel:(NSString *)label
+{
     [self.delegate didSetLabel:label];
 }
 
 
 #pragma mark - Text field delegate
 
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [self didSetLabel:textField.text];
     
     [self textFieldDidEndEditing:textField];

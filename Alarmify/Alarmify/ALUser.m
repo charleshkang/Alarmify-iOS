@@ -12,7 +12,8 @@
 
 @implementation ALUser
 
-+ (ALUser *)currentUser {
++ (ALUser *)currentUser
+{
     static ALUser *user = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -21,15 +22,18 @@
     return user;
 }
 
-- (NSString *)accessToken {
+- (NSString *)accessToken
+{
     return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_ACCESS_TOKEN_KEY];
 }
 
-- (NSString *)username {
+- (NSString *)username
+{
     return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_USERNAME_KEY];
 }
 
-- (BOOL)isLoggedInToSpotify {
+- (BOOL)isLoggedInToSpotify
+{
     // User is logged into Spotify if access token is found in NSUserDefaults
     return [[NSUserDefaults standardUserDefaults] objectForKey:SPOTIFY_ACCESS_TOKEN_KEY] != nil;
     

@@ -29,19 +29,26 @@
 
 @implementation ALSignInViewController
 
-- (void)viewDidLoad {
+#pragma mark - Lifecycle Methods
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
-- (IBAction)userLoggedInWithSpotify:(id)sender {
+#pragma mark - Spotify Login & Auth Implementation
+
+- (IBAction)userLoggedInWithSpotify:(id)sender
+{
 //        [self createSpotifySession];
         NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
         [[UIApplication sharedApplication] performSelector:@selector(openURL:)
                                                 withObject:loginURL afterDelay:0.1];
 }
 
-- (void) openLogInPage {
+- (void) openLogInPage
+{
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
     self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -54,12 +61,14 @@
     
 }
 
-- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error {
+- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
     NSLog(@"Authentication failed : %@",error);
     
 }
 
-- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
+- (void) authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     NSLog(@"auth token: %@", auth);
     
@@ -74,7 +83,8 @@
     }];
 }
 
-- (void) createSpotifySession {
+- (void) createSpotifySession
+{
     SPTSession *session = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
     NSLog(@"persisted Session: %@", session);
     if (session) {
@@ -91,18 +101,21 @@
     }
 }
 
-- (void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
+- (void) authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
     [self openLogInPage];
 }
 
-- (void)renewTokenAndSegue {
+- (void)renewTokenAndSegue
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
         auth.session = session;
     }];
 }
 
-- (void)sessionUpdatedNotification:(NSNotification *)notification {
+- (void)sessionUpdatedNotification:(NSNotification *)notification
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {
@@ -122,18 +135,16 @@
     [self createSpotifySession];
 }
 
-- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url {
-    
+- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url
+{
     SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
         
         if (error) {
             NSLog(@"spotify auth error %@", error);
             return;
         }
-        
         self.session = session;
     };
 }
-
 
 @end

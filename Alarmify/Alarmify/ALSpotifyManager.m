@@ -15,23 +15,24 @@ static NSString *playlistName = @"Alarmify";
 
 static ALSpotifyManager *defaultSpotifyController = nil;
 
-+ (ALSpotifyManager *)defaultController {
++ (ALSpotifyManager *)defaultController
+{
     if (defaultSpotifyController == nil) {
         defaultSpotifyController = [[super allocWithZone:NULL] init];
     }
     return defaultSpotifyController;
 }
 
-- (id)init {
+- (id)init
+{
     if ( (self = [super init]) ) {
         self.myMusic = [[NSMutableArray alloc] initWithCapacity:50];
     }
     return self;
 }
 
-
-+ (void)findPlaylist:(void(^)(SPTPlaylistSnapshot *playlist))completion {
-    
++ (void)findPlaylist:(void(^)(SPTPlaylistSnapshot *playlist))completion
+{
     NSString *username = [ALUser currentUser].username;
     NSString *accessToken = [ALUser currentUser].accessToken;
     
@@ -61,8 +62,8 @@ static ALSpotifyManager *defaultSpotifyController = nil;
     }];
 }
 
-+ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController {
-    
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController
+{    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *redirectString = @"alarmify://authorize";
     NSURL *redirectURL = [NSURL URLWithString:redirectString];
