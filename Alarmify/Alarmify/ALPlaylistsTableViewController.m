@@ -41,7 +41,8 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.currentSongIndex = -1;
+
     self.user = [ALUser user];
     self.playlists = [NSMutableArray new];
     
@@ -101,10 +102,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.songsVC) {
-        self.songsVC = [ALSongsTableViewController new];
-    }
-    
     if (self.currentSongIndex != indexPath.row){
         self.currentSongIndex = indexPath.row;
         self.songsVC.session = self.user.spotifySession;

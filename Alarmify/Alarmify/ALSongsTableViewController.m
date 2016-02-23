@@ -45,17 +45,6 @@
     self.songs = [NSMutableArray new];
     self.currentTrack = [SPTTrack new];
     self.trackURIs = [NSMutableArray new];
-    
-    [self reloadWithSongs];
-}
-
-- (void)reloadWithSongs
-{    [SPTPartialTrack SPTPlaylistTracktracksWithURIs:self.trackURIs session:self.user.spotifySession callback:^(NSError *error, id object) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        }
-        [self setPlaylistWithPartialPlaylist:self.playlist];
-    }];
 }
 
 - (void)setPlaylistWithPartialPlaylist:(SPTPlaylistTrack *)partialPlaylist
@@ -110,6 +99,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%@", self.songs);
+    NSLog(@"%@", self.songs.count);
     return self.songs.count;
 }
 
