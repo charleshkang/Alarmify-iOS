@@ -130,10 +130,10 @@
 		BFB286B51C6DB6E50031DDE4 /* Spotify Model */ = {
 			isa = PBXGroup;
 			children = (
-				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
-				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
 				BF7F69941C6D50380013CE2B /* ALUser.h */,
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
+				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
+				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
 				BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */,
 				BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */,
 			);

@@ -29,11 +29,12 @@ static ALUser *user = nil;
 - (void)handle:(SPTSession *)session
 {
     if (session) {
-        self.spotifySession = session;
+        _spotifySession = session;
     }
     [SPTRequest userInformationForUserInSession:session callback:^(NSError *error, id object) {
         if (!error) {
             self.spotifyUser = (SPTUser *)object;
+            [self.playlistsVC reload];
         } else {
             NSLog(@"Error: %@", error);
         }

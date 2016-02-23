@@ -20,6 +20,6 @@
 @property (nonatomic) SPTUser *spotifyUser;
 @property (nonatomic) SPTSession *spotifySession;
 
-@property (nonatomic, weak) ALPlaylistsViewController *playlistsVC;
+@property (nonatomic) ALPlaylistsViewController *playlistsVC;
 
 @end

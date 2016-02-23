@@ -12,6 +12,7 @@
 #import "ALSpotifyManager.h"
 #import "ALPlaylistsViewController.h"
 #import "ALSignInViewController.h"
+#import "ALAlarmsViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +22,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    ALPlaylistsViewController *playlistSelectionVC = [ALPlaylistsViewController new];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![defaults boolForKey:@"hasLaunchedOnce"]) {
+        ALSignInViewController *loginVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
+        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        self.window.rootViewController = navigationController;
+    } else if ([defaults boolForKey:@"hasLaunchedOnce"] && [defaults boolForKey:@"UserLoggedIn"]) {
+         ALAlarmsViewController *alarmsVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"alarmsViewController"];
+        
+        self.window.rootViewController = alarmsVC;
+    }
 
+    
+    ALPlaylistsViewController *playlistSelectionVC = [ALPlaylistsViewController new];
+    
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:playlistSelectionVC];
     
     // Spotify Authorization Initializers
@@ -36,7 +50,7 @@
     auth.tokenSwapURL = [NSURL URLWithString:@kTokenSwapServiceURL];
 #endif
 #ifdef kTokenRefreshServiceURL
-//    auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
+    //    auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
 #endif
     auth.sessionUserDefaultsKey = @kSessionUserDefaultsKey;
     
