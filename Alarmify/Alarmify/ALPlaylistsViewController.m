@@ -9,6 +9,8 @@
 #import "ALPlaylistsViewController.h"
 #import "ALAddAlarmTableViewController.h"
 #import "ALUser.h"
+#import "PlaylistCell.h"
+#import <Spotify/Spotify.h>
 
 @interface ALPlaylistsViewController ()
 <
@@ -26,7 +28,14 @@ UITableViewDelegate
 
 @property (nonatomic) ALPlaylistsViewController *musicVC;
 
+@property (nonatomic)SPTPlaylistSnapshot *currentPlaylist;
+@property (nonatomic)NSMutableArray *trackURIs;
+@property (nonatomic)SPTTrack *currentTrack;
+@property (nonatomic)SPTArtist *currentArtist;
+@property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
+
 @end
+
 
 @implementation ALPlaylistsViewController
 
@@ -63,7 +72,7 @@ UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlistCellIdentifier" forIndexPath:indexPath];
+    PlaylistCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSString *playlistName;
     
     SPTPartialPlaylist *partialPlaylist = [self.playlists objectAtIndex:indexPath.row];
@@ -84,7 +93,7 @@ UITableViewDelegate
         
         [self.musicVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
     }
-//    [self.navigationController pushViewController:self.musicVC animated:YES];
+    //    [self.navigationController pushViewController:self.musicVC animated:YES];
     NSLog(@"Do something...");
     
 }
@@ -152,6 +161,8 @@ UITableViewDelegate
     }
 }
 
+
+
 - (void)handleNewSession {
     SPTAuth *auth = [SPTAuth defaultInstance];
     self.currentSongIndex = 0;
@@ -171,11 +182,36 @@ UITableViewDelegate
             NSLog(@"*** Enabling playback got error: %@", error);
             return;
         }
-    }
-     
-     ];
+        
+        //[self updateUI];
+        [self.audioPlayer playURIs:self.trackURIs fromIndex:self.currentSongIndex callback:^(NSError *error) {
+            if(error != nil){
+                NSLog(@"ERROR");
+                return;
+            }
+            self.currentTrack = [self.currentPlaylist.tracksForPlayback objectAtIndex:self.currentSongIndex];
+            
+            SPTPartialArtist *artist = (SPTPartialArtist *)[self.currentTrack.artists objectAtIndex:self.currentSongIndex];
+            
+            NSLog(@"TRACK DURATION: %f", self.audioPlayer.currentTrackDuration);
+            
+            NSURL *coverArtURL = self.currentTrack.album.largestCover.imageURL;
+            if(coverArtURL){
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    NSError *error = nil;
+                    UIImage *image = nil;
+                    NSData *imageData = [NSData dataWithContentsOfURL:coverArtURL options:0 error:&error];
+                    
+                    if (imageData != nil) {
+                        image = [UIImage imageWithData:imageData];
+                    }
+                    
+                });
+            }
+        }];
+    }];
+    
 }
-
 
 @end
 

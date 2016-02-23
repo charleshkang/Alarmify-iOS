@@ -6,14 +6,14 @@
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
-#import <Spotify/Spotify.h>
-
 #import "ALSignInViewController.h"
 #import "ALUser.h"
 #import "ALSpotifyManager.h"
 #import "ALKeys.h"
 
 #import "ALAlarmsViewController.h"
+
+#import <Spotify/Spotify.h>
 
 @interface ALSignInViewController ()
 <
@@ -60,6 +60,7 @@ SPTAuthViewDelegate
     }
     
     [self login];
+    [self checkIfSessionIsValid];
 }
 
 - (void)checkIfSessionIsValid {
@@ -78,6 +79,7 @@ SPTAuthViewDelegate
     [self.navigationController pushViewController:alarmsVC animated:YES];
     
     [[ALUser user] handle:session];
+    NSLog(@"Session Granted %@", session);
     
 }
 

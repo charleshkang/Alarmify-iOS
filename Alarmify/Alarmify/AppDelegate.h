@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 
 #import <UIKit/UIKit.h>
-#import <Spotify/Spotify.h>
+
 
 #define SPOTIFY_ACCESS_TOKEN_KEY @"alarmifyAccessToken"
 #define SPOTIFY_USERNAME_KEY @"spotifyUsername"

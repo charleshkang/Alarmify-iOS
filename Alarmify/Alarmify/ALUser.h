@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Spotify/Spotify.h>
+
 #import "ALPlaylistsViewController.h"
 
 @class ALPlaylistsViewController;

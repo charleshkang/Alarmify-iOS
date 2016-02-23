@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Spotify/Spotify.h>
 
 #import "AppDelegate.h"
 #import "ALSpotifyManager.h"
+
+#import <Spotify/Spotify.h>
 
 
 @interface ALPlaylistsViewController : UIViewController
@@ -19,14 +20,13 @@
 
 @property (nonatomic) SPTSession *session;
 @property (nonatomic) SPTAudioStreamingController *audioPlayer;
-@property (nonatomic) SPTPlaylistSnapshot *currentPlaylist;
-@property (nonatomic) NSMutableArray *trackURIs;
+
+
 @property NSMutableArray *songs;
 
 @property (nonatomic, weak) NSString *songURI;
 @property (strong, nonatomic) NSNumber *selected;
 
-- (void)reloadTableViewWithPlaylists;
 - (void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object;
 - (void)setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)partialPlaylist;
 

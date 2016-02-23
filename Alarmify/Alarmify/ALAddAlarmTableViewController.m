@@ -108,14 +108,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"playlists"]) {
-        ALPlaylistsViewController *songSelection = (ALPlaylistsViewController *)segue.destinationViewController;
-        songSelection.modalPresentationStyle = UIModalPresentationCurrentContext;
-//        ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-        songSelection.selected = @0;
-        
-        NSLog(@"View did segue");
-    }
+//    if([segue.identifier isEqualToString:@"playlists"]) {
+//        ALPlaylistsViewController *songSelection = (ALPlaylistsViewController *)segue.destinationViewController;
+//
+//        
+//        NSLog(@"View did segue");
+//    }
     
     if ([segue.identifier isEqualToString:@"labelSegue"]) {
         ALLabelViewController *labelViewController = segue.destinationViewController;

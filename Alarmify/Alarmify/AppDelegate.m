@@ -52,11 +52,13 @@
         auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
 #endif
     auth.sessionUserDefaultsKey = @kSessionUserDefaultsKey;
+    NSLog(@"Session: %@", auth.sessionUserDefaultsKey);
     
     if(auth.session == nil || ![auth.session isValid]) {
         [navVC pushViewController:[ALSignInViewController new] animated:NO];
     } else {
         [[ALUser user] handle:auth.session];
+        NSLog(@"User's Access Token: %@", auth.session);
     }
     
     return YES;
