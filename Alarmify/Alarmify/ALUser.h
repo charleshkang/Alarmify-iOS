@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Spotify/Spotify.h>
 
 #import "ALPlaylistsTableViewController.h"
 

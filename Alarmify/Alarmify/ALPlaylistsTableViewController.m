@@ -7,17 +7,19 @@
 //
 
 #import "ALPlaylistsTableViewController.h"
+#import "ALSongsTableViewController.h"
 #import "ALAddAlarmTableViewController.h"
 #import "ALUser.h"
 #import <Spotify/Spotify.h>
+#import "AppDelegate.h"
 
 @interface ALPlaylistsTableViewController ()
-
-@property (strong) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) ALUser *user;
 @property (nonatomic) NSInteger currentSongIndex;
 
 @property (nonatomic) ALPlaylistsViewController *musicVC;
+@property (nonatomic) ALSongsTableViewController *songsVC;
 
 @property (nonatomic)SPTPlaylistSnapshot *currentPlaylist;
 @property (nonatomic)NSMutableArray *trackURIs;
@@ -39,18 +41,17 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    
     self.user = [ALUser user];
     self.playlists = [NSMutableArray new];
     
-    [self reload];
+    [self reloadWithPlaylists];
 }
 
-- (void)reload
+- (void)reloadWithPlaylists
 {
     [SPTRequest playlistsForUserInSession:self.user.spotifySession callback:^(NSError *error, id object) {
         [self fetchPlaylistPageForSession:self.user.spotifySession error:error object:object];
-        NSLog(@"playlists: %@", object);
     }];
 }
 
@@ -95,19 +96,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"YO HERE ARE YOUR PLAYLISTS: %@", self.playlists);
     return self.playlists.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if(self.currentSongIndex != indexPath.row){
-        self.currentSongIndex = indexPath.row;
+    if (!self.songsVC) {
+        self.songsVC = [ALSongsTableViewController new];
     }
-    //    [self.navigationController pushViewController:self.musicVC animated:YES];
-    NSLog(@"Do something...");
     
+    if (self.currentSongIndex != indexPath.row){
+        self.currentSongIndex = indexPath.row;
+        self.songsVC.session = self.user.spotifySession;
+        [self.songsVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
+    }
 }
 
 @end

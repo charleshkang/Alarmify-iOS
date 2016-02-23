@@ -13,6 +13,7 @@
 		BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05001C6E80DB0096C156 /* AVFoundation.framework */; };
 		BF7698481C7CE8C2009BEB65 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7698471C7CE8C2009BEB65 /* Spotify.framework */; };
 		BF76984B1C7CF93B009BEB65 /* ALPlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF76984A1C7CF93B009BEB65 /* ALPlaylistsTableViewController.m */; };
+		BF7698511C7D056F009BEB65 /* ALSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7698501C7D056F009BEB65 /* ALSongsTableViewController.m */; };
 		BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF78E9811C6D4EF60044440B /* Main.storyboard */; };
 		BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F698E1C6D502F0013CE2B /* AppDelegate.m */; };
 		BF7F69961C6D50380013CE2B /* ALSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69911C6D50380013CE2B /* ALSignInViewController.m */; };
@@ -42,6 +43,8 @@
 		BF7698471C7CE8C2009BEB65 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		BF7698491C7CF93B009BEB65 /* ALPlaylistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPlaylistsTableViewController.h; sourceTree = "<group>"; };
 		BF76984A1C7CF93B009BEB65 /* ALPlaylistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPlaylistsTableViewController.m; sourceTree = "<group>"; };
+		BF76984F1C7D056F009BEB65 /* ALSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSongsTableViewController.h; sourceTree = "<group>"; };
+		BF7698501C7D056F009BEB65 /* ALSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSongsTableViewController.m; sourceTree = "<group>"; };
 		BF78E9811C6D4EF60044440B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BF7F698D1C6D502F0013CE2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF7F698E1C6D502F0013CE2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
 				BF7698491C7CF93B009BEB65 /* ALPlaylistsTableViewController.h */,
 				BF76984A1C7CF93B009BEB65 /* ALPlaylistsTableViewController.m */,
+				BF76984F1C7D056F009BEB65 /* ALSongsTableViewController.h */,
+				BF7698501C7D056F009BEB65 /* ALSongsTableViewController.m */,
 			);
 			name = "Spotify Controller";
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				BF7F69971C6D50380013CE2B /* ALSpotifyManager.m in Sources */,
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
+				BF7698511C7D056F009BEB65 /* ALSongsTableViewController.m in Sources */,
 				22CC2CD51C7252CD0029528D /* ALLabelViewController.m in Sources */,
 				BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */,
 			);
@@ -399,7 +405,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos9.2;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -435,7 +441,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos9.2;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
