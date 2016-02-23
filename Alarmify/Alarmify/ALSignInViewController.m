@@ -6,24 +6,19 @@
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
-#import <SafariServices/SafariServices.h>
+#import <Spotify/Spotify.h>
 
 #import "ALSignInViewController.h"
 #import "ALUser.h"
 #import "ALSpotifyManager.h"
-#import "ALSpotifyLogin.h"
-#import "ALAlarmsTableViewController.h"
-#import "ALAlarmsViewController.h"
+#import "ALKeys.h"
 
 @interface ALSignInViewController ()
-
-@property (nonatomic) BOOL userIsLoggedIn;
-@property (nonatomic) NSString *accessToken;
+<
+SPTAuthViewDelegate
+>
 
 @property (nonatomic) SPTAuthViewController *authViewController;
-@property (nonatomic) ALAlarmsTableViewController *alarmsTableVC;
-@property (nonatomic) ALAlarmsViewController *alarmVC;
-@property (nonatomic) SPTSession *session;
 
 @end
 
@@ -66,7 +61,6 @@
         [self openLogInPage];
     } else ([auth.session isValid] && [auth hasTokenRefreshService]); {
         [self renewToken];
-        NSLog(@"Session is: %@", self.session);
     }
 }
 

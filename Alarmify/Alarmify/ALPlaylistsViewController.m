@@ -1,17 +1,16 @@
 //
-//  ALPlaylistSelectionViewController.m
+//  ALPlaylistsViewController.m
 //  Alarmify
 //
-//  Created by Charles Kang on 2/15/16.
+//  Created by Charles Kang on 2/22/16.
 //  Copyright © 2016 Charles Kang. All rights reserved.
 //
 
-#import "ALPlaylistSelectionViewController.h"
+#import "ALPlaylistsViewController.h"
 #import "ALAddAlarmTableViewController.h"
-#import "ALSpotifyManager.h"
 #import "ALUser.h"
 
-@interface ALPlaylistSelectionViewController ()
+@interface ALPlaylistsViewController ()
 <
 NSURLConnectionDelegate,
 SPTAudioStreamingPlaybackDelegate,
@@ -21,14 +20,15 @@ UITableViewDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) ALUser *spotifyUser;
-@property (nonatomic) ALPlaylistSelectionViewController *musicPlayerVC;
-
+@property (nonatomic) ALUser *user;
 @property (nonatomic) NSInteger currentSongIndex;
+@property (nonatomic) NSMutableArray *playlists;
+
+@property (nonatomic) ALPlaylistsViewController *musicVC;
 
 @end
 
-@implementation ALPlaylistSelectionViewController
+@implementation ALPlaylistsViewController
 
 #pragma mark - Lifecycle Methods
 
@@ -36,10 +36,17 @@ UITableViewDelegate
 {
     [super viewDidLoad];
     self.currentSongIndex = -1;
-    [self reloadTableViewWithPlaylists];
+    [self reload];
     
-    NC_addObserver(@"AUTH_OK", @selector(preparePlayerView:));
-    NC_addObserver(@"AUTH_ERROR", @selector(preparePlayerView:));
+    self.user = [ALUser user];
+    self.playlists = [NSMutableArray new];
+}
+
+- (void)reload
+{
+    [SPTRequest playlistsForUserInSession:self.user.spotifySession callback:^(NSError *error, id object) {
+        [self fetchPlaylistPageForSession:self.user.spotifySession error:error object:object];
+    }];
 }
 
 #pragma mark - Tableview Methods
@@ -63,117 +70,26 @@ UITableViewDelegate
     playlistName = partialPlaylist.name;
     [cell.textLabel setText:playlistName];
     
+    NSLog(@"Playlists: %@", playlistName);
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!self.musicPlayerVC){
-        self.musicPlayerVC = [ALPlaylistSelectionViewController new];
-    }
     
     if(self.currentSongIndex != indexPath.row){
         self.currentSongIndex = indexPath.row;
-        self.musicPlayerVC.session = self.spotifyUser.spotifySession;
-        [self.musicPlayerVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
+        self.musicVC.session = self.user.spotifySession;
+        
+        [self.musicVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
     }
-    [self.navigationController pushViewController:self.musicPlayerVC animated:YES];
+//    [self.navigationController pushViewController:self.musicVC animated:YES];
+    NSLog(@"Do something...");
     
-}
-
-- (void)reloadTableViewWithPlaylists
-{
-    [SPTRequest playlistsForUserInSession:self.spotifyUser.spotifySession callback:^(NSError *error, id object) {
-        [self fetchPlaylistPageForSession:self.spotifyUser.spotifySession error:error object:object];
-    }];
 }
 
 #pragma mark - Spotify Playlist Implementation
-
-- (void)preparePlayerView:(NSNotification*) notification
-{
-    
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    
-    if([notification.userInfo[@"session"] isEqual:@"ERROR"]) {
-        [[SPTAuth defaultInstance] setTokenSwapURL:nil];
-        [[SPTAuth defaultInstance] setTokenRefreshURL:nil];
-        return;
-    }
-    
-    if([notification.userInfo[@"session"] isEqual:@"RESTORE"]) {
-        
-        SPTSession *restored = [NSKeyedUnarchiver unarchiveObjectWithData:UD_getObj(@"PLSessionPersistKey")];
-        NSLog(@"restored Session: %@", restored);
-        controller.session = restored;
-        
-        [SPTPlaylistList playlistsForUserWithSession:controller.session callback:^(NSError *error, id object) {
-            controller.playlists = object;
-        }];
-        
-        [SPTRequest savedTracksForUserInSession:controller.session callback:^(NSError *error, id object) {
-            SPTListPage *mlist = (SPTListPage *)object;
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            
-            NSLog(@"my music: %@",mlist);
-            for (SPTSavedTrack *i in mlist.items) {
-                [controller.myMusic addObject:i.uri];
-            }
-            if (mlist.hasNextPage) [self nextSongsFrom:mlist];
-            [controller.player playURIs:controller.myMusic fromIndex:0 callback:^(NSError *error) {
-                if (error != nil) {
-                    NSLog(@"*** Starting playback got error: %@", error);
-                    return;
-                }
-            }];
-            
-        }];
-        return;
-    }
-    
-    [controller.player loginWithSession:controller.session callback:^(NSError *error) {
-        if (error != nil) {
-            NSLog(@"*** Logging in got error: %@", error);
-            return;
-        }
-        
-        UD_setObj(@"PLSessionPersistKey", [NSKeyedArchiver archivedDataWithRootObject:controller.session]);
-        NSLog(@"saved Session: %@", controller.session);
-        
-        controller.player.playbackDelegate = self;
-        controller.player.shuffle = true;
-        
-        [SPTPlaylistList playlistsForUserWithSession:controller.session callback:^(NSError *error, id object) {
-            controller.playlists = object;
-        }];
-        
-        [SPTRequest savedTracksForUserInSession:controller.session callback:^(NSError *error, id object) {
-            SPTListPage *mlist = (SPTListPage *)object;
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-            
-            NSLog(@"my music: %@",mlist);
-            for (SPTSavedTrack *i in mlist.items) {
-                [controller.myMusic addObject:i.uri];
-            }
-            if (mlist.hasNextPage) [self nextSongsFrom:mlist];
-            [controller.player playURIs:controller.myMusic fromIndex:0 callback:^(NSError *error) {
-                if (error != nil) {
-                    NSLog(@"*** Starting playback got error: %@", error);
-                    return;
-                }
-            }];
-            
-        }];
-        
-    }];
-    
-}
 
 - (BOOL)nextSongsFrom:(SPTListPage *)list
 {
@@ -190,26 +106,22 @@ UITableViewDelegate
     return false;
 }
 
-- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata
-{
-}
-
 - (void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object
 {
     if (error != nil) {
-        NSLog(@"PLAYLIST ERROR");
-
+        NSLog(@"Error fetching playlists, %@", error);
+        abort();
     } else {
         if ([object isKindOfClass:[SPTPlaylistList class]]) {
             SPTPlaylistList *playlistList = (SPTPlaylistList *)object;
             
             for (SPTPartialPlaylist *playlist in playlistList.items) {
-                NSLog(@"GOT PLAYLIST");
+                NSLog(@"Fetched playlists!");
                 [self.playlists addObject:playlist];
             }
             
             if (playlistList.hasNextPage) {
-                NSLog(@"GETTING NEXT PAGE");
+                NSLog(@"Fetching more playlists...%@", playlistList);
                 [playlistList requestNextPageWithSession:session callback:^(NSError *error, id object) {
                     [self fetchPlaylistPageForSession:session error:error object:object];
                 }];
@@ -266,3 +178,4 @@ UITableViewDelegate
 
 
 @end
+

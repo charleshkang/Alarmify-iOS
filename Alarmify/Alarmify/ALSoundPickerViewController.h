@@ -29,7 +29,6 @@ UITableViewDelegate>
 
 
 @property (nonatomic, weak) NSString *songURI;
-@property MPMusicPlayerController *musicPlayer;
 @property NSMutableArray *songs;
 @property (strong, nonatomic) NSArray *playlists;
 @property (strong, nonatomic) NSNumber *selected;

@@ -10,7 +10,6 @@
 		22CC2CD51C7252CD0029528D /* ALLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC2CD41C7252CD0029528D /* ALLabelViewController.m */; };
 		699322370BE65801258C2880 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF105BFBBFD2127963F5FD6 /* libPods.a */; };
 		BF6EEF971C6ED38D00460452 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6EEF961C6ED38D00460452 /* CoreAudio.framework */; };
-		BF6F04F71C6E77510096C156 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6F04F61C6E77510096C156 /* Keys.plist */; };
 		BF6F04FF1C6E80290096C156 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F04FE1C6E80290096C156 /* Spotify.framework */; };
 		BF6F05011C6E80DB0096C156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05001C6E80DB0096C156 /* AVFoundation.framework */; };
 		BF6F05071C6E84F20096C156 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6F05061C6E84F20096C156 /* SafariServices.framework */; };
@@ -26,8 +25,8 @@
 		BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A21C6D50400013CE2B /* ALAlarmsViewController.m */; };
 		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
+		BFB23F941C7C0D4100A0C713 /* ALPlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */; };
 		BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */; };
-		BFB3D48E1C72502000E5C405 /* ALPlaylistSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -37,10 +36,10 @@
 		22CC2CD41C7252CD0029528D /* ALLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALLabelViewController.m; sourceTree = "<group>"; };
 		2BF105BFBBFD2127963F5FD6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "alarmify-prefix.pch"; path = "../alarmify-prefix.pch"; sourceTree = "<group>"; };
+		BF4370381C7BD0220087754D /* ALKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALKeys.h; sourceTree = "<group>"; };
 		BF6EEF921C6ED30B00460452 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF6EEF941C6ED34E00460452 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		BF6EEF961C6ED38D00460452 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		BF6F04F61C6E77510096C156 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		BF6F04FE1C6E80290096C156 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		BF6F05001C6E80DB0096C156 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BF6F05061C6E84F20096C156 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -66,10 +65,10 @@
 		BF7F69A81C6D50490013CE2B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF7F69AA1C6D50560013CE2B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
+		BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPlaylistsViewController.h; sourceTree = "<group>"; };
+		BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPlaylistsViewController.m; sourceTree = "<group>"; };
 		BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyPlayerViewController.h; sourceTree = "<group>"; };
 		BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyPlayerViewController.m; sourceTree = "<group>"; };
-		BFB3D48C1C72502000E5C405 /* ALPlaylistSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPlaylistSelectionViewController.h; sourceTree = "<group>"; };
-		BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPlaylistSelectionViewController.m; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -135,6 +134,8 @@
 				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
 				BF7F69941C6D50380013CE2B /* ALUser.h */,
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
+				BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */,
+				BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */,
 			);
 			name = "Spotify Model";
 			sourceTree = "<group>";
@@ -146,8 +147,6 @@
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
 				BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */,
 				BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */,
-				BFB3D48C1C72502000E5C405 /* ALPlaylistSelectionViewController.h */,
-				BFB3D48D1C72502000E5C405 /* ALPlaylistSelectionViewController.m */,
 			);
 			name = "Spotify Controller";
 			sourceTree = "<group>";
@@ -183,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				BF78E9811C6D4EF60044440B /* Main.storyboard */,
+				BF4370381C7BD0220087754D /* ALKeys.h */,
 				BF7F698D1C6D502F0013CE2B /* AppDelegate.h */,
 				BF7F698E1C6D502F0013CE2B /* AppDelegate.m */,
 				BFB286B61C6DB7030031DDE4 /* Spotify Controller */,
@@ -199,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				BF7F69AA1C6D50560013CE2B /* Info.plist */,
-				BF6F04F61C6E77510096C156 /* Keys.plist */,
 				BF7F69A81C6D50490013CE2B /* main.m */,
 				BF0C801D1C6EDC0400BA8BB8 /* alarmify-prefix.pch */,
 			);
@@ -294,7 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6F04F71C6E77510096C156 /* Keys.plist in Resources */,
 				BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */,
 				BF78E9821C6D4EF60044440B /* Main.storyboard in Resources */,
 				BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */,
@@ -353,8 +351,8 @@
 				BF7F69A71C6D50400013CE2B /* ALAlarmsViewController.m in Sources */,
 				BF7F69981C6D50380013CE2B /* ALUser.m in Sources */,
 				22CC2CD51C7252CD0029528D /* ALLabelViewController.m in Sources */,
+				BFB23F941C7C0D4100A0C713 /* ALPlaylistsViewController.m in Sources */,
 				BF7F69A61C6D50400013CE2B /* ALAlarmsTableViewController.m in Sources */,
-				BFB3D48E1C72502000E5C405 /* ALPlaylistSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +469,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.Alarmify;
 				PRODUCT_NAME = Alarmify;
 				PROVISIONING_PROFILE = "";
@@ -497,6 +507,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.Alarmify;
 				PRODUCT_NAME = Alarmify;
 				PROVISIONING_PROFILE = "";

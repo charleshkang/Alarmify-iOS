@@ -15,13 +15,8 @@
 #import "ALUser.h"
 
 @interface ALPlaylistSelectionViewController : UIViewController
-<
-NSURLConnectionDelegate,
-SPTAudioStreamingPlaybackDelegate,
-SPTAudioStreamingDelegate,
-UITableViewDataSource,
-UITableViewDelegate
->
+
+@property (nonatomic) ALPlaylistSelectionViewController *selectionVC;
 
 @property (nonatomic) SPTSession *session;
 @property (nonatomic)SPTAudioStreamingController *audioPlayer;

@@ -7,15 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Spotify/Spotify.h>
 #import <Foundation/Foundation.h>
 
 @interface ALSignInViewController : UIViewController
-<
-NSURLConnectionDelegate,
-SPTAuthViewDelegate
->
-
-- (void)handleAuthCallbackWithTriggeredAuthURL:(NSURL*)url;
 
 @end

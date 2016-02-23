@@ -36,9 +36,8 @@ static ALSpotifyManager *defaultSpotifyController = nil;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *redirectString = @"alarmify://authorize";
     NSURL *redirectURL = [NSURL URLWithString:redirectString];
-    NSString *spotifyClientId = appDelegate.spotifyClientID;
     
-    [[SPTAuth defaultInstance] setClientID:spotifyClientId];
+
     [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
     [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope]];
     

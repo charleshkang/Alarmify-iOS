@@ -7,7 +7,7 @@
 //
 
 #import "ALSpotifyPlayerViewController.h"
-#import "ALPlaylistSelectionViewController.h"
+#import "ALPlaylistsViewController.h"
 #import "ALSpotifyManager.h"
 
 @interface ALSpotifyPlayerViewController ()
