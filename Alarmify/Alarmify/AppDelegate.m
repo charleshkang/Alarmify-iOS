@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "ALKeys.h"
 #import "ALUser.h"
-#import "ALPlaylistsViewController.h"
+#import "ALPlaylistsTableViewController.h"
 #import "ALSignInViewController.h"
 #import "ALAlarmsViewController.h"
 
@@ -33,7 +33,7 @@
         self.window.rootViewController = alarmsVC;
     }
 
-    ALPlaylistsViewController *playlistSelectionVC = [ALPlaylistsViewController new];
+    ALPlaylistsTableViewController *playlistSelectionVC = [ALPlaylistsTableViewController new];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:playlistSelectionVC];
 
@@ -58,11 +58,7 @@
     
     if(auth.session == nil || ![auth.session isValid]) {
         [navVC pushViewController:[ALSignInViewController new] animated:NO];
-    } else {
-        [[ALUser user] handle:auth.session];
-        NSLog(@"User's Access Token: %@", auth.session);
-    }
-    
+    }    
     return YES;
 }
 

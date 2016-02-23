@@ -11,7 +11,7 @@
 #import "ALAlarmManager.h"
 #import "ALSpotifyManager.h"
 
-#import "ALPlaylistsViewController.h"
+#import "ALPlaylistsTableViewController.h"
 
 #import "ALLabelViewController.h"
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ALPlaylistsViewController.h"
+#import "ALPlaylistsTableViewController.h"
 
 @class ALPlaylistsViewController;
 
@@ -20,6 +20,6 @@
 @property (nonatomic) SPTUser *spotifyUser;
 @property (nonatomic) SPTSession *spotifySession;
 
-@property (nonatomic) ALPlaylistsViewController *playlistsVC;
+@property (nonatomic) ALPlaylistsTableViewController *playlistsVC;
 
 @end
