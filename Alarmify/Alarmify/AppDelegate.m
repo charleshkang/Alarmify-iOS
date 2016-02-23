@@ -29,11 +29,10 @@
         UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:loginVC];
         self.window.rootViewController = navigationController;
     } else if ([defaults boolForKey:@"hasLaunchedOnce"] && [defaults boolForKey:@"UserLoggedIn"]) {
-         ALAlarmsViewController *alarmsVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"alarmsViewController"];
+        ALAlarmsViewController *alarmsVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"alarmsViewController"];
         
         self.window.rootViewController = alarmsVC;
     }
-
     
     ALPlaylistsViewController *playlistSelectionVC = [ALPlaylistsViewController new];
     
@@ -44,13 +43,13 @@
     auth.clientID = @kClientId;
     auth.redirectURL = [NSURL URLWithString:@kCallbackURL];
     auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope,
-                             SPTAuthUserReadPrivateScope, SPTAuthUserLibraryReadScope];
+                             SPTAuthUserReadPrivateScope, SPTAuthUserLibraryReadScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserLibraryModifyScope];
     
 #ifdef kTokenSwapServiceURL
     auth.tokenSwapURL = [NSURL URLWithString:@kTokenSwapServiceURL];
 #endif
 #ifdef kTokenRefreshServiceURL
-    //    auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
+        auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
 #endif
     auth.sessionUserDefaultsKey = @kSessionUserDefaultsKey;
     
@@ -65,8 +64,6 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
-    // Ask SPTAuth if the URL given is a Spotify authentication callback
     if ([[SPTAuth defaultInstance] canHandleURL:url]) {
         [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
             
@@ -75,7 +72,6 @@
                 NC_postNotification(@"AUTH_ERROR", @{@"session":@"ERROR"});
                 return;
             }
-            
             [ALSpotifyManager defaultController].session = session;
             [SPTAuth defaultInstance].session = session;
             [ALSpotifyManager defaultController].player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
@@ -85,9 +81,10 @@
         }];
         return YES;
     }
-    
     return NO;
 }
+
+#pragma mark - Core Data Methods
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

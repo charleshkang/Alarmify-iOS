@@ -26,7 +26,6 @@
 		BF7F69A91C6D50490013CE2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7F69A81C6D50490013CE2B /* main.m */; };
 		BF7F69AE1C6D50650013CE2B /* Osaka.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF7F69AD1C6D50650013CE2B /* Osaka.ttf */; };
 		BFB23F941C7C0D4100A0C713 /* ALPlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */; };
-		BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */; };
 		BFF1BA121C6D4B9E00ECBF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */; };
 		BFF1BA151C6D4B9E00ECBF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF1BA131C6D4B9E00ECBF69 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -67,8 +66,6 @@
 		BF7F69AD1C6D50650013CE2B /* Osaka.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Osaka.ttf; sourceTree = "<group>"; };
 		BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPlaylistsViewController.h; sourceTree = "<group>"; };
 		BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPlaylistsViewController.m; sourceTree = "<group>"; };
-		BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSpotifyPlayerViewController.h; sourceTree = "<group>"; };
-		BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSpotifyPlayerViewController.m; sourceTree = "<group>"; };
 		BFF1B9FF1C6D4B9E00ECBF69 /* Alarmify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF1BA111C6D4B9E00ECBF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFF1BA141C6D4B9E00ECBF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,8 +131,6 @@
 				BF7F69951C6D50380013CE2B /* ALUser.m */,
 				BF7F69921C6D50380013CE2B /* ALSpotifyManager.h */,
 				BF7F69931C6D50380013CE2B /* ALSpotifyManager.m */,
-				BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */,
-				BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */,
 			);
 			name = "Spotify Model";
 			sourceTree = "<group>";
@@ -145,8 +140,8 @@
 			children = (
 				BF7F69901C6D50380013CE2B /* ALSignInViewController.h */,
 				BF7F69911C6D50380013CE2B /* ALSignInViewController.m */,
-				BFB3D4891C7245D800E5C405 /* ALSpotifyPlayerViewController.h */,
-				BFB3D48A1C7245D800E5C405 /* ALSpotifyPlayerViewController.m */,
+				BFB23F921C7C0D4100A0C713 /* ALPlaylistsViewController.h */,
+				BFB23F931C7C0D4100A0C713 /* ALPlaylistsViewController.m */,
 			);
 			name = "Spotify Controller";
 			sourceTree = "<group>";
@@ -341,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7F69A91C6D50490013CE2B /* main.m in Sources */,
-				BFB3D48B1C7245D800E5C405 /* ALSpotifyPlayerViewController.m in Sources */,
 				BF7F69A51C6D50400013CE2B /* ALAlarmManager.m in Sources */,
 				BF7F69A31C6D50400013CE2B /* ALAddAlarmTableViewController.m in Sources */,
 				BF7F698F1C6D502F0013CE2B /* AppDelegate.m in Sources */,
