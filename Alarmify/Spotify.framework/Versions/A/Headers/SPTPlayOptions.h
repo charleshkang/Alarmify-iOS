@@ -16,8 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-/** This object contains information about how to start playback
- */
 @interface SPTPlayOptions : NSObject
 
 /** Which track to play, defaults to 0 - first track. */

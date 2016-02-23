@@ -18,8 +18,8 @@
 #import "SPTDiskCaching.h"
 
 /**
- * @brief The `SPTDiskCache` class implements the `SPTDiskCaching` protocol and provides a caching mechanism based on memory mapped files.
- * @see `SPTDiskCaching`
+ * @brief The <code>SPTDiskCache</code> class implements the <code>SPTDiskCachingCD</code> protocol and provides a caching mechanism based on memory mapped files.
+ * @see <code>SPTDiskCachingCD</code>
  */
 @interface SPTDiskCache : NSObject <SPTDiskCaching>
 
@@ -31,16 +31,16 @@
 
 /**
  * @brief Evict cache data.
- * @discussion Deletes cached data until the space occupied is <= `capacity`
+ * @discussion Deletes cached data until the space occupied is <= <code>capacity</code>
  * @param error An error pointer that will contain an error if a problem occurred.
- * @return `YES` if eviction was successful, `NO` otherwise.
+ * @return <code>YES</code> if eviction was successful, <code>NO</code> otherwise.
  */
 - (BOOL)evict:(NSError **)error;
 
 /**
  * @brief Clear all cached data.
  * @param error An error pointer that will contain an error if a problem occurred.
- * @return `YES` if successful, `NO` otherwise.
+ * @return <code>YES</code> if successful, <code>NO</code> otherwise.
  */
 - (BOOL)clear:(NSError **)error;
 

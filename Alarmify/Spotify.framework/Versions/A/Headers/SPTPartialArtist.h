@@ -1,12 +1,12 @@
 /*
  Copyright 2015 Spotify AB
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,19 +19,8 @@
 #import "SPTJSONDecoding.h"
 
 /** Represents a "partial" artist on the Spotify service. You can promote this
- to a full artist object using `SPTArtist`.
- 
- API Model: https://developer.spotify.com/web-api/object-model/#artist-object-simplified
- */
+ to a full artist object using `SPTRequest`. */
 @interface SPTPartialArtist : SPTJSONObjectBase<SPTPartialObject>
-
-
-
-
-
-///-----------------
-/// @name Properties
-///-----------------
 
 /** The id of the artist. */
 @property (nonatomic, readonly, copy) NSString *identifier;
@@ -41,16 +30,5 @@
 
 /** The HTTP open.spotify.com URL of the artist. */
 @property (nonatomic, readonly, copy) NSURL *sharingURL;
-
-
-
-
-
-///------------------------------
-/// @name Parsers / Deserializers
-///------------------------------
-
-+ (instancetype)partialArtistFromDecodedJSON:(id)decodedObject
-									   error:(NSError **)error;
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PlaylistCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
 
 
 @end

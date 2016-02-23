@@ -16,7 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-/** An object that supports decoding from JSON. */
 @protocol SPTJSONObject <NSObject>
 
 /** Initialise the object with the given decoded JSON response from the web API
@@ -77,7 +76,6 @@
 
 @end
 
-/** Base object for JSON based models. */
 @interface SPTJSONObjectBase : NSObject<SPTJSONObject>
 
 @property (nonatomic, readwrite, copy) id decodedJSONObject;

@@ -1,12 +1,12 @@
 /*
  Copyright 2015 Spotify AB
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,15 +32,9 @@ typedef NS_ENUM(NSUInteger, SPTAlbumType) {
 
 @class SPTImage;
 
-/** Represents a "partial" album on the Spotify service. You can promote this to a full album object using `SPTAlbum`.
-
- API Model: https://developer.spotify.com/web-api/object-model/#album-object-simplified
- */
+/** Represents a "partial" album on the Spotify service. You can promote this
+ to a full album object using `SPTRequest`. */
 @interface SPTPartialAlbum : SPTJSONObjectBase <SPTPartialObject>
-
-
-
-
 
 ///----------------------------
 /// @name Properties
@@ -75,16 +69,5 @@ typedef NS_ENUM(NSUInteger, SPTAlbumType) {
 
 /** An array of ISO 3166 country codes in which the album is available. */
 @property (nonatomic, readonly, copy) NSArray *availableTerritories;
-
-
-
-
-
-///------------------------------
-/// @name Parsers / Deserializers
-///------------------------------
-
-+ (instancetype)partialAlbumFromDecodedJSON:(id)decodedObject
-									  error:(NSError **)error;
 
 @end

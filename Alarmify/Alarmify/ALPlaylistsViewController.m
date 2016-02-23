@@ -22,6 +22,7 @@ UITableViewDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) UITableView *PLTableView;
 @property (nonatomic) ALUser *user;
 @property (nonatomic) NSInteger currentSongIndex;
 @property (nonatomic) NSMutableArray *playlists;
@@ -33,6 +34,9 @@ UITableViewDelegate
 @property (nonatomic)SPTTrack *currentTrack;
 @property (nonatomic)SPTArtist *currentArtist;
 @property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
+
+-(void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object;
+
 
 @end
 
@@ -55,6 +59,7 @@ UITableViewDelegate
 {
     [SPTRequest playlistsForUserInSession:self.user.spotifySession callback:^(NSError *error, id object) {
         [self fetchPlaylistPageForSession:self.user.spotifySession error:error object:object];
+        NSLog(@"playlists: %@", object);
     }];
 }
 
@@ -77,7 +82,7 @@ UITableViewDelegate
     
     SPTPartialPlaylist *partialPlaylist = [self.playlists objectAtIndex:indexPath.row];
     playlistName = partialPlaylist.name;
-    [cell.textLabel setText:playlistName];
+    [cell.playlistLabel setText:playlistName];
     
     NSLog(@"Playlists: %@", playlistName);
     
@@ -100,26 +105,10 @@ UITableViewDelegate
 
 #pragma mark - Spotify Playlist Implementation
 
-- (BOOL)nextSongsFrom:(SPTListPage *)list
-{
-    ALSpotifyManager *controller = [ALSpotifyManager defaultController];
-    [[SPTRequest sharedHandler] performRequest:[list createRequestForNextPageWithAccessToken:controller.session.accessToken error:nil] callback:^(NSError *error, NSURLResponse *response, NSData *data) {
-        SPTListPage *newlist = [SPTListPage listPageFromData:data withResponse:response expectingPartialChildren:true rootObjectKey:nil error:nil];
-        for (SPTSavedTrack *i in newlist.items) {
-            [controller.myMusic addObject:i.uri];
-        }
-        if (newlist.hasNextPage) {
-            [self nextSongsFrom:newlist];
-        }
-    }];
-    return false;
-}
-
 - (void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object
 {
     if (error != nil) {
         NSLog(@"Error fetching playlists, %@", error);
-        abort();
     } else {
         if ([object isKindOfClass:[SPTPlaylistList class]]) {
             SPTPlaylistList *playlistList = (SPTPlaylistList *)object;
@@ -128,14 +117,7 @@ UITableViewDelegate
                 NSLog(@"Fetched playlists!");
                 [self.playlists addObject:playlist];
             }
-            
-            if (playlistList.hasNextPage) {
-                NSLog(@"Fetching more playlists...%@", playlistList);
-                [playlistList requestNextPageWithSession:session callback:^(NSError *error, id object) {
-                    [self fetchPlaylistPageForSession:session error:error object:object];
-                }];
-            }
-            [self.tableView reloadData];
+            [self.PLTableView reloadData];
         }
     }
 }

@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "ALKeys.h"
 #import "ALUser.h"
-#import "ALSpotifyManager.h"
 #import "ALPlaylistsViewController.h"
 #import "ALSignInViewController.h"
 #import "ALAlarmsViewController.h"
@@ -23,28 +22,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
+
     if (![defaults boolForKey:@"hasLaunchedOnce"]) {
         ALSignInViewController *loginVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
         UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:loginVC];
         self.window.rootViewController = navigationController;
     } else if ([defaults boolForKey:@"hasLaunchedOnce"] && [defaults boolForKey:@"UserLoggedIn"]) {
         ALAlarmsViewController *alarmsVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"alarmsViewController"];
-        
+
         self.window.rootViewController = alarmsVC;
     }
-    
+
     ALPlaylistsViewController *playlistSelectionVC = [ALPlaylistsViewController new];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:playlistSelectionVC];
-    
+
     // Spotify Authorization Initializers
     SPTAuth *auth = [SPTAuth defaultInstance];
     auth.clientID = @kClientId;
+
     auth.redirectURL = [NSURL URLWithString:@kCallbackURL];
+
     auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope,
                              SPTAuthUserReadPrivateScope, SPTAuthUserLibraryReadScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope, SPTAuthUserLibraryModifyScope];
     
+
 #ifdef kTokenSwapServiceURL
     auth.tokenSwapURL = [NSURL URLWithString:@kTokenSwapServiceURL];
 #endif
@@ -62,28 +64,6 @@
     }
     
     return YES;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
-        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
-            
-            if (error != nil) {
-                NSLog(@"*** Auth error: %@", error);
-                NC_postNotification(@"AUTH_ERROR", @{@"session":@"ERROR"});
-                return;
-            }
-            [ALSpotifyManager defaultController].session = session;
-            [SPTAuth defaultInstance].session = session;
-            [ALSpotifyManager defaultController].player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
-            
-            NC_postNotification(@"AUTH_OK", @{@"session":session});
-            NSLog(@"Auth granted, session started");
-        }];
-        return YES;
-    }
-    return NO;
 }
 
 #pragma mark - Core Data Methods

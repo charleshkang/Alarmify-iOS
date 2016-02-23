@@ -8,7 +8,6 @@
 
 #import "ALSignInViewController.h"
 #import "ALUser.h"
-#import "ALSpotifyManager.h"
 #import "ALKeys.h"
 
 #import "ALAlarmsViewController.h"

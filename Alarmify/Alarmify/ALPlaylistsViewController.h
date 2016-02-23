@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
-#import "ALSpotifyManager.h"
 
 #import <Spotify/Spotify.h>
 
@@ -19,8 +18,6 @@
 @property (nonatomic) ALPlaylistsViewController *playlistsVC;
 
 @property (nonatomic) SPTSession *session;
-@property (nonatomic) SPTAudioStreamingController *audioPlayer;
-
 
 @property NSMutableArray *songs;
 

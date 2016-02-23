@@ -16,10 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-///----------------------------
-/// @name Scope constants, see: https://developer.spotify.com/web-api/using-scopes/
-///----------------------------
-
 /** Scope that lets you stream music. */
 FOUNDATION_EXPORT NSString * const SPTAuthStreamingScope;
 
@@ -32,26 +28,17 @@ FOUNDATION_EXPORT NSString * const SPTAuthPlaylistModifyPublicScope;
 /** Scope that lets you modify private playlists of the authenticated user. */
 FOUNDATION_EXPORT NSString * const SPTAuthPlaylistModifyPrivateScope;
 
-/** Scope that lets you follow artists and users on behalf of the authenticated user. */
-FOUNDATION_EXPORT NSString * const SPTAuthUserFollowModifyScope;
+/** Scope that lets you read email from the authenticated user. */
+FOUNDATION_EXPORT NSString * const SPTAuthUserReadEmailScope;
 
-/** Scope that lets you get a list of artists and users the authenticated user is following. */
-FOUNDATION_EXPORT NSString * const SPTAuthUserFollowReadScope;
+/** Scope that lets you read the private user information of the authenticated user. */
+FOUNDATION_EXPORT NSString * const SPTAuthUserReadPrivateScope;
 
 /** Scope that lets you read user's Your Music library. */
 FOUNDATION_EXPORT NSString * const SPTAuthUserLibraryReadScope;
 
 /** Scope that lets you modify user's Your Music library. */
 FOUNDATION_EXPORT NSString * const SPTAuthUserLibraryModifyScope;
-
-/** Scope that lets you read the private user information of the authenticated user. */
-FOUNDATION_EXPORT NSString * const SPTAuthUserReadPrivateScope;
-
-/** Scope that lets you get the birthdate of the authenticated user. */
-FOUNDATION_EXPORT NSString * const SPTAuthUserReadBirthDateScope;
-
-/** Scope that lets you get the email address of the authenticated user. */
-FOUNDATION_EXPORT NSString * const SPTAuthUserReadEmailScope;
 
 FOUNDATION_EXPORT NSString * const SPTAuthSessionUserDefaultsKey;
 
@@ -63,10 +50,6 @@ FOUNDATION_EXPORT NSString * const SPTAuthSessionUserDefaultsKey;
  */
 @interface SPTAuth : NSObject
 
-/** The authentication result callback
- @param error An `NSError` object if an error occurred, is `nil` if no error.
- @param session An `SPTSession` object containing information about the user.
- */
 typedef void (^SPTAuthCallback)(NSError *error, SPTSession *session);
 
 ///----------------------------
@@ -186,13 +169,13 @@ typedef void (^SPTAuthCallback)(NSError *error, SPTSession *session);
  Check if "flip-flop" application authentication is supported.
  @return YES if supported, NO otherwise.
  */
-+(BOOL)supportsApplicationAuthentication;
+-(BOOL)supportsApplicationAuthentication;
 
 /**
  Check if Spotify application is installed.
  @return YES if installed, NO otherwise.
  */
-+(BOOL)spotifyApplicationIsInstalled;
+-(BOOL)spotifyApplicationIsInstalled;
 
 ///----------------------------
 /// @name Renewing Sessions

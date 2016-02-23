@@ -17,10 +17,7 @@
 #import <Foundation/Foundation.h>
 #import "SPTTrack.h"
 
-/** This class represents a track in the Your Music Library.
-
- API Model: https://developer.spotify.com/web-api/object-model/#saved-track-object
- */
+/** This class represents a track in the Your Music Library. */
 @interface SPTSavedTrack : SPTTrack <SPTJSONObject>
 
 ///----------------------------

@@ -18,7 +18,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "SPTTypes.h"
 #import "SPTDiskCache.h"
-#import "SPTDiskCaching.h"
 #import "SPTPlayOptions.h"
 
 /** A volume value, in the range 0.0..1.0. */
@@ -109,9 +108,9 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
 /**
  * @brief The object responsible for caching of audio data.
- * @discussion The object is an instance of a class that implements the `SPTDiskCaching` protocol.
- * If `nil`, no caching will be performed.
- * @see `SPTDiskCaching`
+ * @discussion The object is an instance of a class that implements the <code>SPTDiskCaching</code> protocol.
+ * If <code>nil</code>, no caching will be performed.
+ * @see <code>SPTDiskCaching</code>
  */
 @property (nonatomic, strong) id <SPTDiskCaching> diskCache;
 
@@ -162,7 +161,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
  
  Supported URI types: Tracks, Albums and Playlists
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param uri The URI to play.
  @param block The callback block to be executed when the playback command has been
@@ -176,7 +175,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param uri The URI to play.
  @param index The track to start playing from if an album or playlist
@@ -191,7 +190,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param uris The list of URI's to play.
  @param index The track to start playing from if an album or playlist
@@ -217,7 +216,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -replaceURIs:withCurrentTrack:callback:
+ @see -replaceURIs:withCurrentlyPlaying:callback
  
  @param uris The list of URI's to play.
  @param block The callback block to be executed when the tracks are set, or an `NSError` object if an error ocurred.
@@ -238,7 +237,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param index The track to start playing from if an album or playlist
  @param block The callback block to be executed when the playback command has been
@@ -252,7 +251,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param provider A track provider.
  @param block The callback block to be executed when the playback command has been
@@ -266,7 +265,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param provider A track provider.
  @param index How many tracks to skip.
@@ -281,7 +280,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param uri The URI to queue.
  @param block The callback block to be executed when the playback command has been
@@ -295,7 +294,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param uri The URI to queue.
  @param clear Clear the queue before adding URI
@@ -310,8 +309,8 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
- @see -replaceURIs:withCurrentTrack:callback:
+ @see -playURIs:withOptions:callback
+ @see -replaceURIs:withCurrentTrack:callback
 
  @param uris The array of URIs to queue.
  @param clear Clear the queue before adding URIs
@@ -326,7 +325,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
  This function is deprecated and will be removed in the next version.
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  @param provider A track provider.
  @param clear Clear the queue before adding
@@ -337,7 +336,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
 /** Start playing back queued items
 
- @see -playURIs:withOptions:callback:
+ @see -playURIs:withOptions:callback
 
  This function is deprecated and will be removed in the next version.
 
@@ -349,7 +348,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 /** Remove all queued items
 
  This function is deprecated and will be removed in the next version.
- @see -replaceURIs:withCurrentTrack:callback:
+ @see -replaceURIs:withCurrentTrack:callback
  
  @param block The callback block to be executed when the queue is empty or an `NSError` object if an error ocurred.
  */
