@@ -102,6 +102,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if(!self.songsVC){
+        self.songsVC = [ALSongsTableViewController new];
+    }
     if (self.currentSongIndex != indexPath.row){
         self.currentSongIndex = indexPath.row;
         self.songsVC.session = self.user.spotifySession;

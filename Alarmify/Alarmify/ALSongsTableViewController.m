@@ -24,7 +24,7 @@
 @property (nonatomic) SPTTrack *currentTrack;
 @property (nonatomic) SPTArtist *currentArtist;
 @property (nonatomic) SPTPartialPlaylist *playlist;
-@property (nonatomic) SPTPlaylistTrack *currentPlaylist;
+@property (nonatomic) SPTPlaylistSnapshot *currentPlaylist;
 @property (nonatomic) UILabel *trackLabel;
 
 @end
@@ -47,14 +47,14 @@
     self.trackURIs = [NSMutableArray new];
 }
 
-- (void)setPlaylistWithPartialPlaylist:(SPTPlaylistTrack *)partialPlaylist
+- (void)setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)partialPlaylist
 {
     if (partialPlaylist) {
         [SPTRequest requestItemAtURI:partialPlaylist.uri withSession:self.session callback:^(NSError *error, id object) {
-            if ([object isKindOfClass:[SPTPlaylistTrack class]]) {
-                self.currentPlaylist = (SPTPlaylistTrack *)object;
+            if ([object isKindOfClass:[SPTPlaylistSnapshot class]]) {
+                self.currentPlaylist = (SPTPlaylistSnapshot *)object;
                 [self.trackURIs removeAllObjects];
-                NSLog(@"Playlist Size: %lu", (unsigned long) self.currentPlaylist);
+                NSLog(@"Playlist Size: %lu", (unsigned long) self.currentPlaylist.trackCount);
                 unsigned int trackCount = 0;
                 if (self.currentPlaylist.tracksForPlayback > 0) {
                     for (SPTTrack *track in self.currentPlaylist.tracksForPlayback) {
@@ -86,7 +86,7 @@
     SPTPlaylistTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
     songsName = playlistTrack.name;
     [cell.textLabel setText:songsName];
-    
+    NSLog(@"Tracks: %@", playlistTrack.name);
     NSLog(@"Songs: %@", songsName);
     
     return cell;
@@ -99,8 +99,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%@", self.songs);
-    NSLog(@"%@", self.songs.count);
     return self.songs.count;
 }
 
