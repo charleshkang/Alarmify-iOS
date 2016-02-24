@@ -101,17 +101,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ALSongsTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"songsTVC"];
+
+
+    vc.session = self.user.spotifySession;
+    [vc setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
     
-    if(!self.songsVC){
-        self.songsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"songsTVC"];
-    }
+    [self.navigationController pushViewController:vc animated:YES];
+
     
-    if (self.currentSongIndex != indexPath.row){
-        self.currentSongIndex = indexPath.row;
-        self.songsVC.session = self.user.spotifySession;
-        [self.songsVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
-    }
-    [self.navigationController pushViewController:self.songsVC animated:YES];
+//    if(!_songsVC){
+//        _songsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"songsTVC"];
+//    }
+//    
+//    if (self.currentSongIndex != indexPath.row){
+//        self.currentSongIndex = indexPath.row;
+//        self.songsVC.session = self.user.spotifySession;
+//        [self.songsVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
+//    }
+//    [self.navigationController pushViewController:self.songsVC animated:YES];
 }
 
 
