@@ -48,6 +48,32 @@
     [self reloadWithSongs];
 }
 
+#pragma mark - Tableview Methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songIdentifier" forIndexPath:indexPath];
+    
+    NSString *songName;
+    SPTPartialTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
+    songName = playlistTrack.name;
+    [cell.textLabel setText:songName];
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.songs.count;
+}
+
+#pragma mark - Fetch Songs
+
 - (void)reloadWithSongs
 {
     [SPTPlaylistTrack tracksWithURIs:self.trackURIs session:self.user.spotifySession callback:^(NSError *error, id object) {
@@ -83,32 +109,6 @@
     self.currentSongIndex = 0;
     self.currentTrack = [self.currentPlaylist.tracksForPlayback objectAtIndex:self.currentSongIndex];
     self.trackLabel.text = self.currentTrack.name;
-}
-
-#pragma mark - Tableview Methods
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songIdentifier" forIndexPath:indexPath];
-    NSString *songName;
-    
-    SPTPartialTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
-
-    songName = playlistTrack.name;
-    [cell.textLabel setText:songName];
-    NSLog(@"Tracks: %@", playlistTrack.name);
-    
-    return cell;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.songs.count;
 }
 
 @end

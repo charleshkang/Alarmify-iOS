@@ -48,13 +48,6 @@
     [self reloadWithPlaylists];
 }
 
-- (void)reloadWithPlaylists
-{
-    [SPTRequest playlistsForUserInSession:self.user.spotifySession callback:^(NSError *error, id object) {
-        [self fetchPlaylistPageForSession:self.user.spotifySession error:error object:object];
-    }];
-}
-
 #pragma mark - Spotify Playlist Implementation
 
 - (void)fetchPlaylistPageForSession:(SPTSession *)session error:(NSError *)error object:(id)object
@@ -71,6 +64,13 @@
             [self.tableView reloadData];
         }
     }
+}
+
+- (void)reloadWithPlaylists
+{
+    [SPTRequest playlistsForUserInSession:self.user.spotifySession callback:^(NSError *error, id object) {
+        [self fetchPlaylistPageForSession:self.user.spotifySession error:error object:object];
+    }];
 }
 
 #pragma mark - Tableview Methods
@@ -105,6 +105,7 @@
     if(!self.songsVC){
         self.songsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"songsTVC"];
     }
+    
     if (self.currentSongIndex != indexPath.row){
         self.currentSongIndex = indexPath.row;
         self.songsVC.session = self.user.spotifySession;
@@ -112,5 +113,7 @@
     }
     [self.navigationController pushViewController:self.songsVC animated:YES];
 }
+
+
 
 @end
