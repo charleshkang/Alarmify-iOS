@@ -38,11 +38,10 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.tableView.delegate = self;
+    [super viewDidLoad];    self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.currentSongIndex = -1;
-
+    
     self.user = [ALUser user];
     self.playlists = [NSMutableArray new];
     
@@ -104,13 +103,14 @@
 {
     
     if(!self.songsVC){
-        self.songsVC = [ALSongsTableViewController new];
+        self.songsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"songsTVC"];
     }
     if (self.currentSongIndex != indexPath.row){
         self.currentSongIndex = indexPath.row;
         self.songsVC.session = self.user.spotifySession;
         [self.songsVC setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)[self.playlists objectAtIndex:indexPath.row]];
     }
+    [self.navigationController pushViewController:self.songsVC animated:YES];
 }
 
 @end

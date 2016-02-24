@@ -45,6 +45,14 @@
     self.songs = [NSMutableArray new];
     self.currentTrack = [SPTTrack new];
     self.trackURIs = [NSMutableArray new];
+    [self reloadWithSongs];
+}
+
+- (void)reloadWithSongs
+{
+    [SPTPlaylistTrack tracksWithURIs:self.trackURIs session:self.user.spotifySession callback:^(NSError *error, id object) {
+        [self setPlaylistWithPartialPlaylist:self.playlist];
+    }];
 }
 
 - (void)setPlaylistWithPartialPlaylist:(SPTPartialPlaylist *)partialPlaylist
@@ -58,11 +66,14 @@
                 unsigned int trackCount = 0;
                 if (self.currentPlaylist.tracksForPlayback > 0) {
                     for (SPTTrack *track in self.currentPlaylist.tracksForPlayback) {
+                        [self.songs addObject:self.songs];
                         NSLog(@"Got songs!: %u %@", trackCount, track.name);
+                        NSLog(@"Object: %@", object);
                         trackCount++;
                         [self.trackURIs addObject:track.uri];
                     }
                     [self handleNewSession];
+                    [self.tableView reloadData];
                 }
             }
         }];
@@ -80,14 +91,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songsIdentifier" forIndexPath:indexPath];
-    NSString *songsName;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songIdentifier" forIndexPath:indexPath];
+    NSString *songName;
     
-    SPTPlaylistTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
-    songsName = playlistTrack.name;
-    [cell.textLabel setText:songsName];
+    SPTPartialTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
+    songName = playlistTrack.name;
+    [cell.textLabel setText:songName];
     NSLog(@"Tracks: %@", playlistTrack.name);
-    NSLog(@"Songs: %@", songsName);
+    NSLog(@"Songs: %@", songName);
     
     return cell;
 }
