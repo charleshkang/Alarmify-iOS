@@ -66,11 +66,9 @@
                 unsigned int trackCount = 0;
                 if (self.currentPlaylist.tracksForPlayback > 0) {
                     for (SPTTrack *track in self.currentPlaylist.tracksForPlayback) {
-                        [self.songs addObject:self.songs];
+                        [self.songs addObject:track];
                         NSLog(@"Got songs!: %u %@", trackCount, track.name);
-                        NSLog(@"Object: %@", object);
                         trackCount++;
-                        [self.trackURIs addObject:track.uri];
                     }
                     [self handleNewSession];
                     [self.tableView reloadData];
@@ -95,10 +93,10 @@
     NSString *songName;
     
     SPTPartialTrack *playlistTrack = [self.songs objectAtIndex:indexPath.row];
+
     songName = playlistTrack.name;
     [cell.textLabel setText:songName];
     NSLog(@"Tracks: %@", playlistTrack.name);
-    NSLog(@"Songs: %@", songName);
     
     return cell;
 }
